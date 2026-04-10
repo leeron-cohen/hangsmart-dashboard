@@ -8605,9 +8605,9 @@ z/dtWs6h/mk/1J/ioorzek989Zqf1ZL6Q/p9x/6Ou6xc+GnW2f8A7UP8VFFes0nvxPDcU91n/9k=" al
   <div class="header-right">
     <div class="date-range">
       <span>From:</span>
-      <input type="date" id="dFrom" value="2026-03-30" />
+      <input type="date" id="dFrom" />
       <span>To:</span>
-      <input type="date" id="dTo" value="2026-04-05" />
+      <input type="date" id="dTo" />
       <button class="btn" onclick="applyDateFilter()">APPLY</button>
     </div>
     <div class="updated">Last updated: 2026-04-10</div>
@@ -8632,7 +8632,8 @@ z/dtWs6h/mk/1J/ioorzek989Zqf1ZL6Q/p9x/6Ou6xc+GnW2f8A7UP8VFFes0nvxPDcU91n/9k=" al
 <!-- MASTER OVERVIEW TAB -->
 <!-- ============================================ -->
 <div class="tab-panel active" id="overview">
-  <h2 style="margin-bottom:24px;font-size:24px">Master Overview</h2>
+  <h2 style="margin-bottom:8px;font-size:24px">Master Overview</h2>
+  <div id="dateRangeSubtitle" style="margin-bottom:20px;line-height:1.6"></div>
 
   <!-- KPI Cards (dynamic - responds to date filter) -->
   <div class="grid" id="overviewCards"></div>
