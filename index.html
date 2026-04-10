@@ -8875,14 +8875,9 @@ function getAllDates(from, to) {
 
 
 
-async function checkPassword() {
+function checkPassword() {
   var pw = document.getElementById('pwInput').value;
-  var encoder = new TextEncoder();
-  var data = encoder.encode(pw);
-  var hashBuffer = await crypto.subtle.digest('SHA-256', data);
-  var hashArray = Array.from(new Uint8Array(hashBuffer));
-  var hash = hashArray.map(function(b) { return ('00' + b.toString(16)).slice(-2); }).join('');
-  if (hash === '0694c657c2a2ee7c87b8e7c51fb5758ba15322dab14a0d31d39b30629a0bf198') {
+  if (pw === atob('SGFuZ3NtYXJ0MSE=')) {
     tryStorage(function() { localStorage.setItem('hs_auth', 'true'); });
     document.getElementById('loginOverlay').classList.add('hidden');
     document.getElementById('dashboardWrap').style.display = 'block';
