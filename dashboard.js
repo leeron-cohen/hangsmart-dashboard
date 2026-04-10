@@ -301,7 +301,7 @@ function renderOverviewCampaigns() {
   var gFiltered = GOOGLE_ADS_DATA.filter(function(x){return x.date >= dFrom && x.date <= dTo;});
   var gCamps = {};
   gFiltered.forEach(function(r) {
-    if (\!gCamps[r.campaign]) gCamps[r.campaign] = {spend:0,impressions:0,clicks:0,conversions:0};
+    if (!gCamps[r.campaign]) gCamps[r.campaign] = {spend:0,impressions:0,clicks:0,conversions:0};
     gCamps[r.campaign].spend += r.spend;
     gCamps[r.campaign].impressions += r.impressions;
     gCamps[r.campaign].clicks += r.clicks;
@@ -328,7 +328,7 @@ function renderOverviewCampaigns() {
   var vFiltered = filterByDate(VIBE_DATA, dFrom, dTo);
   var vCamps = {};
   vFiltered.forEach(function(r) {
-    if (\!vCamps[r.campaign]) vCamps[r.campaign] = {spend:0,impressions:0};
+    if (!vCamps[r.campaign]) vCamps[r.campaign] = {spend:0,impressions:0};
     vCamps[r.campaign].spend += r.spend;
     vCamps[r.campaign].impressions += r.impressions;
   });
@@ -414,12 +414,12 @@ function renderGoogle() {
   html += '<div class="card"><h3>Total Clicks</h3><div class="value">' + fmtN(totalClicks) + '</div></div>';
   html += '<div class="card"><h3>Conversions</h3><div class="value">' + totalConversions.toFixed(1) + '</div></div>';
   html += '<div class="card"><h3>Avg CTR</h3><div class="value">' + avgCTR + '%</div></div>';
-  html += '<div class="card"><h3>CPA</h3><div class="value">' + (cpa \!== 'N/A' ? fmt(parseFloat(cpa)) : cpa) + '</div></div>';
+  html += '<div class="card"><h3>CPA</h3><div class="value">' + (cpa !== 'N/A' ? fmt(parseFloat(cpa)) : cpa) + '</div></div>';
   document.getElementById('googleCards').innerHTML = html;
 
   var gCamps = {};
   gFiltered.forEach(function(r) {
-    if (\!gCamps[r.campaign]) gCamps[r.campaign] = {spend:0,impressions:0,clicks:0,conversions:0};
+    if (!gCamps[r.campaign]) gCamps[r.campaign] = {spend:0,impressions:0,clicks:0,conversions:0};
     gCamps[r.campaign].spend += r.spend;
     gCamps[r.campaign].impressions += r.impressions;
     gCamps[r.campaign].clicks += r.clicks;
@@ -446,7 +446,7 @@ function renderGoogle() {
   var dates = [];
   var dateMap = {};
   gFiltered.forEach(function(r) {
-    if (\!dateMap[r.date]) { dateMap[r.date] = {spend:0,impressions:0,clicks:0,conversions:0}; dates.push(r.date); }
+    if (!dateMap[r.date]) { dateMap[r.date] = {spend:0,impressions:0,clicks:0,conversions:0}; dates.push(r.date); }
     dateMap[r.date].spend += r.spend;
     dateMap[r.date].impressions += r.impressions;
     dateMap[r.date].clicks += r.clicks;
@@ -569,7 +569,7 @@ function renderVibe() {
 
   var vCamps = {};
   vibe.forEach(function(r) {
-    if (\!vCamps[r.campaign]) vCamps[r.campaign] = {spend:0,impressions:0,days:0};
+    if (!vCamps[r.campaign]) vCamps[r.campaign] = {spend:0,impressions:0,days:0};
     vCamps[r.campaign].spend += r.spend;
     vCamps[r.campaign].impressions += r.impressions;
     vCamps[r.campaign].days += 1;
@@ -590,7 +590,7 @@ function renderVibe() {
   var dates = [];
   var dateMap = {};
   vibe.forEach(function(r) {
-    if (\!dateMap[r.date]) { dateMap[r.date] = {spend:0,impressions:0}; dates.push(r.date); }
+    if (!dateMap[r.date]) { dateMap[r.date] = {spend:0,impressions:0}; dates.push(r.date); }
     dateMap[r.date].spend += r.spend;
     dateMap[r.date].impressions += r.impressions;
   });
