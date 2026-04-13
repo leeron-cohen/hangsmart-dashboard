@@ -1025,34 +1025,40 @@ function renderSuggestions() {
 
   // ── ACTION 2: PAUSE CATALOG BOF ─────────────────────────────────────────────
   html += '<div class="anomaly-box" style="border-left-color:var(--red)">';
-  html += '<h4>🔴 ACTION 2 — Pause Catalog BOF Campaign</h4>';
-  html += '<p><strong>Why:</strong> This campaign\'s only running ad has a 0.80% CTR and $3.15 CPC — the worst numbers in the entire account. For every 100 people who see the ad, less than 1 clicks it. You are paying $3.15 for each of those rare clicks when your best campaigns are getting clicks for $0.43–$0.54. That is a 6x cost difference for the same click. Catalog ads (which use your product catalog to auto-generate ads) tend to underperform for hardware/installation products because they lack the storytelling and demonstration that convert buyers. The $1,389 spent here has produced essentially nothing measurable.</p>';
+  html += '<h4>🔴 ACTION 2 — Pause "Catalog - BOF" Ad in Campaign 5</h4>';
+  html += '<p style="font-size:12px;background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;margin-bottom:10px"><strong>Exact location in Meta:</strong><br>Campaign: <code>CAMPAIGN 5 | BOF | CBO | HangSmart TV</code><br>Ad Set: <code>Ad Set 1 | High Intent 0-30 Days | BOF</code><br>Ad: <code>Catalog - BOF</code></p>';
+  html += '<p><strong>Why:</strong> This ad has a 0.80% CTR and $3.15 CPC — the worst numbers in the entire account. For every 100 people who see it, less than 1 clicks it. You are paying $3.15 for each of those rare clicks when your best ads are getting clicks for $0.43–$0.54. That is a 6x cost difference for the same click. Catalog ads (which pull directly from your product feed to auto-generate the creative) tend to underperform for hardware and installation products because they lack the storytelling and demonstration that actually converts buyers. The $1,389 spent on this ad has produced essentially nothing measurable. The campaign itself (Campaign 5 BOF retargeting) is a valid strategy — it is just this specific ad format that is failing. Pause the ad, not the campaign.</p>';
   html += '<p><strong>Budget freed up:</strong> Estimate $15–$25/day.</p>';
   html += '<p><strong>Step-by-step:</strong></p>';
   html += '<ol style="color:var(--muted);font-size:13px;line-height:1.9;padding-left:20px">';
-  html += '<li>Go to <strong>ads.facebook.com</strong> → <strong>Campaigns</strong></li>';
-  html += '<li>Find the campaign named <strong>"Catalog — BOF"</strong> or similar retargeting/catalog campaign</li>';
-  html += '<li>Click the <strong>toggle switch</strong> to pause it</li>';
-  html += '<li>If you are not sure which one it is, click into each campaign, go to <strong>Ads</strong> level, and look for the ad named "Catalog — BOF" with 0.80% CTR in your metrics columns</li>';
-  html += '<li>Confirm the pause</li>';
+  html += '<li>Go to <strong>ads.facebook.com</strong> and log in</li>';
+  html += '<li>Click <strong>Campaigns</strong> in the left sidebar</li>';
+  html += '<li>Find <strong>CAMPAIGN 5 | BOF | CBO | HangSmart TV</strong> and click into it</li>';
+  html += '<li>Click <strong>Ad Sets</strong> in the top nav, then click into <strong>Ad Set 1 | High Intent 0-30 Days | BOF</strong></li>';
+  html += '<li>Click <strong>Ads</strong> in the top nav — you will see <strong>Catalog - BOF</strong> listed</li>';
+  html += '<li>Click the <strong>toggle switch</strong> to the left of "Catalog - BOF" to pause it</li>';
+  html += '<li>Confirm. The ad set and campaign stay active — only this specific ad stops running. You can replace it later with a video creative in the same ad set.</li>';
   html += '</ol>';
   html += '</div>';
 
   // ── ACTION 3: REDUCE ARTHUR INSTALL + INFLUENCER COMPILATION ────────────────
   html += '<div class="anomaly-box" style="border-left-color:var(--gold)">';
-  html += '<h4>🟡 ACTION 3 — Reduce Budget on Arthur Install + Influencer Compilation (Campaign 2)</h4>';
-  html += '<p><strong>Why:</strong> These two ads have collectively spent $21,723 YTD. Arthur Install is at 1.60% CTR / $1.51 CPC and Influencer Compilation is at 1.57% CTR / $2.17 CPC. Both are well below the account average. For comparison, the winning ads in Campaign 3 are getting 4.37% CTR at $0.43 CPC — that is nearly 3x the engagement at 1/3 the cost per click. These ads are not zero value (installation content and social proof do serve a purpose), but they are consuming too large a share of the daily budget relative to what they produce. The goal is not to kill them entirely — it is to pull back their budget so the algorithm naturally shifts more spend toward the ads that are converting.</p>';
-  html += '<p><strong>Budget adjustment:</strong> Reduce each ad\'s ad set budget by 40–50%, or reduce Campaign 2\'s overall daily budget and let Meta re-optimize distribution.</p>';
+  html += '<h4>🟡 ACTION 3 — Reduce Budget on Arthur Install + Influencer Compilation Ads</h4>';
+  html += '<p style="font-size:12px;background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;margin-bottom:10px">';
+  html += '<strong>Arthur Install:</strong><br>Campaign: <code>CAMPAIGN 2 | 2026 | TOF | ABO | BROAD</code><br>Ad Set: <code>Ad Set 3 - Arthur Install</code><br>Ad: <code>Arthur Install</code><br><br>';
+  html += '<strong>Influencer Compilation (2 versions — both need reduction):</strong><br>Campaign: <code>CAMPAIGN 1 | 2026 | TOF | ABO | BROAD</code><br>Ad Set: <code>VIDEO 1 - Influencer Compilation</code> → Ad: <code>Influencer Compilation</code><br>Ad Set: <code>VIDEO 2 - Influencer Compilation (w/Leeron)</code> → Ad: <code>Influencer Compilation w/Leeron</code>';
+  html += '</p>';
+  html += '<p><strong>Why:</strong> Arthur Install has spent $11,073 YTD at 1.60% CTR / $1.51 CPC. The two Influencer Compilation versions have spent a combined $19,470 YTD — Influencer Compilation at 1.57% CTR / $2.17 CPC, and Influencer Compilation w/Leeron at 1.76% CTR / $1.63 CPC. All three are significantly below the account\'s top performers. Campaign 3\'s Winning Video ads run at 4.37% CTR at $0.43 CPC — that is nearly 3x the engagement at less than 1/3 the cost per click. Installation and social proof content has funnel value, so the goal is not to kill these entirely. It is to right-size their budgets so spend concentrates on what is actually driving clicks and conversions.</p>';
+  html += '<p><strong>Budget adjustment:</strong> Reduce the ad set budget on each of the three ad sets by 40–50%.</p>';
   html += '<p><strong>Step-by-step:</strong></p>';
   html += '<ol style="color:var(--muted);font-size:13px;line-height:1.9;padding-left:20px">';
-  html += '<li>Go to <strong>ads.facebook.com</strong> → <strong>Campaigns</strong> → click into <strong>Campaign 2</strong></li>';
-  html += '<li>Click on <strong>Ad Sets</strong> in the top navigation</li>';
-  html += '<li>Find the ad set that contains the <strong>Arthur Install</strong> ad. Click on it.</li>';
-  html += '<li>Click the <strong>Edit</strong> button (pencil icon) at the top</li>';
-  html += '<li>Find the <strong>Daily Budget</strong> field and reduce it by 40-50%</li>';
-  html += '<li>Click <strong>Publish</strong> to save the change</li>';
-  html += '<li>Repeat the same steps for the ad set containing <strong>Influencer Compilation</strong></li>';
-  html += '<li>Monitor for 7 days. If CTR does not improve to at least 2.0%, pause the ad entirely.</li>';
+  html += '<li>Go to <strong>ads.facebook.com</strong> → <strong>Campaigns</strong> → click into <strong>CAMPAIGN 2 | 2026 | TOF | ABO | BROAD</strong></li>';
+  html += '<li>Click <strong>Ad Sets</strong> → find <strong>Ad Set 3 - Arthur Install</strong></li>';
+  html += '<li>Click the <strong>Edit</strong> button (pencil icon) → find <strong>Daily Budget</strong> → reduce by 40–50% → click <strong>Publish</strong></li>';
+  html += '<li>Now go to <strong>CAMPAIGN 1 | 2026 | TOF | ABO | BROAD</strong></li>';
+  html += '<li>Click <strong>Ad Sets</strong> → find <strong>VIDEO 1 - Influencer Compilation</strong> → edit its Daily Budget down 40–50% → Publish</li>';
+  html += '<li>Find <strong>VIDEO 2 - Influencer Compilation (w/Leeron)</strong> → edit its Daily Budget down 40–50% → Publish</li>';
+  html += '<li>Monitor all three for 7 days. If CTR does not move to at least 2.0%, pause the ads entirely.</li>';
   html += '</ol>';
   html += '</div>';
 
@@ -1076,16 +1082,23 @@ function renderSuggestions() {
 
   // ── ACTION 5: CTV REVIEWS PAUSE ─────────────────────────────────────────────
   html += '<div class="anomaly-box" style="border-left-color:var(--gold)">';
-  html += '<h4>🟡 ACTION 5 — Pause HangSmart CTV Reviews + HangSmart CTV General (Campaign 2)</h4>';
-  html += '<p><strong>Why:</strong> CTV Reviews has spent $6,397 at 1.30% CTR / $1.79 CPC. CTV General has spent $2,452 at 0.94% CTR / $2.78 CPC. CTV (Connected TV) ad placements are fine for brand awareness but they typically produce low CTR because people watching TV are not in a position to click an ad — they would need to take out their phone separately. These placements make sense for top-of-funnel awareness but not when they are dragging your campaign averages down significantly. The recommendation is to pause these specific ads (not the whole campaign) and either convert the budget to feed/story placements where clicks are much easier, or roll the budget into Campaign 3.</p>';
-  html += '<p><strong>Budget freed up:</strong> Estimate $30–$50/day combined.</p>';
-  html += '<p><strong>Step-by-step:</strong></p>';
+  html += '<h4>🟡 ACTION 5 — Pause CTV Ads in Campaign 2 + Evaluate Standalone "CTV ADS" Campaign</h4>';
+  html += '<p style="font-size:12px;background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;margin-bottom:10px">';
+  html += '<strong>CTV Reviews (in Campaign 2):</strong><br>Campaign: <code>CAMPAIGN 2 | 2026 | TOF | ABO | BROAD</code><br>Ad Set: <code>Ad Set 1 - CTV ADS Reviews</code><br>Ad: <code>HangSmart CTV - Reviews</code> — $6,401 spend, 1.30% CTR<br><br>';
+  html += '<strong>CTV General (in Campaign 2):</strong><br>Campaign: <code>CAMPAIGN 2 | 2026 | TOF | ABO | BROAD</code><br>Ad Set: <code>Ad Set 2 - CTV ADS General</code><br>Ad: <code>HangSmart CTV - General</code> — $2,452 spend, 0.94% CTR<br><br>';
+  html += '<strong>Standalone CTV Campaign (separate issue):</strong><br>Campaign: <code>CTV ADS</code><br>Ad Set: <code>CTV Ads - BROAD</code><br>Ad: <code>HangSmart CTV - Reviews</code> — $10,039 spend, 1.95% CTR<br>';
+  html += 'Ad Set: <code>CTV Ads - BROAD - General Video</code><br>Ad: <code>HangSmart CTV - General</code> — $1,686 spend, 1.45% CTR';
+  html += '</p>';
+  html += '<p><strong>Why:</strong> The two CTV ads inside Campaign 2 are dragging that campaign\'s averages down hard — 0.94% and 1.30% CTR vs. the campaign\'s better-performing ads. CTV placements naturally produce lower CTR (people watching TV cannot click), so mixing them into a campaign with feed/story ads penalizes the campaign\'s overall efficiency score. Separately, there is also a standalone <code>CTV ADS</code> campaign running ~$11,700 YTD with better CTR (1.45–1.95%) but still below account averages. The Campaign 2 CTV ads should be paused immediately. The standalone CTV ADS campaign is a separate discussion — if its purpose is pure brand awareness, it may be acceptable; if it is supposed to drive conversions, it needs creative improvement or pause.</p>';
+  html += '<p><strong>Budget freed up from Campaign 2 CTV ads:</strong> Estimate $30–$50/day.</p>';
+  html += '<p><strong>Step-by-step (Campaign 2 CTV ads — pause these first):</strong></p>';
   html += '<ol style="color:var(--muted);font-size:13px;line-height:1.9;padding-left:20px">';
-  html += '<li>Go to <strong>ads.facebook.com</strong> → <strong>Campaigns</strong> → click into <strong>Campaign 2</strong></li>';
-  html += '<li>Click on <strong>Ads</strong> in the top navigation (not Ad Sets — go to the individual ad level)</li>';
-  html += '<li>Find the ads named <strong>"HangSmart CTV Reviews"</strong> and <strong>"HangSmart CTV General"</strong></li>';
-  html += '<li>Click the <strong>toggle switch</strong> next to each one to pause them individually</li>';
-  html += '<li>The ad set will continue running — only these specific creatives will stop. Other ads in the same ad set will absorb the budget.</li>';
+  html += '<li>Go to <strong>ads.facebook.com</strong> → <strong>Campaigns</strong> → click into <strong>CAMPAIGN 2 | 2026 | TOF | ABO | BROAD</strong></li>';
+  html += '<li>Click <strong>Ad Sets</strong> → find <strong>Ad Set 1 - CTV ADS Reviews</strong> → click into it → click <strong>Ads</strong></li>';
+  html += '<li>Toggle off <strong>HangSmart CTV - Reviews</strong></li>';
+  html += '<li>Go back to Ad Sets → find <strong>Ad Set 2 - CTV ADS General</strong> → click into it → click <strong>Ads</strong></li>';
+  html += '<li>Toggle off <strong>HangSmart CTV - General</strong></li>';
+  html += '<li>For the standalone <strong>CTV ADS</strong> campaign — review separately. If it is your intentional brand awareness TV buy, leave it running but do not increase the budget until CTR improves above 2.0%.</li>';
   html += '</ol>';
   html += '</div>';
 
