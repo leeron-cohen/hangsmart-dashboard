@@ -937,233 +937,178 @@ function renderSuggestions() {
   // ── HEADER ──────────────────────────────────────────────────────────────────
   html += '<div class="summary-box" style="border-left:3px solid var(--gold);margin-bottom:24px">';
   html += '<strong style="font-size:15px;color:var(--gold)">Campaign Analysis — April 13, 2026</strong>';
-  html += '<p style="margin:8px 0 4px;color:var(--muted);font-size:13px">Based on last 7 days (Apr 6–13) of active ad spend only. Turned-off ads excluded. Budget is fixed — all actions shift existing spend only.</p>';
+  html += '<p style="margin:8px 0 4px;color:var(--muted);font-size:13px">Active ads only. Last 7 days (Apr 6–13). Ranked by ROAS + Purchases. CTR/CPC used as secondary signal only. Budget is fixed — actions shift existing spend only.</p>';
   html += '</div>';
 
   // ── CHANGES SINCE LAST REPORT ────────────────────────────────────────────────
   html += '<div class="section-subtitle">Changes Since Last Report</div>';
   html += '<div class="anomaly-box success">';
-  html += '<h4 style="color:var(--green)">✅ Catalog - BOF Already Paused</h4>';
-  html += '<p>The <code>Catalog - BOF</code> ad inside <code>CAMPAIGN 5 | BOF | CBO | HangSmart TV</code> has been paused. The only two active ads in that campaign\'s High Intent ad set are now <code>Leeron Boom - BOF</code> (3.57% CTR, $1.54 CPC) and <code>Rebecca Janis - BOF</code> (1.88% CTR, $1.72 CPC). Good call — that was the worst-performing ad in the account.</p>';
+  html += '<h4 style="color:var(--green)">✅ Catalog - BOF Paused (Campaign 5)</h4>';
+  html += '<p>The <code>Catalog - BOF</code> ad inside <code>CAMPAIGN 5 | BOF | CBO | HangSmart TV</code> has been confirmed off. <code>Leeron Boom - BOF</code> and <code>Rebecca Janis - BOF</code> are the only active ads in that ad set.</p>';
   html += '</div>';
 
-  // ── WINNERS TABLE ────────────────────────────────────────────────────────────
-  html += '<div class="section-subtitle" style="margin-top:28px">What Is Working Right Now — Top Active Ads (Apr 6–13)</div>';
-  html += '<p style="color:var(--muted);font-size:13px;margin-bottom:12px">Minimum $100 spend in last 7 days. These are the ads earning their budget.</p>';
+  // ── FULL AD SCORECARD ────────────────────────────────────────────────────────
+  html += '<div class="section-subtitle" style="margin-top:28px">Full Ad Scorecard — All Active Ads (Apr 6–13)</div>';
+  html += '<p style="color:var(--muted);font-size:13px;margin-bottom:12px">Primary sort: ROAS. Secondary: purchases. CTR and CPC shown for context but do not override purchase performance.</p>';
   html += '<table class="perf-table"><thead><tr>';
-  html += '<th style="text-align:left">Ad</th><th style="text-align:left">Campaign</th><th style="text-align:left">Ad Set</th>';
-  html += '<th style="text-align:right">7d Spend</th><th style="text-align:right">CTR</th><th style="text-align:right">CPC</th>';
+  html += '<th style="text-align:left">Ad</th>';
+  html += '<th style="text-align:left;font-size:11px">Campaign → Ad Set</th>';
+  html += '<th style="text-align:right">Spend</th>';
+  html += '<th style="text-align:right">CTR</th>';
+  html += '<th style="text-align:right">CPC</th>';
+  html += '<th style="text-align:right">Pur.</th>';
+  html += '<th style="text-align:right">ROAS</th>';
+  html += '<th style="text-align:right">CPP</th>';
+  html += '<th style="text-align:right">Status</th>';
   html += '</tr></thead><tbody>';
-  var winners = [
-    {ad:'Cam cam',             camp:'CAMPAIGN 1',  aset:'VIDEO 3 - Cam Cam',                    spend:'$731',   ctr:'6.49%', cpc:'$0.77'},
-    {ad:'Alizabeth',           camp:'CAMPAIGN 3',  aset:'Ad Set 2 - Influencer Ads',            spend:'$726',   ctr:'5.14%', cpc:'$1.58'},
-    {ad:'Winning Video',       camp:'CAMPAIGN 3',  aset:'Ad Set 1 - Wining Ads Compilations',   spend:'$1,457', ctr:'4.63%', cpc:'$0.42'},
-    {ad:'Animation Testimonial Mashup', camp:'CAMPAIGN 2', aset:'Ad Set 4 - Animation Testimonial', spend:'$901', ctr:'4.12%', cpc:'$0.81'},
-    {ad:'Cam 1',               camp:'CAMPAIGN 1',  aset:'VIDEO 4 - Cam 1',                      spend:'$1,382', ctr:'3.64%', cpc:'$0.97'},
-    {ad:'Leeron BOOM Video',   camp:'CAMPAIGN 3',  aset:'Ad Set 1 - Wining Ads Compilations',   spend:'$1,098', ctr:'3.56%', cpc:'$1.00'},
-    {ad:'Rebecca Janis',       camp:'CAMPAIGN 3',  aset:'Ad Set 2 - Influencer Ads',            spend:'$1,700', ctr:'3.38%', cpc:'$0.68'},
-    {ad:'Leeron Boom - BOF',   camp:'CAMPAIGN 5',  aset:'Ad Set 1 | High Intent 0-30 Days | BOF', spend:'$1,327', ctr:'3.57%', cpc:'$1.54'},
-    {ad:'Winning Video - MOF', camp:'CAMPAIGN 4',  aset:'Ad Set 2 | Mid Intent 0-90 Days | MOF', spend:'$1,365', ctr:'2.86%', cpc:'$0.73'}
+
+  var allAds = [
+    {ad:'Animation English Voice MOF', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C2 | MOF | Warm Intent',    spend:'$24',    ctr:'0.3%', cpc:'$7.96', pur:2,  roas:'5.77x', cpp:'$12',  tag:'scale'},
+    {ad:'HangSmart CTV - Reviews',     camp:'CAMPAIGN 2',            aset:'Ad Set 1 - CTV ADS Reviews',        spend:'$736',   ctr:'0.9%', cpc:'$2.56', pur:17, roas:'2.39x', cpp:'$43',  tag:'scale'},
+    {ad:'Winning Video',               camp:'CAMPAIGN 3',            aset:'Ad Set 1 - Wining Ads Compilations',spend:'$1,460', ctr:'4.6%', cpc:'$0.42', pur:31, roas:'2.00x', cpp:'$47',  tag:'scale'},
+    {ad:'Bruna LookAlike Dynamic Creatives', camp:'TOF Test',        aset:'PRODUCT PAGE - TOF LOOKALIKE',       spend:'$1,881', ctr:'2.4%', cpc:'$1.30', pur:32, roas:'1.93x', cpp:'$59',  tag:'scale'},
+    {ad:'Leeron Boom - BOF',           camp:'CAMPAIGN 5 | BOF',      aset:'Ad Set 1 | High Intent 0-30 Days | BOF', spend:'$1,328', ctr:'3.6%', cpc:'$1.54', pur:24, roas:'1.76x', cpp:'$55',  tag:'scale'},
+    {ad:'Animation Testimonial Mashup',camp:'CAMPAIGN 2',            aset:'Ad Set 4 - Animation Testimonial',   spend:'$902',   ctr:'4.1%', cpc:'$0.81', pur:14, roas:'1.53x', cpp:'$64',  tag:'scale'},
+    {ad:'Arthur Install',              camp:'CAMPAIGN 2',            aset:'Ad Set 3 - Arthur Install',          spend:'$1,476', ctr:'1.6%', cpc:'$1.62', pur:23, roas:'1.42x', cpp:'$64',  tag:'stable'},
+    {ad:'Winning Video - MOF',         camp:'CAMPAIGN 4 | MOF',      aset:'Ad Set 2 | Mid Intent 0-90 Days | MOF', spend:'$1,369', ctr:'2.9%', cpc:'$0.73', pur:19, roas:'1.39x', cpp:'$72',  tag:'stable'},
+    {ad:'Cam 1',                       camp:'CAMPAIGN 1',            aset:'VIDEO 4 - Cam 1',                    spend:'$1,389', ctr:'3.6%', cpc:'$0.97', pur:19, roas:'1.30x', cpp:'$73',  tag:'stable'},
+    {ad:'Animation Soundbar Install BOF', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C1 | BOF | High Intent',  spend:'$85',    ctr:'1.4%', cpc:'$2.66', pur:2,  roas:'1.31x', cpp:'$43',  tag:'monitor'},
+    {ad:'Influencer Compilation w/Leeron', camp:'CAMPAIGN 1',        aset:'VIDEO 2 - Influencer Comp (w/Leeron)', spend:'$729',  ctr:'2.1%', cpc:'$1.48', pur:9,  roas:'1.11x', cpp:'$81',  tag:'monitor'},
+    {ad:'Leeron BOOM Video',           camp:'CAMPAIGN 3',            aset:'Ad Set 1 - Wining Ads Compilations', spend:'$1,104', ctr:'3.6%', cpc:'$1.00', pur:13, roas:'1.06x', cpp:'$85',  tag:'monitor'},
+    {ad:'Alizabeth',                   camp:'CAMPAIGN 3',            aset:'Ad Set 2 - Influencer Ads',          spend:'$728',   ctr:'5.1%', cpc:'$1.59', pur:8,  roas:'1.06x', cpp:'$91',  tag:'monitor'},
+    {ad:'Where Has This Been',         camp:'CAMPAIGN 3',            aset:'Ad Set 2 - Influencer Ads',          spend:'$169',   ctr:'2.1%', cpc:'$1.39', pur:2,  roas:'1.07x', cpp:'$84',  tag:'monitor'},
+    {ad:'Influencer Compilation',      camp:'CAMPAIGN 1',            aset:'VIDEO 1 - Influencer Compilation',   spend:'$1,391', ctr:'1.7%', cpc:'$2.28', pur:19, roas:'0.96x', cpp:'$73',  tag:'monitor'},
+    {ad:'Rebecca Janis',               camp:'CAMPAIGN 3',            aset:'Ad Set 2 - Influencer Ads',          spend:'$1,704', ctr:'3.4%', cpc:'$0.68', pur:22, roas:'0.92x', cpp:'$77',  tag:'monitor'},
+    {ad:'Animation Soundbar Install',  camp:'CAMPAIGN A | Soundbar LEGACY', aset:'Campaign A | Prospecting Workhorse', spend:'$2,342', ctr:'2.1%', cpc:'$1.76', pur:31, roas:'0.79x', cpp:'$76',  tag:'monitor'},
+    {ad:'Leeron Pressure Test',        camp:'CAMPAIGN 2',            aset:'Ad Set 4 - Leeron Pressure Test',    spend:'$922',   ctr:'2.7%', cpc:'$1.36', pur:6,  roas:'0.85x', cpp:'$154', tag:'monitor'},
+    {ad:'Cam cam',                     camp:'CAMPAIGN 1',            aset:'VIDEO 3 - Cam Cam',                  spend:'$733',   ctr:'6.5%', cpc:'$0.78', pur:5,  roas:'0.46x', cpp:'$147', tag:'monitor'},
+    {ad:'Cam 2 - MOF',                 camp:'CAMPAIGN 4 | MOF',      aset:'Ad Set 2 | Mid Intent 0-90 Days | MOF', spend:'$263',  ctr:'3.4%', cpc:'$0.95', pur:2,  roas:'0.61x', cpp:'$131', tag:'monitor'},
+    {ad:'Leeron Soundbar Voice BOF',   camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C1 | BOF | High Intent',      spend:'$88',    ctr:'2.2%', cpc:'$2.50', pur:1,  roas:'0.57x', cpp:'$88',  tag:'monitor'},
+    {ad:'Rebecca Janis - BOF',         camp:'CAMPAIGN 5 | BOF',      aset:'Ad Set 1 | High Intent 0-30 Days | BOF', spend:'$163', ctr:'1.9%', cpc:'$1.72', pur:1,  roas:'0.44x', cpp:'$163', tag:'monitor'},
+    {ad:'Soundbar Catalog - MOF',      camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C2 | MOF | Warm Intent',      spend:'$90',    ctr:'0.7%', cpc:'$3.93', pur:1,  roas:'0.54x', cpp:'$90',  tag:'monitor'},
+    {ad:'Animation Soundbar Features MOF', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C2 | MOF | Warm Intent',  spend:'$201',   ctr:'2.1%', cpc:'$2.39', pur:0,  roas:'0.00x', cpp:'—',    tag:'underperform'},
+    {ad:'Soundbar Catalog - BOF',      camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C1 | BOF | High Intent',      spend:'$48',    ctr:'1.4%', cpc:'$1.86', pur:0,  roas:'0.00x', cpp:'—',    tag:'underperform'},
+    {ad:'Animation Music MOF',         camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C2 | MOF | Warm Intent',      spend:'$18',    ctr:'1.1%', cpc:'$2.62', pur:0,  roas:'0.00x', cpp:'—',    tag:'underperform'}
   ];
-  winners.forEach(function(w) {
+
+  var tagColors = {scale:'var(--green)', stable:'var(--blue, #60a5fa)', monitor:'var(--gold)', underperform:'var(--red)'};
+  var roasColor = function(r) {
+    var v = parseFloat(r);
+    return v >= 1.5 ? 'var(--green)' : v >= 1.0 ? 'var(--gold)' : v > 0 ? 'var(--red)' : 'var(--muted)';
+  };
+
+  allAds.forEach(function(a) {
+    var rc = roasColor(a.roas);
+    var tc = tagColors[a.tag] || 'var(--muted)';
     html += '<tr>';
-    html += '<td style="text-align:left;font-weight:600">' + w.ad + '</td>';
-    html += '<td style="text-align:left;color:var(--muted);font-size:12px">' + w.camp + '</td>';
-    html += '<td style="text-align:left;color:var(--muted);font-size:12px">' + w.aset + '</td>';
-    html += '<td style="text-align:right">' + w.spend + '</td>';
-    html += '<td style="text-align:right;color:var(--green);font-weight:700">' + w.ctr + '</td>';
-    html += '<td style="text-align:right;color:var(--green)">' + w.cpc + '</td>';
+    html += '<td style="text-align:left;font-weight:600;font-size:13px">' + a.ad + '</td>';
+    html += '<td style="text-align:left;color:var(--muted);font-size:11px;line-height:1.4">' + a.camp + '<br>' + a.aset + '</td>';
+    html += '<td style="text-align:right;font-size:13px">' + a.spend + '</td>';
+    html += '<td style="text-align:right;font-size:13px">' + a.ctr + '</td>';
+    html += '<td style="text-align:right;font-size:13px">' + a.cpc + '</td>';
+    html += '<td style="text-align:right;font-weight:700;font-size:13px">' + a.pur + '</td>';
+    html += '<td style="text-align:right;font-weight:700;font-size:13px;color:' + rc + '">' + a.roas + '</td>';
+    html += '<td style="text-align:right;font-size:13px">' + a.cpp + '</td>';
+    html += '<td style="text-align:right"><span style="color:' + tc + ';font-weight:700;font-size:11px;text-transform:uppercase">' + a.tag + '</span></td>';
     html += '</tr>';
   });
   html += '</tbody></table>';
 
-  // ── UNDERPERFORMERS TABLE ─────────────────────────────────────────────────────
-  html += '<div class="section-subtitle" style="margin-top:28px">What Is Wasting Budget Right Now — Active Underperformers (Apr 6–13)</div>';
-  html += '<p style="color:var(--muted);font-size:13px;margin-bottom:12px">These ads are live and spending right now. Every dollar here is a dollar not going to the winners above.</p>';
-  html += '<table class="perf-table"><thead><tr>';
-  html += '<th style="text-align:left">Ad</th><th style="text-align:left">Campaign</th><th style="text-align:left">Ad Set</th>';
-  html += '<th style="text-align:right">7d Spend</th><th style="text-align:right">CTR</th><th style="text-align:right">CPC</th><th style="text-align:right">Action</th>';
-  html += '</tr></thead><tbody>';
-  var losers = [
-    {ad:'Animation English Voice MOF', camp:'CAMPAIGN B', aset:'Ad Set C2 | MOF | Warm Intent',   spend:'$24',    ctr:'0.30%', cpc:'$7.96',  action:'PAUSE', color:'var(--red)'},
-    {ad:'Soundbar Catalog - MOF',      camp:'CAMPAIGN B', aset:'Ad Set C2 | MOF | Warm Intent',   spend:'$90',    ctr:'0.74%', cpc:'$3.92',  action:'PAUSE', color:'var(--red)'},
-    {ad:'HangSmart CTV - Reviews',     camp:'CAMPAIGN 2', aset:'Ad Set 1 - CTV ADS Reviews',      spend:'$732',   ctr:'0.93%', cpc:'$2.56',  action:'PAUSE', color:'var(--red)'},
-    {ad:'Animation Music MOF',         camp:'CAMPAIGN B', aset:'Ad Set C2 | MOF | Warm Intent',   spend:'$18',    ctr:'1.11%', cpc:'$2.62',  action:'PAUSE', color:'var(--red)'},
-    {ad:'Animation Soundbar Install BOF', camp:'CAMPAIGN B', aset:'Ad Set C1 | BOF | High Intent', spend:'$85',   ctr:'1.36%', cpc:'$2.66',  action:'PAUSE', color:'var(--red)'},
-    {ad:'Arthur Install',              camp:'CAMPAIGN 2', aset:'Ad Set 3 - Arthur Install',        spend:'$1,472', ctr:'1.57%', cpc:'$1.62', action:'REDUCE', color:'var(--gold)'},
-    {ad:'Influencer Compilation',      camp:'CAMPAIGN 1', aset:'VIDEO 1 - Influencer Compilation', spend:'$1,388', ctr:'1.69%', cpc:'$2.28', action:'REDUCE', color:'var(--gold)'}
-  ];
-  losers.forEach(function(l) {
-    html += '<tr>';
-    html += '<td style="text-align:left;font-weight:600">' + l.ad + '</td>';
-    html += '<td style="text-align:left;color:var(--muted);font-size:12px">' + l.camp + '</td>';
-    html += '<td style="text-align:left;color:var(--muted);font-size:12px">' + l.aset + '</td>';
-    html += '<td style="text-align:right">' + l.spend + '</td>';
-    html += '<td style="text-align:right;color:var(--red);font-weight:700">' + l.ctr + '</td>';
-    html += '<td style="text-align:right;color:var(--red)">' + l.cpc + '</td>';
-    html += '<td style="text-align:right"><span style="color:' + l.color + ';font-weight:700;font-size:12px">' + l.action + '</span></td>';
-    html += '</tr>';
-  });
-  html += '</tbody></table>';
+  // ── CORRECTIONS ──────────────────────────────────────────────────────────────
+  html += '<div class="section-subtitle" style="margin-top:32px">Corrections From Prior Report</div>';
+  html += '<div class="anomaly-box" style="border-left-color:var(--red)">';
+  html += '<h4 style="color:var(--red)">3 Previous Recommendations Were Wrong — Do Not Act On Them</h4>';
+  html += '<p><strong>HangSmart CTV - Reviews was flagged for pause.</strong> Incorrect. It has 2.39x ROAS, 17 purchases at $43 CPP last week — one of the strongest performers in Campaign 2. The low CTR (0.93%) does not matter when it is converting at this rate. Keep it running.</p>';
+  html += '<p><strong>Arthur Install was flagged for budget reduction.</strong> Incorrect. 1.42x ROAS, 23 purchases at $64 CPP. That is solid performance. The low CTR (1.56%) misled the analysis. Do not reduce this.</p>';
+  html += '<p><strong>Animation English Voice MOF was flagged for pause.</strong> Incorrect. 5.77x ROAS, $12 CPP from only $24 in spend. This is the most purchase-efficient ad in the soundbar set by a wide margin. It needs <em>more</em> budget, not a pause.</p>';
+  html += '</div>';
 
-  // ── ACTION 1: CAMPAIGN B WORST ADS ──────────────────────────────────────────
+  // ── ACTIONS ──────────────────────────────────────────────────────────────────
   html += '<div class="section-subtitle" style="margin-top:32px">Action Items</div>';
 
+  // ACTION 1: PAUSE ANIMATION SOUNDBAR FEATURES MOF
   html += '<div class="anomaly-box" style="border-left-color:var(--red)">';
-  html += '<h4>🔴 ACTION 1 — Pause 3 Ads in Campaign B (Soundbar MOF Ad Set) Immediately</h4>';
+  html += '<h4>🔴 ACTION 1 — Pause Animation Soundbar Features MOF</h4>';
   html += '<p style="font-size:12px;background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;margin-bottom:10px">';
   html += 'Campaign: <code>CAMPAIGN B | MOF & BOF | ABO | Soundbar</code><br>';
   html += 'Ad Set: <code>Ad Set C2 | MOF | Warm Intent</code><br>';
-  html += 'Ads to pause: <code>Animation English Voice MOF</code> · <code>Soundbar Catalog - MOF</code> · <code>Animation Music MOF</code>';
+  html += 'Ad: <code>Animation Soundbar Features MOF</code>';
   html += '</p>';
-  html += '<p><strong>Why:</strong> These three ads are the worst-performing active ads in the entire account right now. <strong>Animation English Voice MOF</strong> has a 0.30% CTR and $7.96 CPC — for context, your best ad (Cam cam) is getting clicks for $0.77. You are paying 10x more per click for this ad. <strong>Soundbar Catalog - MOF</strong> is at 0.74% CTR / $3.92 CPC, and <strong>Animation Music MOF</strong> is at 1.11% CTR / $2.62 CPC. All three are in the same MOF ad set inside Campaign B. Pausing them does not shut down the campaign — the other ads in that ad set continue running.</p>';
-  html += '<p><strong>Budget freed up:</strong> ~$15–$20/day from this ad set.</p>';
+  html += '<p><strong>Why:</strong> $201 spent last week with <strong>0 purchases</strong>. This is the clearest pause call in the account. It is the most expensive ad in the Campaign B MOF set and it has produced zero attributed sales. Every other ad in the same ad set generated at least 1 purchase. The budget sitting on this ad is budget that could feed <code>Animation English Voice MOF</code>, which generated 2 purchases from just $24.</p>';
   html += '<p><strong>Step-by-step:</strong></p>';
   html += '<ol style="color:var(--muted);font-size:13px;line-height:1.9;padding-left:20px">';
-  html += '<li>Go to <strong>ads.facebook.com</strong> → <strong>Campaigns</strong></li>';
-  html += '<li>Find <strong>CAMPAIGN B | MOF & BOF | ABO | Soundbar</strong> and click into it</li>';
-  html += '<li>Click <strong>Ad Sets</strong> → click into <strong>Ad Set C2 | MOF | Warm Intent</strong></li>';
-  html += '<li>Click <strong>Ads</strong> in the top nav</li>';
-  html += '<li>Toggle off <strong>Animation English Voice MOF</strong></li>';
-  html += '<li>Toggle off <strong>Soundbar Catalog - MOF</strong></li>';
-  html += '<li>Toggle off <strong>Animation Music MOF</strong></li>';
-  html += '<li>The ad set stays on. <strong>Animation Soundbar Features MOF</strong> (2.10% CTR) and <strong>Leeron Soundbar Voice BOF</strong> (in the BOF ad set) continue running.</li>';
+  html += '<li>Go to <strong>ads.facebook.com</strong> → <strong>Campaigns</strong> → <strong>CAMPAIGN B | MOF & BOF | ABO | Soundbar</strong></li>';
+  html += '<li>Click into <strong>Ad Set C2 | MOF | Warm Intent</strong> → <strong>Ads</strong></li>';
+  html += '<li>Toggle off <strong>Animation Soundbar Features MOF</strong></li>';
   html += '</ol>';
   html += '</div>';
 
-  // ── ACTION 2: CAMPAIGN B BOF CLEANUP ────────────────────────────────────────
+  // ACTION 2: PAUSE SOUNDBAR CATALOG BOF (0 purchases)
   html += '<div class="anomaly-box" style="border-left-color:var(--red)">';
-  html += '<h4>🔴 ACTION 2 — Pause Animation Soundbar Install BOF in Campaign B</h4>';
+  html += '<h4>🔴 ACTION 2 — Pause Soundbar Catalog - BOF</h4>';
   html += '<p style="font-size:12px;background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;margin-bottom:10px">';
   html += 'Campaign: <code>CAMPAIGN B | MOF & BOF | ABO | Soundbar</code><br>';
   html += 'Ad Set: <code>Ad Set C1 | BOF | High Intent</code><br>';
-  html += 'Ad to pause: <code>Animation Soundbar Install BOF</code>';
+  html += 'Ad: <code>Soundbar Catalog - BOF</code>';
   html += '</p>';
-  html += '<p><strong>Why:</strong> 1.36% CTR and $2.66 CPC in the BOF (bottom of funnel) ad set — this is retargeting people who already visited the site or engaged with your content. Retargeting audiences should be your easiest conversion because they already know you. Getting only 1.36% CTR on a warm audience is a signal that this creative is not connecting. <strong>Leeron Soundbar Voice BOF</strong> in the same ad set is at 2.25% CTR — that is the one worth keeping. Pause the Install BOF and let the budget consolidate on the Voice BOF.</p>';
+  html += '<p><strong>Why:</strong> $48 spend, 0 purchases. The BOF High Intent ad set is a warm retargeting set — these are people who already know HangSmart. Getting 0 conversions from a retargeting audience is a clear signal this creative is not connecting. The other two ads in this ad set (<code>Animation Soundbar Install BOF</code> at 1.31x ROAS and <code>Leeron Soundbar Voice BOF</code>) are both generating purchases. Let the budget consolidate there.</p>';
   html += '<p><strong>Step-by-step:</strong></p>';
   html += '<ol style="color:var(--muted);font-size:13px;line-height:1.9;padding-left:20px">';
-  html += '<li>Go to <strong>CAMPAIGN B | MOF & BOF | ABO | Soundbar</strong> → <strong>Ad Set C1 | BOF | High Intent</strong> → <strong>Ads</strong></li>';
-  html += '<li>Toggle off <strong>Animation Soundbar Install BOF</strong></li>';
-  html += '<li><strong>Leeron Soundbar Voice BOF</strong> stays on and will absorb the freed budget</li>';
+  html += '<li>Go to <strong>CAMPAIGN B</strong> → <strong>Ad Set C1 | BOF | High Intent</strong> → <strong>Ads</strong></li>';
+  html += '<li>Toggle off <strong>Soundbar Catalog - BOF</strong></li>';
   html += '</ol>';
   html += '</div>';
 
-  // ── ACTION 3: CTV REVIEWS ───────────────────────────────────────────────────
-  html += '<div class="anomaly-box" style="border-left-color:var(--red)">';
-  html += '<h4>🔴 ACTION 3 — Pause HangSmart CTV - Reviews in Campaign 2</h4>';
-  html += '<p style="font-size:12px;background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;margin-bottom:10px">';
-  html += 'Campaign: <code>CAMPAIGN 2 | 2026 | TOF | ABO | BROAD</code><br>';
-  html += 'Ad Set: <code>Ad Set 1 - CTV ADS Reviews</code><br>';
-  html += 'Ad to pause: <code>HangSmart CTV - Reviews</code>';
-  html += '</p>';
-  html += '<p><strong>Why:</strong> $732 spent last week at 0.93% CTR / $2.56 CPC. This is $104/day going to an ad that almost no one clicks. Campaign 2 has two strong ads right now — <strong>Animation Testimonial Mashup</strong> at 4.12% CTR / $0.81 CPC and <strong>Leeron Pressure Test</strong> at 2.66% CTR / $1.36 CPC. The CTV ad is sitting in its own ad set, so pausing it frees that ad set\'s daily budget to be redistributed by Meta to the better-performing ad sets in the campaign.</p>';
-  html += '<p><strong>Budget freed up:</strong> ~$100/day.</p>';
-  html += '<p><strong>Step-by-step:</strong></p>';
-  html += '<ol style="color:var(--muted);font-size:13px;line-height:1.9;padding-left:20px">';
-  html += '<li>Go to <strong>CAMPAIGN 2 | 2026 | TOF | ABO | BROAD</strong> → <strong>Ad Set 1 - CTV ADS Reviews</strong> → <strong>Ads</strong></li>';
-  html += '<li>Toggle off <strong>HangSmart CTV - Reviews</strong></li>';
-  html += '<li>If the ad set budget is set separately (ABO = ad set budget), also reduce or zero out the budget on <strong>Ad Set 1 - CTV ADS Reviews</strong> so the money flows to the stronger ad sets</li>';
-  html += '</ol>';
-  html += '</div>';
-
-  // ── ACTION 4: ARTHUR INSTALL REDUCE ─────────────────────────────────────────
-  html += '<div class="anomaly-box" style="border-left-color:var(--gold)">';
-  html += '<h4>🟡 ACTION 4 — Reduce Budget on Arthur Install</h4>';
-  html += '<p style="font-size:12px;background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;margin-bottom:10px">';
-  html += 'Campaign: <code>CAMPAIGN 2 | 2026 | TOF | ABO | BROAD</code><br>';
-  html += 'Ad Set: <code>Ad Set 3 - Arthur Install</code><br>';
-  html += 'Ad: <code>Arthur Install</code>';
-  html += '</p>';
-  html += '<p><strong>Why:</strong> $1,472 last week at 1.57% CTR / $1.62 CPC. This is the second-largest spend in Campaign 2 and it is underperforming every other active ad in that campaign. Animation Testimonial Mashup ($901, 4.12% CTR) and Leeron Pressure Test ($919, 2.66% CTR) are both significantly more efficient. Arthur Install has its own dedicated ad set (ABO), so you can reduce the ad set daily budget directly without touching the rest of the campaign. Reduce by 40–50% and monitor for 7 days.</p>';
-  html += '<p><strong>Budget freed up:</strong> ~$80–$100/day.</p>';
-  html += '<p><strong>Step-by-step:</strong></p>';
-  html += '<ol style="color:var(--muted);font-size:13px;line-height:1.9;padding-left:20px">';
-  html += '<li>Go to <strong>CAMPAIGN 2 | 2026 | TOF | ABO | BROAD</strong> → <strong>Ad Sets</strong></li>';
-  html += '<li>Find <strong>Ad Set 3 - Arthur Install</strong></li>';
-  html += '<li>Click the <strong>Edit</strong> button (pencil icon)</li>';
-  html += '<li>Reduce the <strong>Daily Budget</strong> by 40–50%</li>';
-  html += '<li>Click <strong>Publish</strong></li>';
-  html += '<li>If CTR does not improve above 2.0% after 7 days, pause the ad entirely</li>';
-  html += '</ol>';
-  html += '</div>';
-
-  // ── ACTION 5: INFLUENCER COMPILATION ────────────────────────────────────────
-  html += '<div class="anomaly-box" style="border-left-color:var(--gold)">';
-  html += '<h4>🟡 ACTION 5 — Reduce Budget on Influencer Compilation (Campaign 1)</h4>';
-  html += '<p style="font-size:12px;background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;margin-bottom:10px">';
-  html += 'Campaign: <code>CAMPAIGN 1 | 2026 | TOF | ABO | BROAD</code><br>';
-  html += 'Ad Set / Ad #1: <code>VIDEO 1 - Influencer Compilation</code> → <code>Influencer Compilation</code> (1.69% CTR, $2.28 CPC)<br>';
-  html += 'Ad Set / Ad #2: <code>VIDEO 2 - Influencer Compilation (w/Leeron)</code> → <code>Influencer Compilation w/Leeron</code> (2.14% CTR, $1.48 CPC)';
-  html += '</p>';
-  html += '<p><strong>Why:</strong> The original <strong>Influencer Compilation</strong> ($1,388 last week) is at 1.69% CTR / $2.28 CPC — well below account average. Meanwhile <strong>Cam cam</strong> ($731) is at 6.49% CTR / $0.77 CPC and <strong>Cam 1</strong> ($1,382) is at 3.64% CTR / $0.97 CPC — both in the same Campaign 1. The Influencer Compilation w/Leeron version (2.14% CTR) is better and worth keeping at a lower budget. Reduce VIDEO 1 ad set budget by 50% and VIDEO 2 by 25%.</p>';
-  html += '<p><strong>Step-by-step:</strong></p>';
-  html += '<ol style="color:var(--muted);font-size:13px;line-height:1.9;padding-left:20px">';
-  html += '<li>Go to <strong>CAMPAIGN 1 | 2026 | TOF | ABO | BROAD</strong> → <strong>Ad Sets</strong></li>';
-  html += '<li>Find <strong>VIDEO 1 - Influencer Compilation</strong> → Edit → reduce Daily Budget by <strong>50%</strong> → Publish</li>';
-  html += '<li>Find <strong>VIDEO 2 - Influencer Compilation (w/Leeron)</strong> → Edit → reduce Daily Budget by <strong>25%</strong> → Publish</li>';
-  html += '<li>Monitor for 7 days. If VIDEO 1 CTR stays below 2.0%, pause it entirely.</li>';
-  html += '</ol>';
-  html += '</div>';
-
-  // ── ACTION 6: SCALE WINNERS ──────────────────────────────────────────────────
+  // ACTION 3: INCREASE BUDGET ON ANIMATION ENGLISH VOICE MOF
   html += '<div class="anomaly-box success">';
-  html += '<h4>🟢 ACTION 6 — Scale Cam cam + Winning Video With Freed Budget</h4>';
+  html += '<h4>🟢 ACTION 3 — Increase Budget on Animation English Voice MOF</h4>';
   html += '<p style="font-size:12px;background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;margin-bottom:10px">';
-  html += 'Priority 1: <code>CAMPAIGN 1</code> → <code>VIDEO 3 - Cam Cam</code> → <code>Cam cam</code> (6.49% CTR, $0.77 CPC)<br>';
-  html += 'Priority 2: <code>CAMPAIGN 3</code> → <code>Ad Set 1 - Wining Ads Compilations</code> → <code>Winning Video</code> (4.63% CTR, $0.42 CPC)';
+  html += 'Campaign: <code>CAMPAIGN B | MOF & BOF | ABO | Soundbar</code><br>';
+  html += 'Ad Set: <code>Ad Set C2 | MOF | Warm Intent</code><br>';
+  html += 'Ad: <code>Animation English Voice MOF</code>';
   html += '</p>';
-  html += '<p><strong>Why:</strong> Cam cam is the surprise breakout this week — 6.49% CTR is exceptional for a TOF broad ad. It is only spending $731/week, which is low relative to how well it is performing. The algorithm has not been given enough budget to fully explore this ad\'s audience. Winning Video in Campaign 3 remains the most cost-efficient ad at $0.42 CPC. Both should absorb the budget freed from the paused/reduced ads above. Do not increase any single ad set by more than 20% at once or Meta resets the learning phase.</p>';
-  html += '<p><strong>Estimated freed budget to reallocate:</strong> ~$200–$220/day from Actions 1–5.</p>';
+  html += '<p><strong>Why:</strong> 5.77x ROAS and $12 cost per purchase. That is the most efficient purchase-driving ad in the entire account right now — and it is only spending $24/week. The reason is that this ad set\'s budget is being eaten by <code>Animation Soundbar Features MOF</code> ($201, 0 purchases). Once you pause that ad (Action 1), the ad set budget will naturally shift toward this one. Beyond that, you should also consider increasing the ad set daily budget directly so this ad has more room to run. Even doubling the ad set budget would still leave it small relative to the return it is generating.</p>';
   html += '<p><strong>Step-by-step:</strong></p>';
   html += '<ol style="color:var(--muted);font-size:13px;line-height:1.9;padding-left:20px">';
-  html += '<li>Go to <strong>CAMPAIGN 1</strong> → <strong>Ad Sets</strong> → find <strong>VIDEO 3 - Cam Cam</strong></li>';
-  html += '<li>Edit → increase Daily Budget by up to 20% of current amount → Publish</li>';
-  html += '<li>Go to <strong>CAMPAIGN 3 | 2026 | TOF | ABO | WINNING ADS</strong> → <strong>Ad Sets</strong> → find <strong>Ad Set 1 - Wining Ads Compilations</strong></li>';
-  html += '<li>Edit → increase Daily Budget by up to 20% → Publish</li>';
-  html += '<li>Wait 7 days before increasing again. If CTR holds above 4.0%, increase another 15–20%.</li>';
+  html += '<li>First complete Action 1 (pause Animation Soundbar Features MOF)</li>';
+  html += '<li>Wait 48 hours and check if <code>Animation English Voice MOF</code> spend increases naturally as the budget redistributes</li>';
+  html += '<li>If it does not increase, go to <strong>Ad Set C2 | MOF | Warm Intent</strong> → Edit → increase Daily Budget by up to 20%</li>';
+  html += '<li>Monitor for 7 days. If ROAS holds above 3x, increase budget again by another 20%.</li>';
   html += '</ol>';
   html += '</div>';
 
-  // ── SOUNDBAR CAMPAIGN A NOTE ─────────────────────────────────────────────────
-  html += '<div class="anomaly-box" style="border-left-color:var(--gold)">';
-  html += '<h4>🟡 MONITOR — Campaign A Soundbar (Animation Soundbar Install)</h4>';
+  // ACTION 4: SCALE WINNING VIDEO + BRUNA LOOKALIKE
+  html += '<div class="anomaly-box success">';
+  html += '<h4>🟢 ACTION 4 — Scale Winning Video and Bruna LookAlike Dynamic Creatives</h4>';
   html += '<p style="font-size:12px;background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;margin-bottom:10px">';
-  html += 'Campaign: <code>CAMPAIGN A | TOF | CBO | Soundbar | LEGACY</code><br>';
-  html += 'Ad Set: <code>Campaign A | Prospecting Workhorse</code><br>';
-  html += 'Active ad: <code>Animation Soundbar Install</code> (2.07% CTR, $1.76 CPC, $2,334 last week)';
+  html += 'Priority 1: <code>CAMPAIGN 3 | 2026 | TOF | ABO | WINNING ADS</code> → <code>Ad Set 1 - Wining Ads Compilations</code> → <code>Winning Video</code> (2.00x ROAS, $0.42 CPC, 31 purchases)<br>';
+  html += 'Priority 2: <code>TOF - Conversions - Broad - STRAIGHT TO PRODUCT PAGE (TEST)</code> → <code>PRODUCT PAGE - TOF LOOKALIKE - ALL - Dynamic Creatives - Copy</code> → <code>Bruna LookAlike Dynamic Creatives</code> (1.93x ROAS, 32 purchases)';
   html += '</p>';
-  html += '<p><strong>Why this is a monitor, not an immediate pause:</strong> The soundbar is still actively selling on Amazon and HangSmart.com. Animation Soundbar Install is at 2.07% CTR — not great, not terrible. It is the only ad in Campaign A getting meaningful spend. The other ads in that campaign (Soundbar ASMR, Leeron Soundbar Voice, Animation Soundbar Features) are all under $3 for the week, meaning the CBO algorithm has already de-prioritized them. The issue is the $2,334/week spend level — that is a lot of budget for a 2.07% CTR ad when the same money in Campaign 3 would get 4.63% CTR. Recommendation: reduce Campaign A\'s daily campaign budget by 30–40% and watch what happens to soundbar sales over the next 7 days. If soundbar orders drop on Shopify and Amazon, restore the budget. If they hold, cut further.</p>';
+  html += '<p><strong>Why:</strong> These are the two highest-volume purchase drivers in the account right now. Winning Video at 2.00x ROAS and $0.42 CPC is the most cost-efficient click-to-conversion ad. Bruna LookAlike Dynamic Creatives is a test campaign generating 32 purchases at 1.93x ROAS and $59 CPP — performing better than most established campaigns. It should no longer be treated as a test. Both have room to scale before hitting audience fatigue. Never increase more than 20% at a time to avoid resetting the learning phase.</p>';
+  html += '<p><strong>Step-by-step:</strong></p>';
+  html += '<ol style="color:var(--muted);font-size:13px;line-height:1.9;padding-left:20px">';
+  html += '<li>Go to <strong>CAMPAIGN 3</strong> → <strong>Ad Sets</strong> → find <strong>Ad Set 1 - Wining Ads Compilations</strong> → Edit → increase Daily Budget by up to 20% → Publish</li>';
+  html += '<li>Go to <strong>TOF - Conversions - Broad - STRAIGHT TO PRODUCT PAGE (TEST)</strong> → <strong>Ad Sets</strong> → find <strong>PRODUCT PAGE - TOF LOOKALIKE - ALL - Dynamic Creatives - Copy</strong> → Edit → increase Daily Budget by up to 20% → Publish</li>';
+  html += '<li>Wait 7 days. If ROAS holds, increase again by 15–20%. This is now your primary growth lever.</li>';
+  html += '</ol>';
   html += '</div>';
 
-  // ── BUDGET REALLOCATION SUMMARY ──────────────────────────────────────────────
-  html += '<div class="section-subtitle" style="margin-top:32px">Budget Reallocation Summary</div>';
-  html += '<div style="background:rgba(0,0,0,0.3);border-radius:10px;padding:20px;margin-bottom:24px">';
-  html += '<table style="width:100%;border-collapse:collapse">';
-  html += '<thead><tr style="border-bottom:1px solid rgba(255,255,255,0.1)">';
-  html += '<th style="text-align:left;padding:8px 12px;color:var(--muted);font-size:12px;text-transform:uppercase">Action</th>';
-  html += '<th style="text-align:right;padding:8px 12px;color:var(--muted);font-size:12px;text-transform:uppercase">Est. Daily Change</th>';
-  html += '</tr></thead><tbody>';
-  var budgetRows = [
-    {action:'Pause 3 Campaign B MOF ads (English Voice + Soundbar Catalog + Animation Music)', change:'-$15/day', color:'var(--red)'},
-    {action:'Pause Animation Soundbar Install BOF (Campaign B)', change:'-$12/day', color:'var(--red)'},
-    {action:'Pause HangSmart CTV - Reviews (Campaign 2)', change:'-$104/day', color:'var(--red)'},
-    {action:'Reduce Arthur Install budget -45% (Campaign 2)', change:'-$95/day', color:'var(--gold)'},
-    {action:'Reduce Influencer Compilation VIDEO 1 budget -50% (Campaign 1)', change:'-$99/day', color:'var(--gold)'},
-    {action:'Reduce Influencer Compilation w/Leeron VIDEO 2 budget -25% (Campaign 1)', change:'-$26/day', color:'var(--gold)'},
-    {action:'Total freed budget', change:'~$351/day', color:'var(--green)'},
-    {action:'Add to Cam cam (VIDEO 3 - Campaign 1) +20%', change:'+$21/day', color:'var(--green)'},
-    {action:'Add to Winning Video (Ad Set 1 - Campaign 3) +20%', change:'+$41/day', color:'var(--green)'},
-    {action:'Reduce Campaign A Soundbar daily budget -35%', change:'-$117/day', color:'var(--gold)'},
-    {action:'Remainder to Campaign 3 and Campaign 4 MOF', change:'+$406/day', color:'var(--green)'}
-  ];
-  budgetRows.forEach(function(r) {
-    html += '<tr style="border-bottom:1px solid rgba(255,255,255,0.05)">';
-    html += '<td style="padding:8px 12px;font-size:13px">' + r.action + '</td>';
-    html += '<td style="text-align:right;padding:8px 12px;font-weight:700;color:' + r.color + ';font-size:13px">' + r.change + '</td>';
-    html += '</tr>';
-  });
-  html += '</tbody></table>';
-  html += '<p style="color:var(--muted);font-size:12px;margin-top:12px;font-style:italic">Net change: $0 additional spend. Budget only shifts from underperformers to top performers.</p>';
+  // ACTION 5: WATCH CAM CAM
+  html += '<div class="anomaly-box" style="border-left-color:var(--gold)">';
+  html += '<h4>🟡 ACTION 5 — Monitor Cam cam Before Scaling</h4>';
+  html += '<p style="font-size:12px;background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;margin-bottom:10px">';
+  html += 'Campaign: <code>CAMPAIGN 1 | 2026 | TOF | ABO | BROAD</code> → <code>VIDEO 3 - Cam Cam</code> → <code>Cam cam</code>';
+  html += '</p>';
+  html += '<p><strong>Why:</strong> Cam cam has the highest CTR in the account at 6.47% and the lowest CPC at $0.78 — exceptional by any standard. But its Shopify-attributed ROAS is only 0.46x with $147 CPP, which is the disconnect that needs watching. High CTR + low Shopify ROAS typically means one of two things: (1) the ad is driving significant Amazon traffic that the pixel cannot see, or (2) the landing page or product-to-audience fit is not converting that click energy into purchases. Given HangSmart\'s known multi-channel attribution gap, this ad may be profitable blended — but it needs a full week of Amazon data post-run before scaling. Hold budget steady. Do not increase or decrease. Revisit next report with Amazon unit data.</p>';
+  html += '</div>';
+
+  // ACTION 6: WATCH ANIMATION SOUNDBAR INSTALL (CAMPAIGN A)
+  html += '<div class="anomaly-box" style="border-left-color:var(--gold)">';
+  html += '<h4>🟡 ACTION 6 — Monitor Campaign A (Animation Soundbar Install) Before Cutting</h4>';
+  html += '<p style="font-size:12px;background:rgba(0,0,0,0.2);padding:8px 12px;border-radius:6px;margin-bottom:10px">';
+  html += 'Campaign: <code>CAMPAIGN A | TOF | CBO | Soundbar | LEGACY</code> → <code>Campaign A | Prospecting Workhorse</code> → <code>Animation Soundbar Install</code>';
+  html += '</p>';
+  html += '<p><strong>Why:</strong> $2,342 spent last week, 31 purchases, 0.79x Shopify ROAS at $76 CPP. On Shopify alone this campaign is losing money. But the soundbar is also sold on Amazon, and those purchases are invisible to the pixel. 31 attributed purchases is a real signal that this ad is working for some portion of buyers. Before cutting Campaign A\'s budget, cross-reference: are Amazon soundbar units trending up or flat this week? If Amazon soundbar sales are healthy, this campaign is likely contributing and a budget cut could hurt sales without a visible explanation. If Amazon soundbar volume is declining regardless, then reduce Campaign A budget by 25% and monitor for 2 weeks.</p>';
   html += '</div>';
 
   // ── GOOGLE ADS ────────────────────────────────────────────────────────────────
@@ -1171,19 +1116,19 @@ function renderSuggestions() {
   html += '<table class="perf-table" style="margin-bottom:20px"><thead><tr>';
   html += '<th style="text-align:left">Campaign</th>';
   html += '<th style="text-align:right">YTD Spend</th>';
-  html += '<th style="text-align:right">YTD Conv.</th>';
+  html += '<th style="text-align:right">Conv.</th>';
   html += '<th style="text-align:right">ROAS</th>';
   html += '<th style="text-align:right">Status</th>';
   html += '</tr></thead><tbody>';
   var gCamps = [
-    {name:'PMax Top 10 States', spend:'$8,920', conv:'44', roas:'0.46x', tag:'monitor', note:'Most conversions — focus here'},
-    {name:'PMax Brand',          spend:'$4,210', conv:'62', roas:'0.91x', tag:'stable',  note:'Best ROAS on Google — keep'},
-    {name:'PMax 40 States',      spend:'$9,840', conv:'21', roas:'0.19x', tag:'underperform', note:'Reduce budget 50% → shift to Top 10'},
-    {name:'Brand | New',         spend:'$3,420', conv:'0',  roas:'—',    tag:'underperform', note:'Brand defense only — do not grow'}
+    {name:'PMax Brand',        spend:'$4,210',  conv:'62', roas:'0.91x', tag:'stable',      note:'Best Google ROAS — keep and protect'},
+    {name:'PMax Top 10 States',spend:'$8,920',  conv:'44', roas:'0.46x', tag:'monitor',     note:'Most conversion volume — focus here'},
+    {name:'PMax 40 States',    spend:'$9,840',  conv:'21', roas:'0.19x', tag:'underperform',note:'Reduce 50% → shift to Top 10 States'},
+    {name:'Brand | New',       spend:'$3,420',  conv:'0',  roas:'—',     tag:'stable',      note:'Brand defense — do not cut, do not grow'}
   ];
   gCamps.forEach(function(g) {
-    var roasNum = parseFloat(g.roas);
-    var rc = g.roas === '—' ? 'var(--muted)' : roasNum >= 1 ? 'var(--green)' : roasNum >= 0.5 ? 'var(--gold)' : 'var(--red)';
+    var rv = parseFloat(g.roas);
+    var rc = isNaN(rv) ? 'var(--muted)' : rv >= 1 ? 'var(--green)' : rv >= 0.5 ? 'var(--gold)' : 'var(--red)';
     html += '<tr>';
     html += '<td style="text-align:left"><span style="font-weight:600">' + g.name + '</span><br><span style="color:var(--muted);font-size:11px">' + g.note + '</span></td>';
     html += '<td style="text-align:right">' + g.spend + '</td>';
@@ -1195,17 +1140,18 @@ function renderSuggestions() {
   html += '</tbody></table>';
 
   html += '<div class="anomaly-box" style="border-left-color:var(--gold)">';
-  html += '<h4>🟡 Google ACTION 1 — Reduce PMax 40 States Budget -50%, Add to PMax Top 10 States</h4>';
-  html += '<p>PMax 40 States has the worst ROAS on Google at 0.19x — $9,840 spent for only 21 conversions (~$468 CPA on a $49 product). PMax Top 10 States produces 2x the conversions at half the CPA. Reduce 40 States daily budget by 50% in Google Ads settings and add that amount to Top 10 States. Do not increase Top 10 States by more than 20% at once.</p>';
+  html += '<h4>🟡 Google — Reduce PMax 40 States Budget -50%, Shift to PMax Top 10 States</h4>';
+  html += '<p>PMax 40 States: $9,840 YTD, 21 conversions, ~$468 CPA. PMax Top 10 States: $8,920 YTD, 44 conversions, ~$203 CPA — same spend, 2x the conversions. Cut 40 States daily budget in half in Google Ads settings and add that amount to Top 10 States. Do not increase Top 10 States by more than 20% at once.</p>';
   html += '</div>';
 
   html += '<div class="anomaly-box info">';
-  html += '<h4>ℹ️ Google ACTION 2 — Brand | New: Keep As-Is</h4>';
-  html += '<p>Zero conversions YTD but it exists to prevent competitors from bidding on "HangSmart" branded searches. Do not cut it. Do not grow it. Its job is brand name protection, not sales.</p>';
+  html += '<h4>ℹ️ Google — Brand | New: Keep As-Is</h4>';
+  html += '<p>Zero conversions is expected for a brand defense campaign. Its job is to prevent competitors from outbidding you when someone searches "HangSmart" directly. Do not cut it. Do not grow it.</p>';
   html += '</div>';
 
   document.getElementById('suggestionsContent').innerHTML = html;
 }
+
 
 
 
@@ -1259,38 +1205,38 @@ function renderStrategicRecs() {
   var html = '';
 
   html += '<div style="margin-bottom:16px;padding:12px 16px;background:rgba(212,175,55,0.08);border-radius:8px;border-left:3px solid var(--gold)">';
-  html += '<strong style="color:var(--gold)">Updated April 13, 2026</strong> — Based on live ad-level account data Jan 1–Apr 13, 2026. Budget is fixed. All actions below are reallocation only.';
+  html += '<strong style="color:var(--gold)">Updated April 13, 2026</strong> — Based on last 7 days of active ad data (Apr 6–13). Primary signal: ROAS + purchases. CTR/CPC are secondary. Budget is fixed — reallocation only.';
   html += '</div>';
 
-  html += '<div class="urgent-flag"><h4>1. IMMEDIATE — Pause Campaign A + B Soundbar and Rebuild With New Creative ($40,318 YTD, Near-Zero Return)</h4>';
-  html += '<p>Campaign A Soundbar Legacy: $32,659 YTD at 1.66% CTR, ROAS 1.03x — barely breaking even. Campaign B Soundbar: $7,659 YTD at 1.36% CTR, ROAS 0.87x — actively losing money per dollar spent. Note: the soundbar is still actively selling on Amazon and HangSmart.com. This is a creative and targeting problem, not a product availability issue. Pausing both stops ~$200–$250/day in underperforming spend and frees it for Campaign 3 while new soundbar creatives are built using the proven 2026 Winning Video format.</p></div>';
+  html += '<div class="urgent-flag"><h4>1. IMMEDIATE — Pause Animation Soundbar Features MOF (Campaign B, $201 spent, 0 purchases)</h4>';
+  html += '<p><code>CAMPAIGN B | MOF & BOF | ABO | Soundbar</code> → <code>Ad Set C2 | MOF | Warm Intent</code> → <code>Animation Soundbar Features MOF</code>. Largest spend in the MOF ad set, zero attributed purchases. Every other ad in the set produced at least 1 purchase. The freed budget will shift to <code>Animation English Voice MOF</code> which has 5.77x ROAS and $12 CPP in the same ad set.</p></div>';
 
-  html += '<div class="urgent-flag"><h4>2. IMMEDIATE — Pause Catalog BOF + CTV Reviews + CTV General (Waste at Scale)</h4>';
-  html += '<p>Catalog BOF: 0.80% CTR, $3.15 CPC — worst in account. CTV Reviews: $6,397 YTD at 1.30% CTR. CTV General: $2,452 at 0.94% CTR. These three ads alone have burned ~$10,200 at well below account average efficiency. Pause all three and redirect budget to Campaign 3 and Campaign 1.</p></div>';
-
-  html += '<div class="anomaly-box success">';
-  html += '<h4>3. HIGH PRIORITY — Scale Campaign 3 to Absorb Freed Budget</h4>';
-  html += '<p>Campaign 3 is the account\'s strongest campaign: $48,109 YTD, 3.91% CTR, $0.58 CPC. Contains three of the five best ads in the entire account including 2026 Winning Video (4.37% CTR / $0.43 CPC) and Rebecca Janis (3.80% CTR / $0.54 CPC). Add $200/day from paused campaigns. Do not increase by more than 20% at once to avoid resetting the learning phase.</p></div>';
+  html += '<div class="urgent-flag"><h4>2. IMMEDIATE — Pause Soundbar Catalog - BOF (Campaign B, 0 purchases from warm retargeting audience)</h4>';
+  html += '<p><code>CAMPAIGN B</code> → <code>Ad Set C1 | BOF | High Intent</code> → <code>Soundbar Catalog - BOF</code>. Zero purchases from a warm retargeting audience is a clear creative failure. The other two ads in this BOF set are generating purchases and should absorb this budget.</p></div>';
 
   html += '<div class="anomaly-box success">';
-  html += '<h4>4. HIGH PRIORITY — Reduce Arthur Install + Influencer Compilation by 40-50%</h4>';
-  html += '<p>Combined $21,723 YTD between these two ads. Both are sitting at ~1.57–1.60% CTR and $1.51–$2.17 CPC. They are pulling down Campaign 2\'s averages significantly. Cut each ad set budget by 40–50% rather than pausing entirely, since installation content and social proof have some funnel value at a lower volume.</p></div>';
+  html += '<h4>3. HIGH PRIORITY — Scale Winning Video (Campaign 3) and Bruna LookAlike Dynamic Creatives</h4>';
+  html += '<p>Winning Video: 2.00x ROAS, 31 purchases, $47 CPP, $0.42 CPC — top performer in the account. Bruna LookAlike Dynamic Creatives (TOF Test campaign): 1.93x ROAS, 32 purchases, $59 CPP — this test campaign is outperforming most established campaigns and should be graduated to full campaign status. Increase each ad set budget by up to 20% at a time. Do not exceed 20% per adjustment or Meta resets the learning phase.</p></div>';
+
+  html += '<div class="anomaly-box success">';
+  html += '<h4>4. HIGH PRIORITY — Increase Animation English Voice MOF Budget (5.77x ROAS, $12 CPP)</h4>';
+  html += '<p><code>CAMPAIGN B</code> → <code>Ad Set C2 | MOF | Warm Intent</code> → <code>Animation English Voice MOF</code>. Most purchase-efficient ad in the account right now at $12 cost per purchase and 5.77x ROAS — currently only getting $24/week because the budget is being consumed by the zero-purchase Animation Soundbar Features MOF. Pausing that ad (Action 1) will free up the ad set budget naturally. If spend on English Voice MOF does not increase within 48 hours after that pause, manually increase the ad set daily budget by 20%.</p></div>';
 
   html += '<div class="anomaly-box warning">';
-  html += '<h4>5. MEDIUM — Reduce PMax 40 States Budget by 50%, Move to PMax Top 10 States</h4>';
-  html += '<p>PMax 40 States: $9,840 YTD, 21 conversions at ~$468 CPA. PMax Top 10 States: $8,920 YTD, 44 conversions at ~$203 CPA. The Top 10 States campaign produces 2x the conversions at less than half the CPA. Budget should shift from the broad geographic campaign to the focused one.</p></div>';
+  html += '<h4>5. MEDIUM — Reduce PMax 40 States Budget -50%, Add to PMax Top 10 States</h4>';
+  html += '<p>PMax 40 States: $9,840 YTD, 21 conversions, ~$468 CPA. PMax Top 10 States: $8,920 YTD, 44 conversions, ~$203 CPA. Same approximate spend, 2x the conversions at less than half the cost per conversion. Reduce 40 States daily budget by 50% in Google Ads and add that amount to Top 10 States (max 20% increase at once).</p></div>';
 
   html += '<div class="anomaly-box warning">';
-  html += '<h4>6. MEDIUM — Build 2–3 New Creatives for Campaign 2 Replacement</h4>';
-  html += '<p>When Arthur Install and Influencer Compilation are pulled back, Campaign 2 will need fresh creatives to fill the gap. Use the 2026 Winning Video format as the template — it is the highest-performing format in the account. Short-form demo video with clear installation hook in first 3 seconds.</p></div>';
+  html += '<h4>6. MONITOR — Campaign A Soundbar and Cam cam Require Cross-Channel Validation</h4>';
+  html += '<p>Animation Soundbar Install (Campaign A): 0.79x Shopify ROAS but 31 purchases and soundbar is selling on Amazon where pixel cannot fire. Do not cut until Amazon soundbar unit data is checked. Cam cam: 6.47% CTR / $0.78 CPC but only 0.46x Shopify ROAS — high CTR suggests strong audience fit, low ROAS suggests purchases are happening off-platform (Amazon). Hold both steady for one more week and evaluate against actual Amazon unit trends before changing budgets.</p></div>';
 
   html += '<div class="anomaly-box info">';
-  html += '<h4>7. ONGOING — Brand | New Google Campaign: Keep, Do Not Grow</h4>';
-  html += '<p>Zero conversions YTD but this campaign serves brand defense — it prevents competitors from bidding on "HangSmart" searches. Keep it running at current $3,420 annual spend level. Do not increase. Do not cut. Its job is to own the brand name in Google search, not to drive sales.</p></div>';
+  html += '<h4>7. ONGOING — HangSmart CTV - Reviews and Arthur Install: Keep Running</h4>';
+  html += '<p>Both were previously flagged incorrectly. HangSmart CTV - Reviews: 2.39x ROAS, 17 purchases at $43 CPP — one of the best performers in Campaign 2. Arthur Install: 1.42x ROAS, 23 purchases at $64 CPP — solid. Do not reduce or pause either of these.</p></div>';
 
   html += '<div class="anomaly-box info">';
-  html += '<h4>8. ONGOING — Soundbar Relaunch Prep</h4>';
-  html += '<p>Do not reactivate old soundbar campaigns when the new product is ready. Create fresh campaigns from scratch using the Winning Video creative template. Start with a 7-day test at $50/day before scaling. Keep soundbar and TV mount targeting separate so the algorithm can optimize each independently.</p></div>';
+  html += '<h4>8. ONGOING — Google Brand | New: Keep As-Is</h4>';
+  html += '<p>Zero conversions is expected. This campaign prevents competitors from outbidding you on branded "HangSmart" searches. Do not cut. Do not grow.</p></div>';
 
   document.getElementById('strategicRecs').innerHTML = html;
 }
