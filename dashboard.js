@@ -1007,8 +1007,9 @@ function renderSuggestions() {
   html += '<div class="section-subtitle" style="margin-top:32px">Meta Ads — Action Items</div>';
 
   html += '<div class="anomaly-box" style="border-left-color:var(--red)">';
-  html += '<h4>🔴 ACTION 1 — Pause Campaign A (Soundbar Legacy) + Campaign B (Soundbar) Immediately</h4>';
-  html += '<p><strong>Why:</strong> The soundbar product is being remade and is not available to sell. You are spending real money advertising a product that customers cannot buy. Campaign A (Soundbar Legacy) has burned $32,659 YTD at 1.66% CTR and a ROAS of 1.03x — barely breaking even on a discontinued product. Campaign B Soundbar has spent $7,659 at 1.36% CTR with ROAS of 0.87x, meaning you are losing money on every dollar spent. Combined that is $40,318 in spend with near-zero return. Pausing both immediately stops the bleed and frees up that daily budget to reallocate to campaigns that are actually working.</p>';
+  html += '<h4>🔴 ACTION 1 — Restructure Soundbar Campaigns A + B (Poor Performance, Not Product Availability)</h4>';
+  html += '<p><strong>Correction note:</strong> The soundbar is still actively being sold on Amazon and HangSmart.com in both black and white. It was only pulled from Walmart. This recommendation is based purely on performance metrics — not product status.</p>';
+  html += '<p><strong>Why:</strong> Campaign A (Soundbar Legacy) has burned $32,659 YTD at 1.66% CTR and a ROAS of 1.03x — that is barely breaking even. For every dollar you put in, you are getting $1.03 back. That leaves almost nothing after cost of goods and fulfillment. Campaign B Soundbar is worse: $7,659 YTD at 1.36% CTR with ROAS of 0.87x — you are actively losing money on every dollar spent. Combined that is $40,318 in spend producing near-zero profit margin. The problem is not the product — the problem is the creative and targeting in these campaigns. The ads are not resonating. Low CTR (1.36–1.66%) means people are scrolling past them. The fix is not to keep running them at the same spend — it is to pause them, build new creatives using the same 2026 Winning Video format that is performing at 4.37% CTR on the TV mount, and relaunch the soundbar campaigns from scratch with that proven format.</p>';
   html += '<p><strong>Budget freed up:</strong> Estimate $180–$250/day across both campaigns combined.</p>';
   html += '<p><strong>Step-by-step (beginner instructions):</strong></p>';
   html += '<ol style="color:var(--muted);font-size:13px;line-height:1.9;padding-left:20px">';
@@ -1018,7 +1019,7 @@ function renderSuggestions() {
   html += '<li>Click the <strong>blue toggle switch</strong> to the left of the campaign name — it will turn gray, meaning the campaign is paused</li>';
   html += '<li>Repeat for <strong>"Campaign B — Soundbar"</strong></li>';
   html += '<li>You will see a confirmation popup — click <strong>Pause</strong> to confirm</li>';
-  html += '<li>Both campaigns are now paused. Your daily budget will automatically stop spending on them. You can reactivate when the new soundbar is ready to sell.</li>';
+  html += '<li>Both campaigns are now paused and spending stops. When you are ready to relaunch with new creatives, create fresh campaigns — do not reactivate the old ones. The old campaigns carry stale audience data and underperforming creative history that will pull down your initial results.</li>';
   html += '</ol>';
   html += '</div>';
 
@@ -1191,8 +1192,8 @@ function renderSuggestions() {
   html += '</div>';
 
   html += '<div class="anomaly-box info">';
-  html += '<h4>Soundbar Relaunch Plan — Prepare Now</h4>';
-  html += '<p>When the new soundbar is ready, do not simply reactivate the old campaigns. The old campaigns have stale audiences and outdated creative. Instead: (1) create a new Campaign A/B structure from scratch, (2) use the 2026 Winning Video format as the creative template — it has proven to be the most engaging format in the account, (3) start with a 7-day test at low budget before scaling, (4) do not mix soundbar and TV mount audiences in the same campaign — keep them separate so the algorithm can optimize independently.</p>';
+  html += '<h4>Soundbar Campaign Relaunch — Build New Campaigns, Not a Reactivation</h4>';
+  html += '<p>The soundbar is still actively selling on Amazon and HangSmart.com (both black and white). The issue is that the current ad campaigns are performing poorly, not that the product is unavailable. When you are ready to re-advertise the soundbar with fresh creative: (1) create brand new Campaign A/B structures from scratch rather than reactivating the paused ones — old campaigns carry negative performance signals the algorithm has already baked in, (2) use the 2026 Winning Video format as the template since it is the proven top performer in the account at 4.37% CTR, (3) create a soundbar-specific version of that format — short demo showing the mount going up on a wall next to a TV, highlighting that it works without studs for both the TV and the soundbar together, (4) start at $50–$75/day per campaign for a 7-day test before scaling, (5) keep soundbar and TV mount campaigns fully separate so each algorithm can optimize independently without one product\'s data contaminating the other.</p>';
   html += '</div>';
 
   document.getElementById('suggestionsContent').innerHTML = html;
@@ -1253,8 +1254,8 @@ function renderStrategicRecs() {
   html += '<strong style="color:var(--gold)">Updated April 13, 2026</strong> — Based on live ad-level account data Jan 1–Apr 13, 2026. Budget is fixed. All actions below are reallocation only.';
   html += '</div>';
 
-  html += '<div class="urgent-flag"><h4>1. IMMEDIATE — Pause Campaign A + B Soundbar (Combined $40,318 YTD Waste)</h4>';
-  html += '<p>Campaign A Soundbar Legacy: $32,659 YTD at 1.66% CTR, ROAS 1.03x — barely breaking even on a product that is no longer for sale. Campaign B Soundbar: $7,659 YTD at 1.36% CTR, ROAS 0.87x — actively losing money. The soundbar is being remade. Pausing both stops approximately $200–$250/day in misallocated spend immediately and frees it for reallocation to Campaign 3.</p></div>';
+  html += '<div class="urgent-flag"><h4>1. IMMEDIATE — Pause Campaign A + B Soundbar and Rebuild With New Creative ($40,318 YTD, Near-Zero Return)</h4>';
+  html += '<p>Campaign A Soundbar Legacy: $32,659 YTD at 1.66% CTR, ROAS 1.03x — barely breaking even. Campaign B Soundbar: $7,659 YTD at 1.36% CTR, ROAS 0.87x — actively losing money per dollar spent. Note: the soundbar is still actively selling on Amazon and HangSmart.com. This is a creative and targeting problem, not a product availability issue. Pausing both stops ~$200–$250/day in underperforming spend and frees it for Campaign 3 while new soundbar creatives are built using the proven 2026 Winning Video format.</p></div>';
 
   html += '<div class="urgent-flag"><h4>2. IMMEDIATE — Pause Catalog BOF + CTV Reviews + CTV General (Waste at Scale)</h4>';
   html += '<p>Catalog BOF: 0.80% CTR, $3.15 CPC — worst in account. CTV Reviews: $6,397 YTD at 1.30% CTR. CTV General: $2,452 at 0.94% CTR. These three ads alone have burned ~$10,200 at well below account average efficiency. Pause all three and redirect budget to Campaign 3 and Campaign 1.</p></div>';
