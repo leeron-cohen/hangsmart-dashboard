@@ -8634,10 +8634,24 @@ z/dtWs6h/mk/1J/ioorzek989Zqf1ZL6Q/p9x/6Ou6xc+GnW2f8A7UP8VFFes0nvxPDcU91n/9k=" al
 <div class="tab-panel active" id="overview">
   <div style="display:flex;align-items:center;gap:20px;margin-bottom:8px;flex-wrap:wrap">
     <h2 style="margin:0;font-size:24px">Master Overview</h2>
-    <div id="optimScoreBadge" style="display:none;align-items:center;gap:10px;background:rgba(0,0,0,0.3);border-radius:40px;padding:6px 16px;border:1px solid rgba(255,255,255,0.1)">
-      <span style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px">Optimization Score</span>
-      <span id="optimScoreVal" style="font-size:22px;font-weight:800;color:var(--gold)">—</span>
-      <span id="optimScoreBar" style="display:inline-block;width:80px;height:6px;background:rgba(255,255,255,0.1);border-radius:3px;overflow:hidden"><span id="optimScoreFill" style="display:block;height:100%;border-radius:3px;background:var(--gold);width:0%"></span></span>
+    <div id="optimScoreBadge" style="display:none;align-items:center;gap:12px;background:rgba(0,0,0,0.35);border-radius:40px;padding:8px 20px;border:1px solid rgba(255,255,255,0.1);cursor:pointer" onclick="document.getElementById('optimScorePanel').style.display=document.getElementById('optimScorePanel').style.display==='none'?'block':'none'">
+      <span style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px">Optimization Score</span>
+      <span id="optimScoreVal" style="font-size:26px;font-weight:800;color:var(--gold);line-height:1">—</span>
+      <div style="display:flex;flex-direction:column;gap:3px">
+        <span id="optimScoreBar" style="display:inline-block;width:90px;height:7px;background:rgba(255,255,255,0.1);border-radius:4px;overflow:hidden"><span id="optimScoreFill" style="display:block;height:100%;border-radius:4px;background:var(--gold);width:0%;transition:width 0.8s ease"></span></span>
+        <span id="optimScoreLabel" style="font-size:10px;color:var(--muted);text-align:right">tap to expand</span>
+      </div>
+    </div>
+  </div>
+  <!-- Optimization Score Breakdown Panel -->
+  <div id="optimScorePanel" style="display:none;margin-bottom:20px;background:rgba(0,0,0,0.3);border-radius:12px;border:1px solid rgba(255,255,255,0.08);overflow:hidden">
+    <div style="padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:center">
+      <span style="font-weight:700;font-size:15px">Score Breakdown — What Moves The Needle</span>
+      <span id="optimScorePanelTotal" style="font-size:22px;font-weight:800;color:var(--gold)"></span>
+    </div>
+    <div id="optimScoreItems" style="padding:4px 0"></div>
+    <div style="padding:12px 20px;border-top:1px solid rgba(255,255,255,0.06)">
+      <span style="font-size:11px;color:var(--muted)">Score computed from live data on every dashboard load. Updates automatically when new report data is added.</span>
     </div>
   </div>
   <div id="dateRangeSubtitle" style="margin-bottom:20px;line-height:1.6"></div>
