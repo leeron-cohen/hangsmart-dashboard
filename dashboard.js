@@ -329,11 +329,12 @@ function renderOverview() {
     totalScore += concPts;
 
     // ─ 6. Google Ads Health (10 pts) ────────────────────────────────────────────
-    // PMax 40 States still at full budget — pending -50% reduction → PMax Top 10 States
-    // Will update to 8/10 once Leeron confirms Google changes are applied
-    var googlePts = 3;
-    var googleAction = 'Reduce PMax 40 States budget -50% and reallocate to PMax Top 10 States. This single action is worth +7 pts to this score.';
-    components.push({name:'Google Ads Health', pts:googlePts, max:10, val:'PMax rebalance pending', action:googleAction});
+    // Apr 14: Data showed 40 States CPA ($37) was 2x better than Top 10 States ($72).
+    // Did NOT cut 40 States — instead increased budget $75 → $90/day (correct call).
+    // Top 10 States underdelivering ($233/day actual vs $350 budget) — audience/creative issue to resolve.
+    var googlePts = 5;
+    var googleAction = 'Investigate why PMax Top 10 States only spends $233/day against a $350/day budget. The issue is audience size, creative coverage, or bid competitiveness — not budget. Adding more budget will not fix it.';
+    components.push({name:'Google Ads Health', pts:googlePts, max:10, val:'40 States $90/day ✓ | Top 10 delivery gap open', action:googleAction});
     totalScore += googlePts;
 
     // ─ 7. Data Freshness — Amazon + Walmart recency (10 pts) ────────────────────
@@ -1050,9 +1051,9 @@ function renderSuggestions() {
   html += '<p>Increased ad set budget on <code>TOF - Conversions - Broad → PRODUCT PAGE - TOF LOOKALIKE - ALL - Dynamic Creatives - Copy</code>. Campaign 3 rebalanced: <code>Ad Set 1 - Wining Ads Compilations</code> increased to $400/day, <code>Ad Set 2 - Influencer Ads</code> reduced to $300/day (was $350 each). Budget shifted toward the higher-ROAS ad set without increasing total spend.</p>';
   html += '</div>';
 
-  html += '<div class="anomaly-box warning">';
-  html += '<h4>⏳ Google Ads — Pending (Target: April 14, 2026)</h4>';
-  html += '<p>PMax 40 States budget reduction (-50%) and PMax Top 10 States increase not yet applied. Will be completed tomorrow. Optimization Score will be updated after Google changes are confirmed.</p>';
+  html += '<div class="anomaly-box success">';
+  html += '<h4 style="color:var(--green)">✅ Google Ads — PMax 40 States Budget Increased to $90/Day (April 14, 2026)</h4>';
+  html += '<p>Live data pull (Apr 6–13) showed PMax 40 States had a <strong>$37 CPA</strong> vs PMax Top 10 States at <strong>$72 CPA</strong> — 40 States was the more efficient campaign. The original recommendation to cut it was incorrect. Instead, budget was increased from $75 → $90/day. Top 10 States remains at $350/day but is underdelivering ($233/day actual) — the issue is audience size or creative coverage, not budget. That delivery gap is the next Google priority to investigate.</p>';
   html += '</div>';
 
   html += '<div class="anomaly-box success">';
@@ -1236,7 +1237,7 @@ function renderSuggestions() {
   var gCamps = [
     {name:'PMax Brand',        spend:'$4,210',  conv:'62', roas:'0.91x', tag:'stable',      note:'Best Google ROAS — keep and protect'},
     {name:'PMax Top 10 States',spend:'$8,920',  conv:'44', roas:'0.46x', tag:'monitor',     note:'Most conversion volume — focus here'},
-    {name:'PMax 40 States',    spend:'$9,840',  conv:'21', roas:'0.19x', tag:'underperform',note:'Reduce 50% → shift to Top 10 States'},
+    {name:'PMax 40 States',    spend:'$9,840',  conv:'21', roas:'0.19x', tag:'monitor',     note:'Budget raised $75→$90/day — $37 CPA last 7 days (2x better than Top 10)'},
     {name:'Brand | New',       spend:'$3,420',  conv:'0',  roas:'—',     tag:'stable',      note:'Brand defense — do not cut, do not grow'}
   ];
   gCamps.forEach(function(g) {
@@ -1252,9 +1253,9 @@ function renderSuggestions() {
   });
   html += '</tbody></table>';
 
-  html += '<div class="anomaly-box" style="border-left-color:var(--gold)">';
-  html += '<h4>🟡 Google — Reduce PMax 40 States Budget -50%, Shift to PMax Top 10 States</h4>';
-  html += '<p>PMax 40 States: $9,840 YTD, 21 conversions, ~$468 CPA. PMax Top 10 States: $8,920 YTD, 44 conversions, ~$203 CPA — same spend, 2x the conversions. Cut 40 States daily budget in half in Google Ads settings and add that amount to Top 10 States. Do not increase Top 10 States by more than 20% at once.</p>';
+  html += '<div class="anomaly-box success">';
+  html += '<h4 style="color:var(--green)">✅ Google — PMax 40 States Budget Raised to $90/Day</h4>';
+  html += '<p><strong>Live 7-day data (Apr 6–13) corrected the original recommendation.</strong> 40 States was NOT underperforming on a recency basis — it had a <strong>$37 CPA</strong> vs Top 10 States at <strong>$72 CPA</strong>. The YTD numbers were skewed by older, less optimized periods. Budget was increased from $75 → $90/day on April 14. <strong>Next priority:</strong> PMax Top 10 States is spending only ~$233/day against a $350/day cap — investigate audience size, creative coverage, or bid strategy to unlock the remaining $117/day in headroom.</p>';
   html += '</div>';
 
   html += '<div class="anomaly-box info">';
@@ -1335,9 +1336,9 @@ function renderStrategicRecs() {
   html += '<h4>4. HIGH PRIORITY — Increase Animation English Voice MOF Budget (5.77x ROAS, $12 CPP)</h4>';
   html += '<p><code>CAMPAIGN B</code> → <code>Ad Set C2 | MOF | Warm Intent</code> → <code>Animation English Voice MOF</code>. Most purchase-efficient ad in the account right now at $12 cost per purchase and 5.77x ROAS — currently only getting $24/week because the budget is being consumed by the zero-purchase Animation Soundbar Features MOF. Pausing that ad (Action 1) will free up the ad set budget naturally. If spend on English Voice MOF does not increase within 48 hours after that pause, manually increase the ad set daily budget by 20%.</p></div>';
 
-  html += '<div class="anomaly-box warning">';
-  html += '<h4>5. MEDIUM — Reduce PMax 40 States Budget -50%, Add to PMax Top 10 States</h4>';
-  html += '<p>PMax 40 States: $9,840 YTD, 21 conversions, ~$468 CPA. PMax Top 10 States: $8,920 YTD, 44 conversions, ~$203 CPA. Same approximate spend, 2x the conversions at less than half the cost per conversion. Reduce 40 States daily budget by 50% in Google Ads and add that amount to Top 10 States (max 20% increase at once).</p></div>';
+  html += '<div class="anomaly-box success">';
+  html += '<h4 style="color:var(--green)">5. COMPLETE — PMax 40 States Budget Raised to $90/Day (Apr 14)</h4>';
+  html += '<p>Original recommendation was wrong. Live 7-day data showed 40 States had a <strong>$37 CPA</strong> vs Top 10 States at <strong>$72 CPA</strong> — cutting the more efficient campaign would have been a mistake. Budget was corrected upward from $75 → $90/day. <strong>Open action:</strong> PMax Top 10 States is leaving ~$117/day unspent against its $350 cap — investigate audience size and creative coverage to unlock that headroom.</p></div>';
 
   html += '<div class="anomaly-box warning">';
   html += '<h4>6. MONITOR — Campaign A Soundbar and Cam cam Require Cross-Channel Validation</h4>';
