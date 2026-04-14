@@ -941,10 +941,36 @@ function renderSuggestions() {
   html += '</div>';
 
   // ── CHANGES SINCE LAST REPORT ────────────────────────────────────────────────
-  html += '<div class="section-subtitle">Changes Since Last Report</div>';
+  html += '<div class="section-subtitle">Changes Made — April 13, 2026</div>';
+
   html += '<div class="anomaly-box success">';
-  html += '<h4 style="color:var(--green)">✅ Catalog - BOF Paused (Campaign 5)</h4>';
-  html += '<p>The <code>Catalog - BOF</code> ad inside <code>CAMPAIGN 5 | BOF | CBO | HangSmart TV</code> has been confirmed off. <code>Leeron Boom - BOF</code> and <code>Rebecca Janis - BOF</code> are the only active ads in that ad set.</p>';
+  html += '<h4 style="color:var(--green)">✅ Action 1 Complete — Animation Soundbar Features MOF Paused</h4>';
+  html += '<p><code>CAMPAIGN B | MOF & BOF | ABO | Soundbar</code> → <code>Ad Set C2 | MOF | Warm Intent</code> → <code>Animation Soundbar Features MOF</code> paused. Was spending $201/week with 0 purchases. Budget will redistribute within the ad set toward <code>Animation English Voice MOF</code> (5.77x ROAS, $12 CPP).</p>';
+  html += '</div>';
+
+  html += '<div class="anomaly-box success">';
+  html += '<h4 style="color:var(--green)">✅ Action 2 Complete — Soundbar Catalog - BOF Paused</h4>';
+  html += '<p><code>CAMPAIGN B</code> → <code>Ad Set C1 | BOF | High Intent</code> → <code>Soundbar Catalog - BOF</code> paused. Was spending $48/week with 0 purchases from a warm retargeting audience.</p>';
+  html += '</div>';
+
+  html += '<div class="anomaly-box info">';
+  html += '<h4>ℹ️ Action 3 — Animation English Voice MOF: Watching for Natural Budget Shift</h4>';
+  html += '<p>ABO campaign structure means budget cannot be increased on a single ad directly — it is controlled at the ad set level. With <code>Animation Soundbar Features MOF</code> now paused, the algorithm will naturally redistribute that ad set\'s budget toward <code>Animation English Voice MOF</code>. Monitoring over the next 7 days. If spend on English Voice MOF does not increase, the ad set daily budget will be manually increased by 20%.</p>';
+  html += '</div>';
+
+  html += '<div class="anomaly-box success">';
+  html += '<h4 style="color:var(--green)">✅ Action 4 Complete — Bruna LookAlike and Campaign 3 Budget Shifted</h4>';
+  html += '<p>Increased ad set budget on <code>TOF - Conversions - Broad → PRODUCT PAGE - TOF LOOKALIKE - ALL - Dynamic Creatives - Copy</code>. Campaign 3 rebalanced: <code>Ad Set 1 - Wining Ads Compilations</code> increased to $400/day, <code>Ad Set 2 - Influencer Ads</code> reduced to $300/day (was $350 each). Budget shifted toward the higher-ROAS ad set without increasing total spend.</p>';
+  html += '</div>';
+
+  html += '<div class="anomaly-box warning">';
+  html += '<h4>⏳ Google Ads — Pending (Target: April 14, 2026)</h4>';
+  html += '<p>PMax 40 States budget reduction (-50%) and PMax Top 10 States increase not yet applied. Will be completed tomorrow. Optimization Score will be updated after Google changes are confirmed.</p>';
+  html += '</div>';
+
+  html += '<div class="anomaly-box success">';
+  html += '<h4 style="color:var(--green)">✅ Previously Completed — Catalog - BOF Paused (Campaign 5)</h4>';
+  html += '<p><code>CAMPAIGN 5 | BOF | CBO | HangSmart TV</code> → <code>Ad Set 1 | High Intent 0-30 Days | BOF</code> → <code>Catalog - BOF</code> confirmed off. Only <code>Leeron Boom - BOF</code> and <code>Rebecca Janis - BOF</code> are active in that ad set.</p>';
   html += '</div>';
 
   // ── FULL AD SCORECARD ────────────────────────────────────────────────────────
