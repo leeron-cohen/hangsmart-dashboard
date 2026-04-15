@@ -1129,6 +1129,19 @@ function renderIPScan() {
 
 
 
+function showSugTab(name) {
+  var tabs = ['meta','google','shopify','tiktok','vibe','general'];
+  tabs.forEach(function(t) {
+    var btn = document.getElementById('sugtab-btn-' + t);
+    var panel = document.getElementById('sugtab-panel-' + t);
+    if (btn) {
+      btn.style.color = t === name ? 'var(--accent)' : 'var(--muted)';
+      btn.style.borderBottom = t === name ? '3px solid var(--accent)' : '3px solid transparent';
+    }
+    if (panel) panel.style.display = t === name ? 'block' : 'none';
+  });
+}
+
 function renderSuggestions() {
 
   // Sub-tab switcher (injected inline so it works without extra global functions)
@@ -1157,16 +1170,15 @@ function renderSuggestions() {
   // ── SUB-TAB NAV ───────────────────────────────────────────────────────────
   var tabStyle = 'background:none;border:none;border-bottom:3px solid transparent;padding:12px 18px;cursor:pointer;font-size:13px;font-weight:600;color:var(--muted);transition:all .2s;white-space:nowrap';
   html += '<div style="display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:24px;overflow-x:auto">';
-  html += '<button id="sugtab-btn-meta" style="' + tabStyle + ';color:var(--accent);border-bottom:3px solid var(--accent)" onclick="(function(){var tabs=[\'meta\',\'google\',\'shopify\',\'tiktok\',\'vibe\',\'general\'];tabs.forEach(function(t){var b=document.getElementById(\'sugtab-btn-\'+t);var p=document.getElementById(\'sugtab-panel-\'+t);if(b&&p){b.style.color=t===\'meta\'?\'var(--accent)\":\'var(--muted)\';b.style.borderBottom=t===\'meta\'?\'3px solid var(--accent)\":\'3px solid transparent\';p.style.display=t===\'meta\'?\'block\":\'none\';}});})()">Meta Ads</button>';
-  html += '<button id="sugtab-btn-google" style="' + tabStyle + '" onclick="(function(){var tabs=[\'meta\',\'google\',\'shopify\',\'tiktok\',\'vibe\',\'general\'];tabs.forEach(function(t){var b=document.getElementById(\'sugtab-btn-\'+t);var p=document.getElementById(\'sugtab-panel-\'+t);if(b&&p){b.style.color=t===\'google\'?\'var(--accent)\":\'var(--muted)\';b.style.borderBottom=t===\'google\'?\'3px solid var(--accent)\":\'3px solid transparent\';p.style.display=t===\'google\'?\'block\":\'none\';}});})()">Google Ads</button>';
-  html += '<button id="sugtab-btn-shopify" style="' + tabStyle + '" onclick="(function(){var tabs=[\'meta\',\'google\',\'shopify\',\'tiktok\',\'vibe\',\'general\'];tabs.forEach(function(t){var b=document.getElementById(\'sugtab-btn-\'+t);var p=document.getElementById(\'sugtab-panel-\'+t);if(b&&p){b.style.color=t===\'shopify\'?\'var(--accent)\":\'var(--muted)\';b.style.borderBottom=t===\'shopify\'?\'3px solid var(--accent)\":\'3px solid transparent\';p.style.display=t===\'shopify\'?\'block\":\'none\';}});})()">Shopify / CRO</button>';
-  html += '<button id="sugtab-btn-tiktok" style="' + tabStyle + '" onclick="(function(){var tabs=[\'meta\',\'google\',\'shopify\',\'tiktok\',\'vibe\',\'general\'];tabs.forEach(function(t){var b=document.getElementById(\'sugtab-btn-\'+t);var p=document.getElementById(\'sugtab-panel-\'+t);if(b&&p){b.style.color=t===\'tiktok\'?\'var(--accent)\":\'var(--muted)\';b.style.borderBottom=t===\'tiktok\'?\'3px solid var(--accent)\":\'3px solid transparent\';p.style.display=t===\'tiktok\'?\'block\":\'none\';}});})()">TikTok</button>';
-  html += '<button id="sugtab-btn-vibe" style="' + tabStyle + '" onclick="(function(){var tabs=[\'meta\',\'google\',\'shopify\',\'tiktok\',\'vibe\',\'general\'];tabs.forEach(function(t){var b=document.getElementById(\'sugtab-btn-\'+t);var p=document.getElementById(\'sugtab-panel-\'+t);if(b&&p){b.style.color=t===\'vibe\'?\'var(--accent)\":\'var(--muted)\';b.style.borderBottom=t===\'vibe\'?\'3px solid var(--accent)\":\'3px solid transparent\';p.style.display=t===\'vibe\'?\'block\":\'none\';}});})()">Vibe CTV</button>';
-  html += '<button id="sugtab-btn-general" style="' + tabStyle + '" onclick="(function(){var tabs=[\'meta\',\'google\',\'shopify\',\'tiktok\',\'vibe\',\'general\'];tabs.forEach(function(t){var b=document.getElementById(\'sugtab-btn-\'+t);var p=document.getElementById(\'sugtab-panel-\'+t);if(b&&p){b.style.color=t===\'general\'?\'var(--accent)\":\'var(--muted)\';b.style.borderBottom=t===\'general\'?\'3px solid var(--accent)\":\'3px solid transparent\';p.style.display=t===\'general\'?\'block\":\'none\';}});})()">General</button>';
+  html += '<button id="sugtab-btn-meta" style="' + tabStyle + ';color:var(--accent);border-bottom:3px solid var(--accent)" onclick="showSugTab(\'meta\')">Meta Ads</button>';
+  html += '<button id="sugtab-btn-google" style="' + tabStyle + '" onclick="showSugTab(\'google\')">Google Ads</button>';
+  html += '<button id="sugtab-btn-shopify" style="' + tabStyle + '" onclick="showSugTab(\'shopify\')">Shopify / CRO</button>';
+  html += '<button id="sugtab-btn-tiktok" style="' + tabStyle + '" onclick="showSugTab(\'tiktok\')">TikTok</button>';
+  html += '<button id="sugtab-btn-vibe" style="' + tabStyle + '" onclick="showSugTab(\'vibe\')">Vibe CTV</button>';
+  html += '<button id="sugtab-btn-general" style="' + tabStyle + '" onclick="showSugTab(\'general\')">General</button>';
   html += '</div>';
 
-  // ════════════════════════════════════════════════════════
-  // META SUB-TAB
+    // META SUB-TAB
   // ════════════════════════════════════════════════════════
   html += '<div id="sugtab-panel-meta" style="display:block">';
 
