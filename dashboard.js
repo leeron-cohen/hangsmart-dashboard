@@ -266,7 +266,7 @@ function renderOverview() {
     var convPV = convF.reduce(function(s,r){return s+(r.pv||0);},0);
     var pixelROAS = convSpend > 0 ? convPV / convSpend : 0;
     var roasPts = pixelROAS >= 2.0 ? 20 : pixelROAS >= 1.5 ? 16 : pixelROAS >= 1.2 ? 12 : pixelROAS >= 1.0 ? 8 : pixelROAS >= 0.7 ? 4 : 0;
-    var roasAction = pixelROAS >= 2.0 ? null : pixelROAS >= 1.5 ? 'Scale top ROAS ad sets — shift budget toward CTV Reviews (CAMPAIGN 2 > Ad Set 1 - CTV ADS Reviews, 2.39x) and Winning Video (CAMPAIGN 3 > Ad Set 1 - Winning Ads Compilations, 2.00x).' : 'Pause zero-purchase waste ads (Animation Soundbar Features MOF in CAMPAIGN B | Soundbar > Ad Set C2 | MOF | Warm Intent). Redirect spend toward Animation English Voice MOF (CAMPAIGN B | Soundbar > Ad Set C2 | MOF | Warm Intent, 5.77x), CTV Reviews (CAMPAIGN 2 > Ad Set 1 - CTV ADS Reviews, 2.39x), and Winning Video (CAMPAIGN 3 > Ad Set 1 - Winning Ads Compilations, 2.00x).';
+    var roasAction = pixelROAS >= 2.0 ? null : pixelROAS >= 1.5 ? 'Scale top ROAS ad sets — shift budget toward:<br>&bull; CTV Reviews &mdash; Campaign 2, Ad Set 1 - CTV ADS Reviews (2.39x)<br>&bull; Winning Video &mdash; Campaign 3, Ad Set 1 - Winning Ads Compilations (2.00x)' : 'Pause zero-purchase waste:<br>&bull; Animation Soundbar Features MOF &mdash; Campaign B | Soundbar, Ad Set C2 | MOF | Warm Intent<br><br>Redirect spend toward:<br>&bull; Animation English Voice MOF &mdash; Campaign B | Soundbar, Ad Set C2 | MOF | Warm Intent (5.77x)<br>&bull; CTV Reviews &mdash; Campaign 2, Ad Set 1 - CTV ADS Reviews (2.39x)<br>&bull; Winning Video &mdash; Campaign 3, Ad Set 1 - Winning Ads Compilations (2.00x)';
     components.push({name:'Meta Pixel ROAS', pts:roasPts, max:20, val:pixelROAS.toFixed(2)+'x', action:roasAction});
     totalScore += roasPts;
 
@@ -275,14 +275,14 @@ function renderOverview() {
     var dClicks = metaDailyF.reduce(function(s,r){return s+(r.clicks||0);},0);
     var metaCTR = dImpr > 0 ? dClicks / dImpr * 100 : 0;
     var ctrPts = metaCTR >= 3.5 ? 15 : metaCTR >= 2.5 ? 12 : metaCTR >= 2.0 ? 9 : metaCTR >= 1.5 ? 6 : 0;
-    var ctrAction = metaCTR >= 3.5 ? null : 'Scale Winning Video (CAMPAIGN 3 > Ad Set 1 - Winning Ads Compilations, 4.6% CTR) and Alizabeth (CAMPAIGN 3 > Ad Set 2 - Influencer Ads, 5.1% CTR). Reduce budget on Animation Soundbar Install (CAMPAIGN A | Legacy > Campaign A | Prospecting Workhorse, 2.1% CTR, 0.79x ROAS).';
+    var ctrAction = metaCTR >= 3.5 ? null : 'Scale:<br>&bull; Winning Video &mdash; Campaign 3, Ad Set 1 - Winning Ads Compilations (4.6% CTR)<br>&bull; Alizabeth &mdash; Campaign 3, Ad Set 2 - Influencer Ads (5.1% CTR)<br><br>Reduce budget on:<br>&bull; Animation Soundbar Install &mdash; Campaign A | Legacy, Campaign A | Prospecting Workhorse (2.1% CTR, 0.79x ROAS)';
     components.push({name:'Meta CTR', pts:ctrPts, max:15, val:metaCTR.toFixed(2)+'%', action:ctrAction});
     totalScore += ctrPts;
 
     // ─ 3. Meta CPC (10 pts) ─────────────────────────────────────────────────────
     var metaCPC = dClicks > 0 ? convSpend / dClicks : 99;
     var cpcPts = metaCPC <= 0.75 ? 10 : metaCPC <= 1.00 ? 8 : metaCPC <= 1.25 ? 6 : metaCPC <= 1.75 ? 4 : 0;
-    var cpcAction = metaCPC <= 0.75 ? null : 'Scale Winning Video (CAMPAIGN 3 > Ad Set 1 - Winning Ads Compilations, $0.42 CPC) and Winning Video - MOF (CAMPAIGN 4 | MOF > Ad Set 2 | Mid Intent 0-90 Days, $0.73 CPC). Pause Animation Soundbar Install (CAMPAIGN A | Legacy > Campaign A | Prospecting Workhorse, $1.76 CPC).';
+    var cpcAction = metaCPC <= 0.75 ? null : 'Scale:<br>&bull; Winning Video &mdash; Campaign 3, Ad Set 1 - Winning Ads Compilations ($0.42 CPC)<br>&bull; Winning Video MOF &mdash; Campaign 4 | MOF, Ad Set 2 | Mid Intent 0-90 Days ($0.73 CPC)<br><br>Pause:<br>&bull; Animation Soundbar Install &mdash; Campaign A | Legacy, Campaign A | Prospecting Workhorse ($1.76 CPC)';
     components.push({name:'Meta CPC', pts:cpcPts, max:10, val:'$'+metaCPC.toFixed(2), action:cpcAction});
     totalScore += cpcPts;
 
@@ -294,7 +294,7 @@ function renderOverview() {
     }).reduce(function(s,c){return s+(c.spend||0);},0);
     var wastePct = totalMetaSpend > 0 ? soundbarSpend / totalMetaSpend * 100 : 0;
     var wastePts = wastePct < 5 ? 20 : wastePct < 15 ? 14 : wastePct < 25 ? 8 : wastePct < 35 ? 4 : 0;
-    var wasteAction = wastePct < 5 ? null : wastePct < 15 ? 'Pause Animation Soundbar Install (CAMPAIGN A | Legacy > Campaign A | Prospecting Workhorse) — largest soundbar spender at 0.79x Shopify ROAS, $2,342/wk. Amazon cross-reference recommended before cutting.' : 'Pause all soundbar campaigns immediately (CAMPAIGN A | Legacy and CAMPAIGN B | Soundbar). Zero-to-low Shopify ROAS with no confirmed Amazon attribution lift.';
+    var wasteAction = wastePct < 5 ? null : wastePct < 15 ? 'Pause:<br>&bull; Animation Soundbar Install &mdash; Campaign A | Legacy, Campaign A | Prospecting Workhorse<br>&nbsp;&nbsp;&nbsp;0.79x Shopify ROAS &middot; $2,342/wk &middot; Largest soundbar spender<br><br>Note: Cross-reference Amazon attribution before cutting.' : 'Pause immediately:<br>&bull; Campaign A | Legacy &mdash; Campaign A | Prospecting Workhorse<br>&bull; Campaign B | Soundbar &mdash; All ad sets<br><br>Zero-to-low Shopify ROAS with no confirmed Amazon attribution lift.';
     components.push({name:'Waste Score (Soundbar Spend %)', pts:wastePts, max:20, val:wastePct.toFixed(1)+'% of Meta spend', action:wasteAction});
     totalScore += wastePts;
 
@@ -324,7 +324,7 @@ function renderOverview() {
     var topSpend = allAdsSnap.filter(function(a){return a.roas>=1.3;}).reduce(function(s,a){return s+a.spend;},0);
     var concPct = totalSnapSpend > 0 ? topSpend / totalSnapSpend * 100 : 0;
     var concPts = concPct >= 70 ? 15 : concPct >= 55 ? 12 : concPct >= 40 ? 8 : 0;
-    var concAction = concPct >= 70 ? null : 'Shift budget from Rebecca Janis (CAMPAIGN 3 > Ad Set 2 - Influencer Ads, 0.92x, $1,704/wk), Influencer Compilation (CAMPAIGN 1 > VIDEO 1 - Influencer Compilation, 0.96x, $1,391/wk), and Animation Soundbar Install (CAMPAIGN A | Legacy > Campaign A | Prospecting Workhorse, 0.79x, $2,342/wk) toward Winning Video (CAMPAIGN 3 > Ad Set 1 - Winning Ads Compilations, 2.00x) and CTV Reviews (CAMPAIGN 2 > Ad Set 1 - CTV ADS Reviews, 2.39x).';
+    var concAction = concPct >= 70 ? null : 'Shift budget from:<br>&bull; Rebecca Janis &mdash; Campaign 3, Ad Set 2 - Influencer Ads (0.92x &middot; $1,704/wk)<br>&bull; Influencer Compilation &mdash; Campaign 1, Video 1 - Influencer Compilation (0.96x &middot; $1,391/wk)<br>&bull; Animation Soundbar Install &mdash; Campaign A | Legacy, Campaign A | Prospecting Workhorse (0.79x &middot; $2,342/wk)<br><br>Toward:<br>&bull; Winning Video &mdash; Campaign 3, Ad Set 1 - Winning Ads Compilations (2.00x)<br>&bull; CTV Reviews &mdash; Campaign 2, Ad Set 1 - CTV ADS Reviews (2.39x)';
     components.push({name:'Top Performer Concentration', pts:concPts, max:15, val:concPct.toFixed(0)+'% of spend in ≥1.3x ROAS ads', action:concAction});
     totalScore += concPts;
 
