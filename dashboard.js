@@ -190,7 +190,7 @@ function renderOverview() {
 
   var attrHtml = '<div style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;margin-bottom:4px" onclick="(function(el){var w=document.getElementById(\'attrTableWrap\');var open=w.style.display!==\'none\';w.style.display=open?\'none\':\'block\';el.querySelector(\'.attr-toggle\').textContent=open?\'► Show table\':\'▼ Hide table\';})(this)">';
   attrHtml += '<strong style="font-size:16px;color:var(--gold)">Ad Spend Attribution Analysis</strong>';
-  attrHtml += '<span class="attr-toggle" style="font-size:12px;color:var(--muted);font-weight:500;letter-spacing:1px;background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:4px;border:1px solid var(--border)">► Show table</span>';
+  attrHtml += '<span class="attr-toggle" style="font-size:12px;color:#000;font-weight:700;letter-spacing:1px;background:#fff;padding:4px 12px;border-radius:4px;border:1px solid #fff">► Show table</span>';
   attrHtml += '</div>';
   attrHtml += '<p style="color:var(--muted);margin:8px 0 16px">Monthly correlation between total ad spend and total units sold across all channels (Apr 2024 - Apr 2026)</p>';
 
