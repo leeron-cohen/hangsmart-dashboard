@@ -1595,66 +1595,113 @@ function renderAdSpend() {
   if (!el) return;
   var html = '';
 
+  // ── TOGGLE FUNCTION (injected as global so onclick works post-innerHTML) ──
+  window.toggleMetaCamp = function(cid) {
+    var rows = document.getElementById('mRows-' + cid);
+    var tot  = document.getElementById('mTot-'  + cid);
+    var chev = document.getElementById('mChev-' + cid);
+    if (!rows) return;
+    var open = rows.style.display !== 'none';
+    rows.style.display = open ? 'none' : 'block';
+    tot.style.display  = open ? 'inline' : 'none';
+    chev.innerHTML     = open ? '&#9660;' : '&#9650;';
+  };
+
   // ── HEADER ────────────────────────────────────────────────────────────────
   html += '<div style="margin-bottom:20px;padding:14px 18px;background:rgba(216,18,124,0.07);border-radius:8px;border-left:3px solid var(--accent)">';
   html += '<strong style="font-size:15px;color:var(--accent)">Current Daily Budget Settings \u2014 All Ad Platforms</strong>';
-  html += '<p style="margin:6px 0 0;color:var(--muted);font-size:13px">As of April 16, 2026 \u2014 1:21 PM EST. Reflects budgets as currently set in each platform. Campaign-level budgets listed directly. Ad set-level budgets listed under the campaign in smaller text.</p>';
+  html += '<p style="margin:6px 0 0;color:var(--muted);font-size:13px">As of April 16, 2026. Active campaigns only \u2014 paused ads excluded. Click any Meta campaign row to expand its ad sets.</p>';
   html += '</div>';
 
-  // ═══ META ADS ════════════════════════════════════════════════════════════
+  // ═══ META ADS (collapsible) ═══════════════════════════════════════════════
   html += '<div style="margin-bottom:32px">';
   html += '<div class="section-subtitle" style="font-size:14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center">';
   html += '<span>\ud83d\udfe6 Meta Ads</span>';
-  html += '<span style="font-size:13px;font-weight:400;color:var(--muted)">Ad set-level budgets (ABO)</span>';
+  html += '<span style="font-size:12px;font-weight:400;color:var(--muted)">Click campaign to expand ad sets</span>';
   html += '</div>';
-  html += '<table class="perf-table" style="width:100%"><thead><tr>';
-  html += '<th style="text-align:left">Campaign</th>';
-  html += '<th style="text-align:left;font-size:11px;color:var(--muted)">Ad Set</th>';
-  html += '<th style="text-align:right">Daily Budget</th>';
-  html += '</tr></thead><tbody>';
 
-  var metaBudgets = [
-    {camp:'CAMPAIGN 1', aset:'VIDEO 1 \u2014 Influencer Compilation', budget:'$200/day', note:''},
-    {camp:'CAMPAIGN 1', aset:'VIDEO 2 \u2014 Influencer Comp w/Leeron', budget:'$120/day', note:'\u21912 +20% Apr 16'},
-    {camp:'CAMPAIGN 1', aset:'VIDEO 4 \u2014 Cam 1', budget:'$200/day', note:''},
-    {camp:'CAMPAIGN 1', aset:'VIDEO 3 \u2014 Cam Cam', budget:'\u2014', note:'PAUSED Apr 16'},
-    {camp:'CAMPAIGN 2', aset:'Ad Set 1 \u2014 CTV ADS Reviews', budget:'$120/day', note:'\u21912 +20% Apr 16'},
-    {camp:'CAMPAIGN 2', aset:'Ad Set 3 \u2014 Arthur Install', budget:'$240/day', note:'\u21912 +20% Apr 16'},
-    {camp:'CAMPAIGN 2', aset:'Ad Set 4 \u2014 Animation Testimonial Mashup', budget:'$150/day', note:'\u21912 +20% Apr 16'},
-    {camp:'CAMPAIGN 2', aset:'Ad Set 4 \u2014 Leeron Pressure Test', budget:'\u2014', note:'PAUSED Apr 16'},
-    {camp:'CAMPAIGN 3', aset:'Ad Set 1 \u2014 Winning Ads Compilations', budget:'$480/day', note:'\u21912 +20% Apr 16'},
-    {camp:'CAMPAIGN 3', aset:'Ad Set 2 \u2014 Influencer Ads (Rebecca Janis + Where Has This Been)', budget:'$300/day', note:'Alizabeth paused within set Apr 16'},
-    {camp:'CAMPAIGN 4 | MOF', aset:'Ad Set 2 \u2014 Mid Intent 0\u201390 Days', budget:'$200/day', note:''},
-    {camp:'CAMPAIGN 5 | BOF', aset:'Ad Set 1 \u2014 High Intent 0\u201330 Days', budget:'~$150/day', note:'+$25 Apr 16'},
-    {camp:'TOF Test', aset:'PRODUCT PAGE \u2014 TOF LOOKALIKE (Bruna LookAlike)', budget:'$200/day', note:''},
-    {camp:'CAMPAIGN A | Legacy', aset:'Campaign A | Prospecting Workhorse (Animation Soundbar Install)', budget:'$200/day', note:'Reduced when V2 launched Apr 14'},
-    {camp:'CAMPAIGN A V2', aset:'Soundbar ASMR', budget:'$50/day', note:'Learning Phase \u2014 launched Apr 14'},
-    {camp:'CAMPAIGN A V2', aset:'Leeron Soundbar Voice', budget:'$50/day', note:'Learning Phase \u2014 launched Apr 14'},
-    {camp:'CAMPAIGN A V2', aset:'Animation Soundbar Features', budget:'$50/day', note:'Learning Phase \u2014 launched Apr 14'},
-    {camp:'CAMPAIGN A V2', aset:'Leeron Install Music', budget:'$50/day', note:'Learning Phase \u2014 launched Apr 14'},
-    {camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C1 | BOF | High Intent', budget:'$50/day', note:'Multiple BOF ads running within set'},
-    {camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C2 | MOF | Warm Intent (Animation English Voice MOF)', budget:'$50/day', note:'Soundbar Features MOF paused Apr 13'}
+  // Campaign data — active ad sets only
+  var metaCamps = [
+    { name:'Campaign 1', id:'c1', adsets:[
+      { name:'VIDEO 1 \u2014 Influencer Compilation', amt:200, note:'' },
+      { name:'VIDEO 2 \u2014 Influencer Comp w/Leeron', amt:120, note:'\u2191 +20% Apr 16' },
+      { name:'VIDEO 4 \u2014 Cam 1', amt:200, note:'' }
+    ]},
+    { name:'Campaign 2', id:'c2', adsets:[
+      { name:'Ad Set 1 \u2014 CTV ADS Reviews', amt:120, note:'\u2191 +20% Apr 16' },
+      { name:'Ad Set 3 \u2014 Arthur Install', amt:240, note:'\u2191 +20% Apr 16' },
+      { name:'Ad Set 4 \u2014 Animation Testimonial Mashup', amt:150, note:'\u2191 +20% Apr 16' }
+    ]},
+    { name:'Campaign 3', id:'c3', adsets:[
+      { name:'Ad Set 1 \u2014 Winning Ads Compilations', amt:480, note:'\u2191 +20% Apr 16' },
+      { name:'Ad Set 2 \u2014 Influencer Ads (Rebecca Janis + Where Has This Been)', amt:300, note:'Alizabeth paused within set' }
+    ]},
+    { name:'Campaign 4 | MOF', id:'c4', adsets:[
+      { name:'Ad Set 2 \u2014 Mid Intent 0\u201390 Days', amt:200, note:'' }
+    ]},
+    { name:'Campaign 5 | BOF', id:'c5', adsets:[
+      { name:'Ad Set 1 \u2014 High Intent 0\u201330 Days', amt:150, note:'+$25 Apr 16', approx:true }
+    ]},
+    { name:'TOF Test', id:'tof', adsets:[
+      { name:'PRODUCT PAGE \u2014 TOF LOOKALIKE (Bruna LookAlike)', amt:200, note:'' }
+    ]},
+    { name:'Campaign A | Legacy', id:'ca', adsets:[
+      { name:'Prospecting Workhorse \u2014 Animation Soundbar Install', amt:200, note:'Reduced when V2 launched Apr 14' }
+    ]},
+    { name:'Campaign A V2', id:'cav2', adsets:[
+      { name:'Soundbar ASMR', amt:50, note:'Learning Phase \u2014 launched Apr 14' },
+      { name:'Leeron Soundbar Voice', amt:50, note:'Learning Phase \u2014 launched Apr 14' },
+      { name:'Animation Soundbar Features', amt:50, note:'Learning Phase \u2014 launched Apr 14' },
+      { name:'Leeron Install Music', amt:50, note:'Learning Phase \u2014 launched Apr 14' }
+    ]},
+    { name:'Campaign B | Soundbar', id:'cb', adsets:[
+      { name:'Ad Set C1 | BOF | High Intent', amt:50, note:'Multiple BOF ads running' },
+      { name:'Ad Set C2 | MOF | Warm Intent \u2014 Animation English Voice MOF', amt:50, note:'' }
+    ]}
   ];
 
   var metaTotal = 0;
-  var metaStaticAmounts = [200,120,200,0,120,240,150,0,480,300,200,150,200,200,50,50,50,50,50,50];
-  metaStaticAmounts.forEach(function(v){metaTotal+=v;});
+  metaCamps.forEach(function(c){ c.adsets.forEach(function(a){ metaTotal += a.amt; }); });
 
-  metaBudgets.forEach(function(r) {
-    var isPaused = r.budget === '\u2014';
-    var rowStyle = isPaused ? 'opacity:0.45' : '';
-    html += '<tr style="' + rowStyle + '">';
-    html += '<td style="text-align:left;font-weight:600;font-size:13px;color:var(--accent)">' + r.camp + '</td>';
-    html += '<td style="text-align:left;font-size:12px;color:var(--muted)">';
-    html += r.aset;
-    if (r.note) html += '<br><span style="font-size:11px;color:' + (isPaused ? 'var(--red)' : 'var(--green)') + ';font-weight:600">' + r.note + '</span>';
-    html += '</td>';
-    html += '<td style="text-align:right;font-weight:700;font-size:13px;color:' + (isPaused ? 'var(--muted)' : 'var(--text)') + '">' + r.budget + '</td>';
-    html += '</tr>';
+  var rowBase  = 'display:flex;justify-content:space-between;align-items:center;padding:11px 16px;cursor:pointer;background:rgba(255,255,255,0.03);transition:background .15s';
+  var asetBase = 'display:flex;justify-content:space-between;align-items:center;padding:9px 16px 9px 28px;border-bottom:1px solid rgba(255,255,255,0.04)';
+
+  metaCamps.forEach(function(c) {
+    var campTotal = 0;
+    c.adsets.forEach(function(a){ campTotal += a.amt; });
+    var approxAny = c.adsets.some(function(a){ return a.approx; });
+    var totalLabel = (approxAny ? '~$' : '$') + campTotal.toLocaleString() + '/day';
+
+    html += '<div style="border:1px solid var(--border);border-radius:8px;margin-bottom:8px;overflow:hidden">';
+
+    // Campaign header row
+    html += '<div style="' + rowBase + '" onclick="toggleMetaCamp(\'' + c.id + '\')">';
+    html += '<span style="font-weight:700;font-size:13px;color:var(--accent)">' + c.name + '</span>';
+    html += '<div style="display:flex;align-items:center;gap:14px">';
+    html += '<span id="mTot-' + c.id + '" style="font-weight:700;font-size:13px">' + totalLabel + '</span>';
+    html += '<span id="mChev-' + c.id + '" style="color:var(--muted);font-size:10px">&#9660;</span>';
+    html += '</div></div>';
+
+    // Ad set rows (hidden by default)
+    html += '<div id="mRows-' + c.id + '" style="display:none;border-top:1px solid var(--border)">';
+    c.adsets.forEach(function(a, idx) {
+      var isLast = idx === c.adsets.length - 1;
+      var budgetLabel = (a.approx ? '~$' : '$') + a.amt.toLocaleString() + '/day';
+      html += '<div style="' + asetBase + (isLast ? ';border-bottom:none' : '') + '">';
+      html += '<div>';
+      html += '<span style="font-size:13px;color:var(--text)">' + a.name + '</span>';
+      if (a.note) html += '<br><span style="font-size:11px;color:var(--green);font-weight:600">' + a.note + '</span>';
+      html += '</div>';
+      html += '<span style="font-weight:600;font-size:13px;white-space:nowrap;margin-left:16px">' + budgetLabel + '</span>';
+      html += '</div>';
+    });
+    html += '</div>'; // end adset rows
+
+    html += '</div>'; // end campaign card
   });
-  html += '</tbody></table>';
-  html += '<div style="margin-top:10px;padding:10px 14px;background:rgba(255,255,255,0.04);border-radius:6px;display:flex;justify-content:space-between;align-items:center">';
-  html += '<span style="font-weight:700;font-size:14px">Meta Ads Daily Budget Total</span>';
+
+  html += '<div style="margin-top:12px;padding:10px 16px;background:rgba(255,255,255,0.04);border-radius:6px;display:flex;justify-content:space-between;align-items:center">';
+  html += '<span style="font-weight:700;font-size:14px">Meta Ads Total</span>';
   html += '<span style="font-weight:700;font-size:16px;color:var(--accent)">$' + metaTotal.toLocaleString() + '/day</span>';
   html += '</div>';
   html += '</div>';
