@@ -8668,8 +8668,11 @@ z/dtWs6h/mk/1J/ioorzek989Zqf1ZL6Q/p9x/6Ou6xc+GnW2f8A7UP8VFFes0nvxPDcU91n/9k=" al
   <div style="overflow-x:auto"><table id="dowTable"></table></div>
 
   <!-- Daily Breakdown (Blended) -->
-  <div class="section-title">Daily Breakdown (Blended)</div>
-  <div style="overflow-x:auto"><table id="dailyTable"></table></div>
+  <div class="section-title" style="cursor:pointer;user-select:none;display:flex;align-items:center;justify-content:space-between" onclick="(function(el){var w=document.getElementById('dailyBreakdownWrap');var open=w.style.display!=='none';w.style.display=open?'none':'block';el.querySelector('.daily-toggle').textContent=open?'► Show':'▼ Hide';})(this)">
+    Daily Breakdown (Blended)
+    <span class="daily-toggle" style="font-size:12px;color:var(--muted);font-weight:500;letter-spacing:1px;background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:4px;border:1px solid var(--border)">► Show</span>
+  </div>
+  <div id="dailyBreakdownWrap" style="display:none;overflow-x:auto"><table id="dailyTable"></table></div>
 
   <!-- Top Performing Days -->
   <div class="section-title">Top Performing Days</div>
