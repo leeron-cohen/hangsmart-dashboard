@@ -275,14 +275,14 @@ function renderOverview() {
     var dClicks = metaDailyF.reduce(function(s,r){return s+(r.clicks||0);},0);
     var metaCTR = dImpr > 0 ? dClicks / dImpr * 100 : 0;
     var ctrPts = metaCTR >= 3.5 ? 15 : metaCTR >= 2.5 ? 12 : metaCTR >= 2.0 ? 9 : metaCTR >= 1.5 ? 6 : 0;
-    var ctrAction = metaCTR >= 3.5 ? null : 'Scale:<br>&bull; Winning Video &mdash; Campaign 3, Ad Set 1 - Winning Ads Compilations (4.6% CTR)<br>&bull; Alizabeth &mdash; Campaign 3, Ad Set 2 - Influencer Ads (5.1% CTR)<br><br>Reduce budget on:<br>&bull; Animation Soundbar Install &mdash; Campaign A | Legacy, Campaign A | Prospecting Workhorse (2.1% CTR, 0.79x ROAS)';
+    var ctrAction = metaCTR >= 3.5 ? null : 'Scale:<br>&bull; Winning Video &mdash; Campaign 3, Ad Set 1 - Winning Ads Compilations (4.6% CTR, 1.45x ROAS 14d)<br>&bull; Rebecca Janis &mdash; Campaign 3, Ad Set 2 - Influencer Ads (3.4% CTR, 1.38x ROAS 7d, improving trend)<br><br>Pause low CTR + low ROAS:<br>&bull; Cam Cam &mdash; Campaign 1, VIDEO 3 (low CTR, 0.69x ROAS both windows)<br>&bull; Animation Soundbar Install &mdash; Campaign A | Legacy (2.1% CTR, 0.76x ROAS 14d)';
     components.push({name:'Meta CTR', pts:ctrPts, max:15, val:metaCTR.toFixed(2)+'%', action:ctrAction});
     totalScore += ctrPts;
 
     // ─ 3. Meta CPC (10 pts) ─────────────────────────────────────────────────────
     var metaCPC = dClicks > 0 ? convSpend / dClicks : 99;
     var cpcPts = metaCPC <= 0.75 ? 10 : metaCPC <= 1.00 ? 8 : metaCPC <= 1.25 ? 6 : metaCPC <= 1.75 ? 4 : 0;
-    var cpcAction = metaCPC <= 0.75 ? null : 'Scale:<br>&bull; Winning Video &mdash; Campaign 3, Ad Set 1 - Winning Ads Compilations ($0.42 CPC)<br>&bull; Winning Video MOF &mdash; Campaign 4 | MOF, Ad Set 2 | Mid Intent 0-90 Days ($0.73 CPC)<br><br>Pause:<br>&bull; Animation Soundbar Install &mdash; Campaign A | Legacy, Campaign A | Prospecting Workhorse ($1.76 CPC)';
+    var cpcAction = metaCPC <= 0.75 ? null : 'Scale (low CPC + positive ROAS):<br>&bull; Winning Video &mdash; Campaign 3, Ad Set 1 - Winning Ads Compilations ($0.42 CPC, 1.45x ROAS 14d)<br>&bull; Winning Video MOF &mdash; Campaign 4 | MOF, Ad Set 2 | Mid Intent 0-90 Days ($0.73 CPC, 1.42x ROAS 14d)<br><br>Pause (high CPC + sub-1x ROAS):<br>&bull; Cam Cam &mdash; Campaign 1, VIDEO 3 (0.69x both windows)<br>&bull; Leeron Pressure Test &mdash; Campaign 2, Ad Set 4 (0.86x 14d, 0.75x 7d)<br>&bull; Animation Soundbar Install &mdash; Campaign A | Legacy ($1.76 CPC, 0.76x ROAS 14d)';
     components.push({name:'Meta CPC', pts:cpcPts, max:10, val:'$'+metaCPC.toFixed(2), action:cpcAction});
     totalScore += cpcPts;
 
@@ -294,37 +294,44 @@ function renderOverview() {
     }).reduce(function(s,c){return s+(c.spend||0);},0);
     var wastePct = totalMetaSpend > 0 ? soundbarSpend / totalMetaSpend * 100 : 0;
     var wastePts = wastePct < 5 ? 20 : wastePct < 15 ? 14 : wastePct < 25 ? 8 : wastePct < 35 ? 4 : 0;
-    var wasteAction = wastePct < 5 ? null : wastePct < 15 ? 'Pause:<br>&bull; Animation Soundbar Install &mdash; Campaign A | Legacy, Campaign A | Prospecting Workhorse<br>&nbsp;&nbsp;&nbsp;0.79x Shopify ROAS &middot; $2,342/wk &middot; Largest soundbar spender<br><br>Note: Cross-reference Amazon attribution before cutting.' : 'Pause immediately:<br>&bull; Campaign A | Legacy &mdash; Campaign A | Prospecting Workhorse<br>&bull; Campaign B | Soundbar &mdash; All ad sets<br><br>Zero-to-low Shopify ROAS with no confirmed Amazon attribution lift.';
+    var wasteAction = wastePct < 5 ? null : wastePct < 15 ? 'Pause:<br>&bull; Animation Soundbar Install &mdash; Campaign A | Legacy, Campaign A | Prospecting Workhorse<br>&nbsp;&nbsp;&nbsp;0.76x ROAS (14-day) &middot; 0.61x ROAS (7-day) &middot; $4,157 spent in 14 days &middot; Both windows declining<br><br>Keep running (Campaign B | Soundbar BOF is profitable):<br>&bull; Leeron Soundbar Voice BOF &mdash; Campaign B | Soundbar, Ad Set C1 | BOF (1.91x 7d, 1.11x 14d)<br>&bull; Animation Soundbar Install BOF &mdash; Campaign B | Soundbar, Ad Set C1 | BOF (1.36x 14d)<br><br>Note: Cross-reference Amazon attribution on Campaign A before cutting.' : 'Pause immediately &mdash; soundbar spend is concentrated in losses:<br>&bull; Campaign A | Legacy &mdash; 0.76x (14d), 0.61x (7d), $4,157/14d<br>&bull; Campaign B | Soundbar MOF &mdash; Animation Soundbar Features MOF (0.47x), Animation Music MOF (0.33x)<br><br>Exception: Campaign B | Soundbar BOF is generating positive ROAS &mdash; do not pause.';
     components.push({name:'Waste Score (Soundbar Spend %)', pts:wastePts, max:20, val:wastePct.toFixed(1)+'% of Meta spend', action:wasteAction});
     totalScore += wastePts;
 
     // ─ 5. Top Performer Concentration — % spend in ≥1.3x ROAS ads (15 pts) ─────
-    // Derived from last Windsor ad-level pull (Apr 6–13). Updated each data refresh.
+    // 14-day snapshot (Apr 2–15). 14-day used as primary (statistical significance);
+    // 7-day cross-referenced for trend direction. Updated each data refresh.
     var allAdsSnap = [
-      {spend:24,    roas:5.77}, // Animation English Voice MOF
-      {spend:736,   roas:2.39}, // HangSmart CTV Reviews
-      {spend:1460,  roas:2.00}, // Winning Video
-      {spend:1881,  roas:1.93}, // Bruna LookAlike Dynamic Creatives
-      {spend:1328,  roas:1.76}, // Leeron Boom - BOF
-      {spend:902,   roas:1.53}, // Animation Testimonial Mashup
-      {spend:1476,  roas:1.42}, // Arthur Install
-      {spend:1369,  roas:1.39}, // Winning Video - MOF
-      {spend:1389,  roas:1.30}, // Cam 1
-      {spend:85,    roas:1.31}, // Animation Soundbar Install BOF
-      {spend:729,   roas:1.11}, // Influencer Compilation w/Leeron
-      {spend:1104,  roas:1.06}, // Leeron BOOM Video
-      {spend:728,   roas:1.06}, // Alizabeth
-      {spend:169,   roas:1.07}, // Where Has This Been
-      {spend:1391,  roas:0.96}, // Influencer Compilation
-      {spend:1704,  roas:0.92}, // Rebecca Janis
-      {spend:2342,  roas:0.79}, // Animation Soundbar Install (Campaign A)
-      {spend:922,   roas:0.85}  // Leeron Pressure Test
+      {spend:54,    roas:3.32}, // Animation English Voice MOF — C B | Soundbar, Ad Set C2 | MOF
+      {spend:1382,  roas:2.09}, // CTV ADS Reviews — C2, Ad Set 1 - CTV ADS Reviews
+      {spend:2397,  roas:1.64}, // Leeron Boom - BOF — C5 | BOF, Ad Set 1 | High Intent BOF
+      {spend:1717,  roas:1.63}, // Animation Testimonial — C2, Ad Set 4 - Animation Testimonial
+      {spend:2541,  roas:1.42}, // Winning Video - MOF — C4 | MOF, Ad Set 2 | Mid Intent 0-90 Days
+      {spend:4977,  roas:1.39}, // Winning Ads Compilations — C3, Ad Set 1 (Winning Video 1.45x + Leeron BOOM 1.35x)
+      {spend:153,   roas:1.36}, // Animation Soundbar Install BOF — C B | Soundbar, Ad Set C1 | BOF
+      {spend:1376,  roas:1.28}, // Influencer Comp w/Leeron — C1, VIDEO 2 (trending up: 1.44x 7-day)
+      {spend:2766,  roas:1.19}, // Arthur Install — C2, Ad Set 3 - Arthur Install
+      {spend:174,   roas:1.11}, // Leeron Soundbar Voice BOF — C B | Soundbar, Ad Set C1 | BOF
+      {spend:2627,  roas:1.08}, // Influencer Compilation — C1, VIDEO 1 (declining: 0.95x 7-day)
+      {spend:3231,  roas:1.12}, // Rebecca Janis — C3, Ad Set 2 - Influencer Ads (improving: 1.38x 7-day)
+      {spend:88,    roas:1.18}, // Soundbar Catalog BOF — C B | Soundbar, Ad Set C1 | BOF
+      {spend:294,   roas:1.00}, // Where Has This Been — C3, Ad Set 2 - Influencer Ads (improving: 1.31x 7-day)
+      {spend:2614,  roas:1.00}, // Cam 1 — C1, VIDEO 4 (declining: 0.79x 7-day)
+      {spend:1729,  roas:0.86}, // Leeron Pressure Test — C2, Ad Set 4 (both windows sub-1x — pause)
+      {spend:1231,  roas:0.89}, // Alizabeth — C3, Ad Set 2 - Influencer Ads (sub-1x both windows — pause)
+      {spend:380,   roas:0.79}, // Rebecca Janis BOF — C5 | BOF (different from C3 version — pause)
+      {spend:4157,  roas:0.76}, // Animation Soundbar Install — C A | Legacy (biggest dollar loser)
+      {spend:1382,  roas:0.69}, // Cam Cam — C1, VIDEO 3 (0.69x BOTH windows — clearest pause in account)
+      {spend:548,   roas:0.49}, // Cam 2 - MOF — C4 | MOF, Ad Set 2 | Mid Intent 0-90 Days
+      {spend:153,   roas:0.60}, // Soundbar Catalog MOF — C B | Soundbar, Ad Set C2 | MOF
+      {spend:279,   roas:0.47}, // Animation Soundbar Features MOF — C B | Soundbar, Ad Set C2 | MOF
+      {spend:132,   roas:0.33}  // Animation Music MOF — C B | Soundbar, Ad Set C2 | MOF
     ];
     var totalSnapSpend = allAdsSnap.reduce(function(s,a){return s+a.spend;},0);
     var topSpend = allAdsSnap.filter(function(a){return a.roas>=1.3;}).reduce(function(s,a){return s+a.spend;},0);
     var concPct = totalSnapSpend > 0 ? topSpend / totalSnapSpend * 100 : 0;
     var concPts = concPct >= 70 ? 15 : concPct >= 55 ? 12 : concPct >= 40 ? 8 : 0;
-    var concAction = concPct >= 70 ? null : 'Shift budget from:<br>&bull; Rebecca Janis &mdash; Campaign 3, Ad Set 2 - Influencer Ads (0.92x &middot; $1,704/wk)<br>&bull; Influencer Compilation &mdash; Campaign 1, Video 1 - Influencer Compilation (0.96x &middot; $1,391/wk)<br>&bull; Animation Soundbar Install &mdash; Campaign A | Legacy, Campaign A | Prospecting Workhorse (0.79x &middot; $2,342/wk)<br><br>Toward:<br>&bull; Winning Video &mdash; Campaign 3, Ad Set 1 - Winning Ads Compilations (2.00x)<br>&bull; CTV Reviews &mdash; Campaign 2, Ad Set 1 - CTV ADS Reviews (2.39x)';
+    var concAction = concPct >= 70 ? null : 'Pause confirmed underperformers (both 7-day and 14-day below 1x):<br>&bull; Cam Cam &mdash; Campaign 1, VIDEO 3 (0.69x both windows &middot; $1,382/14d &middot; clearest cut in account)<br>&bull; Leeron Pressure Test &mdash; Campaign 2, Ad Set 4 (0.86x 14d, 0.75x 7d)<br>&bull; Alizabeth &mdash; Campaign 3, Ad Set 2 - Influencer Ads (0.89x 14d, 0.97x 7d)<br>&bull; Animation Soundbar Install &mdash; Campaign A | Legacy (0.76x 14d, 0.61x 7d &middot; $4,157/14d &middot; largest dollar loser)<br><br>Scale top performers (both windows above 1.3x):<br>&bull; CTV ADS Reviews &mdash; Campaign 2, Ad Set 1 (2.09x 14d, 2.73x 7d &middot; only $100/day)<br>&bull; Animation Testimonial &mdash; Campaign 2, Ad Set 4 (1.63x both windows &middot; most consistent mid-performer)<br>&bull; Leeron Boom BOF &mdash; Campaign 5, Ad Set 1 (1.64x 14d, 1.50x 7d)<br><br>Do NOT cut (improving trend on 7-day):<br>&bull; Rebecca Janis &mdash; Campaign 3, Ad Set 2 (1.12x 14d but 1.38x 7-day &middot; trending up)<br>&bull; Influencer Comp w/Leeron &mdash; Campaign 1, VIDEO 2 (1.28x 14d, 1.44x 7d &middot; trending up)';
     components.push({name:'Top Performer Concentration', pts:concPts, max:15, val:concPct.toFixed(0)+'% of spend in ≥1.3x ROAS ads', action:concAction});
     totalScore += concPts;
 
