@@ -188,7 +188,10 @@ function renderOverview() {
     }
   }
 
-  var attrHtml = '<strong style="font-size:16px;color:var(--gold)">Ad Spend Attribution Analysis</strong>';
+  var attrHtml = '<div style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;margin-bottom:4px" onclick="(function(el){var w=document.getElementById(\'attrTableWrap\');var open=w.style.display!==\'none\';w.style.display=open?\'none\':\'block\';el.querySelector(\'.attr-toggle\').textContent=open?\'► Show table\':\'▼ Hide table\';})(this)">';
+  attrHtml += '<strong style="font-size:16px;color:var(--gold)">Ad Spend Attribution Analysis</strong>';
+  attrHtml += '<span class="attr-toggle" style="font-size:12px;color:var(--muted);font-weight:500;letter-spacing:1px;background:rgba(255,255,255,0.05);padding:4px 10px;border-radius:4px;border:1px solid var(--border)">► Show table</span>';
+  attrHtml += '</div>';
   attrHtml += '<p style="color:var(--muted);margin:8px 0 16px">Monthly correlation between total ad spend and total units sold across all channels (Apr 2024 - Apr 2026)</p>';
 
   // Compute monthly Amazon & Walmart units from raw data
@@ -196,8 +199,9 @@ function renderOverview() {
   AMAZON_DATA.forEach(function(a) { var mo = a.date.substring(0,7); amzByMonth[mo] = (amzByMonth[mo]||0) + (a.units||0); });
   WALMART_DATA.forEach(function(w) { var mo = w.date.substring(0,7); wmtByMonth[mo] = (wmtByMonth[mo]||0) + (w.total_units||0); });
 
-  // Build monthly table with blended units
+  // Build monthly table with blended units (collapsible)
   var organicFloor = 460;
+  attrHtml += '<div id="attrTableWrap" style="display:none;overflow-x:auto">';
   attrHtml += '<table><thead><tr><th>Month</th><th style="text-align:right">Total Ad Spend</th><th style="text-align:right">Shopify Orders</th><th style="text-align:right">Amazon Units</th><th style="text-align:right">Walmart Units</th><th style="text-align:right">Total Units</th><th style="text-align:right">Spend vs Prev</th><th style="text-align:right">Units vs Prev</th></tr></thead><tbody>';
   var prev = null;
   MONTHLY_HISTORY.forEach(function(m) {
@@ -221,6 +225,7 @@ function renderOverview() {
     prev = {spend: totalSpend, units: totalUnits};
   });
   attrHtml += '</tbody></table>';
+  attrHtml += '</div>'; // end attrTableWrap
 
   // Key insights — blended across all channels
   var recentMonths = MONTHLY_HISTORY.filter(function(m) { return m.month >= '2025-11'; });
