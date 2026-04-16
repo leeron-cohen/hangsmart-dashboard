@@ -1210,6 +1210,40 @@ function renderSuggestions() {
   html += '<div class="anomaly-box info"><h4>8. ONGOING \u2014 HangSmart CTV Reviews + Arthur Install: Scaled, Monitor Closely</h4>';
   html += '<p>Both received budget increases Apr 16. CTV Reviews now $120/day (was $100). Arthur Install now $240/day (was $200). CTV Reviews is at 2.09x ROAS 14-day \u2014 the most efficient Meta campaign. Arthur Install at 1.19x 14-day. <strong>Apr 21\u201323 check:</strong> verify ROAS held after budget increase. If CTV Reviews stays above 1.8x, another 20% increase is eligible.</p></div>';
 
+  // ── META CHANGES LOG ──────────────────────────────────────────────────────
+  html += '<hr style="border:none;border-top:1px solid var(--border);margin:32px 0;opacity:0.4">';
+  html += '<div class="section-subtitle" style="font-size:14px;margin-bottom:16px">Changes Made \u2014 Meta Ads</div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Animation Soundbar Features MOF Paused (Apr 13)</h4>';
+  html += '<p><code>CAMPAIGN B</code> \u2192 <code>Ad Set C2 | MOF | Warm Intent</code> \u2192 paused. Was spending $201/week with 0 purchases. Budget redistributing toward Animation English Voice MOF (5.77x ROAS).</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Soundbar Catalog - BOF Paused (Apr 13)</h4>';
+  html += '<p><code>CAMPAIGN B</code> \u2192 <code>Ad Set C1 | BOF | High Intent</code> \u2192 paused. Was spending $48/week with 0 purchases from warm retargeting audience.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Campaign 3 Budget Rebalanced (Apr 13)</h4>';
+  html += '<p>Ad Set 1 (Winning Ads) \u2192 increased to $400/day. Ad Set 2 (Influencer Ads) \u2192 reduced to $300/day. Budget shifted toward higher-ROAS ad set.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Bruna LookAlike Budget Increased (Apr 13)</h4>';
+  html += '<p>TOF Test campaign \u2192 PRODUCT PAGE - TOF LOOKALIKE ad set budget increased by 20%. 1.93x ROAS, 32 purchases at $59 CPP.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Campaign A V2 Split Test Launched (Apr 14)</h4>';
+  html += '<p>4 ABO ad sets at $50/day each ($200/day total): Soundbar ASMR, Leeron Soundbar Voice, Animation Soundbar Features, Leeron Install Music. Learning Phase active. Review April 28\u2013May 1.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Cam Cam Paused \u2014 Campaign 1, VIDEO 3 (Apr 16)</h4>';
+  html += '<p>0.69x ROAS on both 7-day and 14-day windows \u2014 the clearest underperformer in the account. $1,382 spent in 14 days with no recovery trend. $131/day freed and redistributed into top performers at 20% max per ad set.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Leeron Pressure Test Paused \u2014 Campaign 2, Ad Set 4 (Apr 16)</h4>';
+  html += '<p>0.86x ROAS 14-day, 0.75x ROAS 7-day \u2014 declining in both windows. $154 CPP (2x+ above the $65 target). $1,729 spent 14-day with no purchase recovery visible. $94/day freed and redistributed.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Alizabeth Paused Within Campaign 3, Ad Set 2 (Apr 16)</h4>';
+  html += '<p>0.89x ROAS 14-day, 0.97x 7-day \u2014 sub-1x both windows within Ad Set 2 (Influencer Ads). Ad set budget ($300/day) remains active and redistributes automatically to Rebecca Janis (1.38x 7d, improving) and Where Has This Been (1.31x 7d, improving). No budget freed from this action \u2014 already within the ad set.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 $225/Day Budget Redistributed Across 6 Ad Sets at 20% Max (Apr 16)</h4>';
+  html += '<p>$225/day from Cam Cam + Leeron Pressure Test pauses redistributed: CTV Reviews +$20 \u2192 $120/day \u2022 Animation Testimonial +$25 \u2192 $150/day \u2022 Influencer Comp w/Leeron +$20 \u2192 $120/day \u2022 Arthur Install +$40 \u2192 $240/day \u2022 Winning Ads Compilations +$80 \u2192 $480/day \u2022 Leeron Boom BOF +$25. All increases at or below 20% threshold to prevent Learning Phase re-entry. <strong>Next check: Apr 21\u201323.</strong></p></div>';
+
+  html += '<div class="anomaly-box info"><h4>\u23f3 PENDING \u2014 Animation English Voice MOF Natural Budget Increase</h4>';
+  html += '<p>Monitoring whether spend increases naturally after Soundbar Features MOF pause. Check next Windsor pull. If not increased, manually raise Ad Set C2 daily budget by 20%.</p></div>';
+
   html += '</div>'; // end meta panel
 
   // ════════════════════════════════════════════════════════
@@ -1234,6 +1268,40 @@ function renderSuggestions() {
 
   html += '<div class="anomaly-box info"><h4>\u2139\ufe0f Google ROAS Context \u2014 All Google Figures Are Understated</h4>';
   html += '<p>Google conversion tracking only fires on Shopify website purchases. Amazon and Walmart purchases driven by Google PMax campaigns are invisible to Google\'s attribution. Apply the same 2.5x blended multiplier used for Meta: reported Google ROAS \u00d7 2.5 \u2248 true blended ROAS. This changes the picture significantly for marginal campaigns \u2014 a campaign showing 0.5x reported ROAS could be at 1.25x blended, which is still a net positive.</p></div>';
+
+  // ── GOOGLE CHANGES LOG ────────────────────────────────────────────────────
+  html += '<hr style="border:none;border-top:1px solid var(--border);margin:32px 0;opacity:0.4">';
+  html += '<div class="section-subtitle" style="font-size:14px;margin-bottom:16px">Changes Made \u2014 Google Ads</div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Google PMax 40 States Budget $75 \u2192 $90 \u2192 $140/Day (Apr 14\u201315)</h4>';
+  html += '<p>Apr 14: Live data showed $37 CPA vs PMax Top 10 States at $72 CPA. Budget raised $75 \u2192 $90/day. Apr 15: Budget raised again $90 \u2192 $140/day using savings from Brand | New reduction + additional push into best-performing Google campaign.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Brand | New Budget $100 \u2192 $50/Day (Apr 15)</h4>';
+  html += '<p>Budget halved. $50/day freed and redirected to PMax 40 States. Brand defense function unchanged \u2014 exact match branded keywords were simultaneously strengthened to maintain coverage quality.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Exact | New Ad Group Paused Entirely (Apr 15)</h4>';
+  html += '<p>Was spending $707 of $784 total in the campaign at 0.16x ROAS on generic "tv mount" broad match keywords. Zero purchase intent traffic. Paused to stop bleed.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Brand Broad Match Keywords Paused (Apr 15)</h4>';
+  html += '<p>Within Brand campaign: <code>"easy hang tv mount"</code> (broad match) and <code>"hangsmart tv mount"</code> (broad match) both paused. Were matching irrelevant queries and diluting brand campaign efficiency.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Exact Match Branded Keywords Added to Brand Campaign (Apr 15)</h4>';
+  html += '<p>Added: [hangsmart], [hang smart], [hangsmart tv mount], [hang smart tv mount]. Brand campaign is now tightly controlled on exact match \u2014 only genuine brand searches trigger ads. Quality Score and Ad Relevance should improve within 7 days.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 PMax Top 10 States Target ROAS Lowered 180% \u2192 140% (Apr 15)</h4>';
+  html += '<p>Aggressive 180% Target ROAS was throttling delivery \u2014 Google couldn\'t find enough qualifying conversions to meet it, leaving $117/day unspent. Lowered to 140% to give the algorithm room to spend the full $350/day cap. Monitor delivery in 5\u20137 days.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Remarketing Campaign Launched (Apr 15)</h4>';
+  html += '<p><code>Remarketing | HS Visitors | Non-Converters</code> \u2014 Search, $50/day, Conversions bidding. Targeting 71K+ HS site visitors who did not convert. 12 exact + phrase match keywords. 1 RSA. Day 7: check CTR (target 5%+). Day 30: if 30+ conversions, switch to Target CPA $45.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Google Ads Policy Violations Cleared (Apr 16)</h4>';
+  html += '<p>All Google Ads policy violations have been resolved. Account is in good standing. Violations were tied to the Exact | New ad group and broad match keywords that have since been paused and replaced with compliant exact match branded terms.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Google Merchant Center Feed Verification (Apr 16)</h4>';
+  html += '<p>Product feed verified as connected and healthy for Shopping placements within PMax campaigns. Feed is approved and active. No suppressed products or disapprovals detected.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 PMax Top 10 States Asset Group Updated (Apr 16)</h4>';
+  html += '<p>Video and image assets reviewed and updated. All assets are rated Excellent across both video and image categories. Target ROAS was already lowered to 140% on Apr 15. Delivery gap should close within 5\u20137 days of the ROAS change.</p></div>';
 
   html += '</div>'; // end google panel
 
@@ -1312,6 +1380,13 @@ function renderSuggestions() {
   html += '<div class="anomaly-box info"><h4>Attribution: Vibe Impact is Not Directly Measurable in Windsor</h4>';
   html += '<p>Vibe CTV is a pure awareness/upper-funnel channel. It has no click-through or conversion pixel. Its contribution shows up indirectly as: (1) Increased branded search volume (Google Brand | New campaign spend rising = more branded queries), (2) Higher Amazon organic velocity, (3) Higher return visit rate on Shopify. Cross-reference these signals weekly with Vibe impression volume to build a rough attribution model over time.</p></div>';
 
+  // ── VIBE CHANGES LOG ──────────────────────────────────────────────────────
+  html += '<hr style="border:none;border-top:1px solid var(--border);margin:32px 0;opacity:0.4">';
+  html += '<div class="section-subtitle" style="font-size:14px;margin-bottom:16px">Changes Made \u2014 Vibe CTV</div>';
+
+  html += '<div class="anomaly-box info"><h4>\u23f3 PENDING \u2014 Vibe Pacing Settings Check</h4>';
+  html += '<p>Apr 10 underspend ($279 vs ~$350 avg). Delivery recovered since. If recurs: log into Vibe dashboard and verify daily budget pacing rules and frequency cap settings.</p></div>';
+
   html += '</div>'; // end vibe panel
 
   // ════════════════════════════════════════════════════════
@@ -1337,74 +1412,6 @@ function renderSuggestions() {
 
   html += '</div>'; // end general panel
 
-  // ═══════════════════════════════════════════════════════
-  // CHANGES MADE SECTION (always visible below sub-tabs)
-  // ═══════════════════════════════════════════════════════
-  html += '<hr style="border:none;border-top:2px solid var(--border);margin:36px 0;opacity:0.5">';
-  html += '<div class="section-subtitle">Changes Made \u2014 Tracking & Action Log</div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Animation Soundbar Features MOF Paused (Apr 13)</h4>';
-  html += '<p><code>CAMPAIGN B</code> \u2192 <code>Ad Set C2 | MOF | Warm Intent</code> \u2192 paused. Was spending $201/week with 0 purchases. Budget redistributing toward Animation English Voice MOF (5.77x ROAS).</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Soundbar Catalog - BOF Paused (Apr 13)</h4>';
-  html += '<p><code>CAMPAIGN B</code> \u2192 <code>Ad Set C1 | BOF | High Intent</code> \u2192 paused. Was spending $48/week with 0 purchases from warm retargeting audience.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Campaign 3 Budget Rebalanced (Apr 13)</h4>';
-  html += '<p>Ad Set 1 (Winning Ads) \u2192 increased to $400/day. Ad Set 2 (Influencer Ads) \u2192 reduced to $300/day. Budget shifted toward higher-ROAS ad set.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Bruna LookAlike Budget Increased (Apr 13)</h4>';
-  html += '<p>TOF Test campaign \u2192 PRODUCT PAGE - TOF LOOKALIKE ad set budget increased by 20%. 1.93x ROAS, 32 purchases at $59 CPP.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Google PMax 40 States Budget $75 \u2192 $90 \u2192 $140/Day (Apr 14\u201315)</h4>';
-  html += '<p>Apr 14: Live data showed $37 CPA vs PMax Top 10 States at $72 CPA. Budget raised $75 \u2192 $90/day. Apr 15: Budget raised again $90 \u2192 $140/day using savings from Brand | New reduction + additional push into best-performing Google campaign.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Campaign A V2 Split Test Launched (Apr 14)</h4>';
-  html += '<p>4 ABO ad sets at $50/day each ($200/day total): Soundbar ASMR, Leeron Soundbar Voice, Animation Soundbar Features, Leeron Install Music. Learning Phase active. Review April 28\u2013May 1.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Brand | New Budget $100 \u2192 $50/Day (Apr 15)</h4>';
-  html += '<p>Budget halved. $50/day freed and redirected to PMax 40 States. Brand defense function unchanged \u2014 exact match branded keywords were simultaneously strengthened to maintain coverage quality.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Exact | New Ad Group Paused Entirely (Apr 15)</h4>';
-  html += '<p>Was spending $707 of $784 total in the campaign at 0.16x ROAS on generic "tv mount" broad match keywords. Zero purchase intent traffic. Paused to stop bleed.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Brand Broad Match Keywords Paused (Apr 15)</h4>';
-  html += '<p>Within Brand campaign: <code>"easy hang tv mount"</code> (broad match) and <code>"hangsmart tv mount"</code> (broad match) both paused. Were matching irrelevant queries and diluting brand campaign efficiency.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Exact Match Branded Keywords Added to Brand Campaign (Apr 15)</h4>';
-  html += '<p>Added: [hangsmart], [hang smart], [hangsmart tv mount], [hang smart tv mount]. Brand campaign is now tightly controlled on exact match \u2014 only genuine brand searches trigger ads. Quality Score and Ad Relevance should improve within 7 days.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 PMax Top 10 States Target ROAS Lowered 180% \u2192 140% (Apr 15)</h4>';
-  html += '<p>Aggressive 180% Target ROAS was throttling delivery \u2014 Google couldn\'t find enough qualifying conversions to meet it, leaving $117/day unspent. Lowered to 140% to give the algorithm room to spend the full $350/day cap. Monitor delivery in 5\u20137 days.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Remarketing Campaign Launched (Apr 15)</h4>';
-  html += '<p><code>Remarketing | HS Visitors | Non-Converters</code> \u2014 Search, $50/day, Conversions bidding. Targeting 71K+ HS site visitors who did not convert. 12 exact + phrase match keywords. 1 RSA. Day 7: check CTR (target 5%+). Day 30: if 30+ conversions, switch to Target CPA $45.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Google Ads Policy Violations Cleared (Apr 16)</h4>';
-  html += '<p>All Google Ads policy violations that were flagged have been resolved as of this morning. Account is in good standing. Violations were tied to the Exact | New ad group and broad match keywords that have since been paused and replaced with compliant exact match branded terms.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Cam Cam Paused \u2014 Campaign 1, VIDEO 3 (Apr 16)</h4>';
-  html += '<p>0.69x ROAS on both 7-day and 14-day windows \u2014 the clearest underperformer in the account. $1,382 spent in 14 days with no recovery trend. $131/day freed and redistributed into top performers at 20% max per ad set.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Leeron Pressure Test Paused \u2014 Campaign 2, Ad Set 4 (Apr 16)</h4>';
-  html += '<p>0.86x ROAS 14-day, 0.75x ROAS 7-day \u2014 declining in both windows. $154 CPP (2x+ above the $65 target). $1,729 spent 14-day with no purchase recovery visible. $94/day freed and redistributed.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Alizabeth Paused Within Campaign 3, Ad Set 2 (Apr 16)</h4>';
-  html += '<p>0.89x ROAS 14-day, 0.97x 7-day \u2014 sub-1x both windows within Ad Set 2 (Influencer Ads). Ad set budget ($300/day) remains active and redistributes automatically to Rebecca Janis (1.38x 7d, improving) and Where Has This Been (1.31x 7d, improving). No budget freed from this action \u2014 already within the ad set.</p></div>';
-
-  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 $225/Day Budget Redistributed Across 6 Ad Sets at 20% Max (Apr 16)</h4>';
-  html += '<p>$225/day from Cam Cam + Leeron Pressure Test pauses redistributed: CTV Reviews +$20 \u2192 $120/day \u2022 Animation Testimonial +$25 \u2192 $150/day \u2022 Influencer Comp w/Leeron +$20 \u2192 $120/day \u2022 Arthur Install +$40 \u2192 $240/day \u2022 Winning Ads Compilations +$80 \u2192 $480/day \u2022 Leeron Boom BOF +$25. All increases at or below 20% threshold to prevent Learning Phase re-entry. <strong>Next check: Apr 21\u201323.</strong></p></div>';
-
-  html += '<div class="anomaly-box info"><h4>\u23f3 PENDING \u2014 Animation English Voice MOF Natural Budget Increase</h4>';
-  html += '<p>Monitoring whether spend increases naturally after Soundbar Features MOF pause. Check next Windsor pull. If not increased, manually raise Ad Set C2 daily budget by 20%.</p></div>';
-
-  html += '<div class="anomaly-box info"><h4>\u23f3 PENDING \u2014 PMax Top 10 States Asset Gap</h4>';
-  html += '<p>Target ROAS lowered to 140% on Apr 15. Delivery gap ($233/day vs $350 cap) should begin closing. Still need: add 3+ video assets (portrait + landscape) and 5+ image assets to the Asset Group. Check ratings \u2014 any asset rated Poor should be replaced immediately.</p></div>';
-
-  html += '<div class="anomaly-box info"><h4>\u23f3 PENDING \u2014 Google Merchant Center Feed Verification</h4>';
-  html += '<p>Verify product feed is connected and healthy for Shopping placements within PMax campaigns. A broken or disapproved feed suppresses PMax Shopping delivery silently.</p></div>';
-
-  html += '<div class="anomaly-box info"><h4>\u23f3 PENDING \u2014 Vibe Pacing Settings Check</h4>';
-  html += '<p>Apr 10 underspend ($279 vs ~$350 avg). Delivery recovered since. If recurs: log into Vibe dashboard and verify daily budget pacing rules and frequency cap settings.</p></div>';
 
   // ═══════════════════════════════════════════════════════
   // FULL AD SCORECARD (ALL PLATFORMS)
