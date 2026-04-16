@@ -1182,20 +1182,33 @@ function renderSuggestions() {
   html += '<div class="anomaly-box success"><h4>2. HIGH PRIORITY \u2014 Continue Scaling Winning Video + Bruna LookAlike</h4>';
   html += '<p><strong>Winning Video</strong> (Campaign 3, Ad Set 1): 2.00x ROAS, 31 purchases, $47 CPP, $0.42 CPC. Budget was increased to $400/day Apr 13. If ROAS has held above 1.8x for 7 days, eligible for another 20% increase. <strong>Bruna LookAlike Dynamic Creatives</strong> (TOF Test): 1.93x ROAS, 32 purchases, $59 CPP \u2014 this is no longer a test, it is a proven performer. Keep scaling. Same rule: max 20% budget increase at a time, 7-day observation between adjustments.</p></div>';
 
-  html += '<div class="anomaly-box success"><h4>3. Campaign 3 Rebalance \u2014 Confirmed Apr 13</h4>';
-  html += '<p>Ad Set 1 (Winning Ads Compilations) increased to $400/day. Ad Set 2 (Influencer Ads) reduced to $300/day. This is correct. Influencer Ads contains Rebecca Janis (0.92x ROAS), Alizabeth (1.06x ROAS), Where Has This Been (1.07x ROAS) \u2014 all borderline. If any of these individual ads fall below 0.8x ROAS on the next Windsor pull, pause that specific ad and let the $300/day concentrate on the remaining performers.</p></div>';
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 3. COMPLETE \u2014 Campaign 3 Rebalanced + Alizabeth Paused (Apr 13 \u2192 Apr 16)</h4>';
+  html += '<p>Ad Set 1 (Winning Ads Compilations) increased to $400/day (Apr 13), then bumped to <strong>$480/day (+20%) on Apr 16</strong>. Ad Set 2 (Influencer Ads) reduced to $300/day (Apr 13). Within Ad Set 2: <strong>Alizabeth paused Apr 16</strong> (0.89x ROAS 14-day, 0.97x 7-day \u2014 sub-1x both windows). Budget concentrating on Rebecca Janis (1.12x 14d, 1.38x 7d \u2014 trending up) and Where Has This Been (1.00x 14d, 1.31x 7d \u2014 improving). <strong>Next check Apr 21\u201323:</strong> if Rebecca Janis holds 1.3x+ on 7-day, raise Ad Set 2 budget by 20%.</p></div>';
 
-  html += '<div class="anomaly-box warning"><h4>4. MONITOR \u2014 Cam cam Before Any Budget Change</h4>';
-  html += '<p>Cam cam: 6.47% CTR / $0.78 CPC but only 0.46x Shopify ROAS. This is the highest CTR ad in the account. High CTR with low Shopify ROAS = likely driving Amazon purchases the pixel cannot see. <strong>Do not cut or scale</strong> until you cross-reference Amazon soundbar unit trends for the same period. If Amazon units are tracking up during weeks Cam cam was heaviest, it is contributing. Hold steady.</p></div>';
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 4. COMPLETE \u2014 Cam Cam Paused (Apr 16)</h4>';
+  html += '<p>Cam Cam (Campaign 1, VIDEO 3): <strong>0.69x ROAS on both 7-day and 14-day windows</strong> \u2014 the clearest cut in the account. $1,382 spent 14-day with no recovery trend visible in either window. <strong>$131/day freed and redistributed</strong> across 6 top performers at 20% max per ad set (see $225 redistribution log below). Budget from Amazon attribution concern was assessed \u2014 soundbar campaign, not TV mount. Cam Cam was a TV mount ad. Cut confirmed correct.</p></div>';
 
   html += '<div class="anomaly-box warning"><h4>5. MONITOR \u2014 Animation Soundbar Install (Campaign A Legacy)</h4>';
-  html += '<p>Campaign A (legacy): $2,342 spent last 7 days, 31 purchases, 0.79x Shopify ROAS. Soundbar sells on Amazon where the pixel cannot fire. Budget was reduced by $200/day when V2 launched. Current run rate should be lower. Check Amazon soundbar units this week \u2014 if volume is holding, do not cut further. If Amazon soundbar is trending down regardless of ad spend, reduce Campaign A another 25%.</p></div>';
+  html += '<p>Campaign A (legacy): $4,157 spent 14-day, 0.76x Shopify ROAS. Soundbar sells on Amazon where the pixel cannot fire. Budget was reduced when V2 launched. <strong>Do not cut further</strong> until Amazon soundbar unit velocity is cross-referenced. If Amazon soundbar trend is holding at V2 launch levels, Campaign A is still contributing to Amazon revenue invisibly. Review alongside Campaign A V2 results on Apr 28\u2013May 1.</p></div>';
 
-  html += '<div class="anomaly-box info"><h4>6. ONGOING \u2014 HangSmart CTV Reviews + Arthur Install: Do Not Touch</h4>';
-  html += '<p>HangSmart CTV - Reviews: 2.39x ROAS, 17 purchases, $43 CPP. Arthur Install: 1.42x ROAS, 23 purchases, $64 CPP. Both were previously flagged incorrectly for cuts. Both are proven performers. Keep them running exactly as-is.</p></div>';
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 6. COMPLETE \u2014 Leeron Pressure Test Paused (Apr 16)</h4>';
+  html += '<p>Leeron Pressure Test (Campaign 2, Ad Set 4): <strong>0.86x ROAS 14-day, 0.75x ROAS 7-day</strong> \u2014 both windows sub-1x and the 7-day is declining. $1,729 spent 14-day with no recovery trend. <strong>$94/day freed and redistributed</strong> at 20% max across 6 top performers (see $225 redistribution log below). CPP was $154 \u2014 more than 2x the $65 target.</p></div>';
 
-  html += '<div class="anomaly-box info"><h4>7. ONGOING \u2014 Leeron Pressure Test: Watch CPP</h4>';
-  html += '<p>Leeron Pressure Test (Campaign 2): $922/week, 6 purchases, 0.85x ROAS, $154 CPP. That CPP is significantly above the $60\u201370 target. It has 2.7% CTR which is respectable, but it is not converting at a purchase level. One more week of data. If CPP stays above $120 on next Windsor pull, pause this ad and redistribute its $131/day budget to Winning Video or Bruna LookAlike.</p></div>';
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 7. COMPLETE \u2014 $225/day Budget Redistributed at 20% Max Per Ad Set (Apr 16)</h4>';
+  html += '<p>Source: Cam Cam ($131/day) + Leeron Pressure Test ($94/day) = <strong>$225/day freed</strong>. Distributed at 20% maximum per ad set to avoid triggering Meta Learning Phase re-entry. Safe scaling rule: &lt;20% increase = algorithm stays in delivery mode. &gt;20% = significant edit = Learning Phase reset.</p>';
+  html += '<p style="margin:8px 0 4px"><strong>Recipients:</strong></p>';
+  html += '<ul style="margin:0 0 8px;padding-left:18px;font-size:13px;line-height:1.8">';
+  html += '<li>CTV Reviews \u2014 Campaign 2, Ad Set 1: <strong>$100 \u2192 $120/day (+$20)</strong></li>';
+  html += '<li>Animation Testimonial \u2014 Campaign 2, Ad Set 4: <strong>$125 \u2192 $150/day (+$25)</strong></li>';
+  html += '<li>Influencer Comp w/Leeron \u2014 Campaign 1, VIDEO 2: <strong>$100 \u2192 $120/day (+$20)</strong></li>';
+  html += '<li>Arthur Install \u2014 Campaign 2, Ad Set 3: <strong>$200 \u2192 $240/day (+$40)</strong></li>';
+  html += '<li>Winning Ads Compilations \u2014 Campaign 3, Ad Set 1: <strong>$400 \u2192 $480/day (+$80)</strong></li>';
+  html += '<li>Leeron Boom BOF \u2014 Campaign 5, Ad Set 1: <strong>+$25/day</strong> (exact current base TBD)</li>';
+  html += '</ul>';
+  html += '<p style="color:var(--muted);font-size:12px"><strong>Next check: Apr 21\u201323</strong> \u2014 pull Windsor on all 6 recipients. If any ROAS dropped &gt;0.3x from baseline after increase, pull back that ad set immediately. If holding or improving, eligible for another 20% step on Apr 28+.</p></div>';
+
+  html += '<div class="anomaly-box info"><h4>8. ONGOING \u2014 HangSmart CTV Reviews + Arthur Install: Scaled, Monitor Closely</h4>';
+  html += '<p>Both received budget increases Apr 16. CTV Reviews now $120/day (was $100). Arthur Install now $240/day (was $200). CTV Reviews is at 2.09x ROAS 14-day \u2014 the most efficient Meta campaign. Arthur Install at 1.19x 14-day. <strong>Apr 21\u201323 check:</strong> verify ROAS held after budget increase. If CTV Reviews stays above 1.8x, another 20% increase is eligible.</p></div>';
 
   html += '</div>'; // end meta panel
 
@@ -1369,6 +1382,18 @@ function renderSuggestions() {
   html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Google Ads Policy Violations Cleared (Apr 16)</h4>';
   html += '<p>All Google Ads policy violations that were flagged have been resolved as of this morning. Account is in good standing. Violations were tied to the Exact | New ad group and broad match keywords that have since been paused and replaced with compliant exact match branded terms.</p></div>';
 
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Cam Cam Paused \u2014 Campaign 1, VIDEO 3 (Apr 16)</h4>';
+  html += '<p>0.69x ROAS on both 7-day and 14-day windows \u2014 the clearest underperformer in the account. $1,382 spent in 14 days with no recovery trend. $131/day freed and redistributed into top performers at 20% max per ad set.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Leeron Pressure Test Paused \u2014 Campaign 2, Ad Set 4 (Apr 16)</h4>';
+  html += '<p>0.86x ROAS 14-day, 0.75x ROAS 7-day \u2014 declining in both windows. $154 CPP (2x+ above the $65 target). $1,729 spent 14-day with no purchase recovery visible. $94/day freed and redistributed.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Alizabeth Paused Within Campaign 3, Ad Set 2 (Apr 16)</h4>';
+  html += '<p>0.89x ROAS 14-day, 0.97x 7-day \u2014 sub-1x both windows within Ad Set 2 (Influencer Ads). Ad set budget ($300/day) remains active and redistributes automatically to Rebecca Janis (1.38x 7d, improving) and Where Has This Been (1.31x 7d, improving). No budget freed from this action \u2014 already within the ad set.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 $225/Day Budget Redistributed Across 6 Ad Sets at 20% Max (Apr 16)</h4>';
+  html += '<p>$225/day from Cam Cam + Leeron Pressure Test pauses redistributed: CTV Reviews +$20 \u2192 $120/day \u2022 Animation Testimonial +$25 \u2192 $150/day \u2022 Influencer Comp w/Leeron +$20 \u2192 $120/day \u2022 Arthur Install +$40 \u2192 $240/day \u2022 Winning Ads Compilations +$80 \u2192 $480/day \u2022 Leeron Boom BOF +$25. All increases at or below 20% threshold to prevent Learning Phase re-entry. <strong>Next check: Apr 21\u201323.</strong></p></div>';
+
   html += '<div class="anomaly-box info"><h4>\u23f3 PENDING \u2014 Animation English Voice MOF Natural Budget Increase</h4>';
   html += '<p>Monitoring whether spend increases naturally after Soundbar Features MOF pause. Check next Windsor pull. If not increased, manually raise Ad Set C2 daily budget by 20%.</p></div>';
 
@@ -1385,8 +1410,8 @@ function renderSuggestions() {
   // FULL AD SCORECARD (ALL PLATFORMS)
   // ═══════════════════════════════════════════════════════
   html += '<hr style="border:none;border-top:2px solid var(--border);margin:36px 0;opacity:0.5">';
-  html += '<div class="section-subtitle">Full Ad Scorecard \u2014 All Active Campaigns (Apr 6\u201313)</div>';
-  html += '<p style="color:var(--muted);font-size:13px;margin-bottom:12px">Ranked by ROAS. CTR and CPC shown for context only. Primary decision signal: ROAS + purchases. Attribution gap note: Meta/Google pixel only captures Shopify. All ROAS figures understated by ~60%.</p>';
+  html += '<div class="section-subtitle">Full Ad Scorecard \u2014 All Active Campaigns (Apr 2\u201315 \u2014 14-Day)</div>';
+  html += '<p style="color:var(--muted);font-size:13px;margin-bottom:12px">Ranked by ROAS. 14-day window used as primary signal (statistical significance). 7-day cross-referenced for trend direction. Attribution gap: Meta/Google pixel only captures Shopify \u2014 all ROAS figures understated by ~60%. Paused ad sets shown at bottom for reference.</p>';
 
   // META ADS SCORECARD
   html += '<div class="section-subtitle" style="font-size:13px;margin:20px 0 10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px">Meta Ads</div>';
@@ -1403,31 +1428,39 @@ function renderSuggestions() {
   html += '</tr></thead><tbody>';
 
   var metaAds = [
-    {ad:'Animation English Voice MOF', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C2 | MOF | Warm Intent', spend:'$24', ctr:'0.3%', cpc:'$7.96', pur:2, roas:'5.77x', cpp:'$12', tag:'scale'},
-    {ad:'HangSmart CTV - Reviews', camp:'CAMPAIGN 2', aset:'Ad Set 1 - CTV ADS Reviews', spend:'$736', ctr:'0.9%', cpc:'$2.56', pur:17, roas:'2.39x', cpp:'$43', tag:'scale'},
-    {ad:'Winning Video', camp:'CAMPAIGN 3', aset:'Ad Set 1 - Wining Ads Compilations', spend:'$1,460', ctr:'4.6%', cpc:'$0.42', pur:31, roas:'2.00x', cpp:'$47', tag:'scale'},
+    // ─── SCALE ──────────────────────────────────────────────────────────────
+    {ad:'Animation English Voice MOF', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C2 | MOF | Warm Intent', spend:'$54', ctr:'0.3%', cpc:'$7.96', pur:3, roas:'3.32x', cpp:'$18', tag:'scale'},
+    {ad:'HangSmart CTV - Reviews', camp:'CAMPAIGN 2', aset:'Ad Set 1 - CTV ADS Reviews \u2014 \u21912 $120/day (+20% Apr 16)', spend:'$1,382', ctr:'0.9%', cpc:'$2.56', pur:53, roas:'2.09x', cpp:'$26', tag:'scale'},
     {ad:'Bruna LookAlike Dynamic Creatives', camp:'TOF Test', aset:'PRODUCT PAGE - TOF LOOKALIKE', spend:'$1,881', ctr:'2.4%', cpc:'$1.30', pur:32, roas:'1.93x', cpp:'$59', tag:'scale'},
-    {ad:'Leeron Boom - BOF', camp:'CAMPAIGN 5 | BOF', aset:'Ad Set 1 | High Intent 0-30 Days | BOF', spend:'$1,328', ctr:'3.6%', cpc:'$1.54', pur:24, roas:'1.76x', cpp:'$55', tag:'scale'},
-    {ad:'Animation Testimonial Mashup', camp:'CAMPAIGN 2', aset:'Ad Set 4 - Animation Testimonial', spend:'$902', ctr:'4.1%', cpc:'$0.81', pur:14, roas:'1.53x', cpp:'$64', tag:'scale'},
-    {ad:'Arthur Install', camp:'CAMPAIGN 2', aset:'Ad Set 3 - Arthur Install', spend:'$1,476', ctr:'1.6%', cpc:'$1.62', pur:23, roas:'1.42x', cpp:'$64', tag:'stable'},
-    {ad:'Winning Video - MOF', camp:'CAMPAIGN 4 | MOF', aset:'Ad Set 2 | Mid Intent 0-90 Days | MOF', spend:'$1,369', ctr:'2.9%', cpc:'$0.73', pur:19, roas:'1.39x', cpp:'$72', tag:'stable'},
-    {ad:'Cam 1', camp:'CAMPAIGN 1', aset:'VIDEO 4 - Cam 1', spend:'$1,389', ctr:'3.6%', cpc:'$0.97', pur:19, roas:'1.30x', cpp:'$73', tag:'stable'},
-    {ad:'Animation Soundbar Install BOF', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C1 | BOF | High Intent', spend:'$85', ctr:'1.4%', cpc:'$2.66', pur:2, roas:'1.31x', cpp:'$43', tag:'monitor'},
-    {ad:'Influencer Compilation w/Leeron', camp:'CAMPAIGN 1', aset:'VIDEO 2 - Influencer Comp', spend:'$729', ctr:'2.1%', cpc:'$1.48', pur:9, roas:'1.11x', cpp:'$81', tag:'monitor'},
-    {ad:'Leeron BOOM Video', camp:'CAMPAIGN 3', aset:'Ad Set 1 - Wining Ads Compilations', spend:'$1,104', ctr:'3.6%', cpc:'$1.00', pur:13, roas:'1.06x', cpp:'$85', tag:'monitor'},
-    {ad:'Alizabeth', camp:'CAMPAIGN 3', aset:'Ad Set 2 - Influencer Ads', spend:'$728', ctr:'5.1%', cpc:'$1.59', pur:8, roas:'1.06x', cpp:'$91', tag:'monitor'},
-    {ad:'Where Has This Been', camp:'CAMPAIGN 3', aset:'Ad Set 2 - Influencer Ads', spend:'$169', ctr:'2.1%', cpc:'$1.39', pur:2, roas:'1.07x', cpp:'$84', tag:'monitor'},
-    {ad:'Influencer Compilation', camp:'CAMPAIGN 1', aset:'VIDEO 1 - Influencer Compilation', spend:'$1,391', ctr:'1.7%', cpc:'$2.28', pur:19, roas:'0.96x', cpp:'$73', tag:'monitor'},
-    {ad:'Rebecca Janis', camp:'CAMPAIGN 3', aset:'Ad Set 2 - Influencer Ads', spend:'$1,704', ctr:'3.4%', cpc:'$0.68', pur:22, roas:'0.92x', cpp:'$77', tag:'monitor'},
-    {ad:'Animation Soundbar Install', camp:'CAMPAIGN A | Legacy', aset:'Campaign A | Prospecting Workhorse', spend:'$2,342', ctr:'2.1%', cpc:'$1.76', pur:31, roas:'0.79x', cpp:'$76', tag:'monitor'},
-    {ad:'Leeron Pressure Test', camp:'CAMPAIGN 2', aset:'Ad Set 4 - Leeron Pressure Test', spend:'$922', ctr:'2.7%', cpc:'$1.36', pur:6, roas:'0.85x', cpp:'$154', tag:'monitor'},
-    {ad:'Cam cam', camp:'CAMPAIGN 1', aset:'VIDEO 3 - Cam Cam', spend:'$733', ctr:'6.5%', cpc:'$0.78', pur:5, roas:'0.46x', cpp:'$147', tag:'monitor'},
-    {ad:'Cam 2 - MOF', camp:'CAMPAIGN 4 | MOF', aset:'Ad Set 2 | Mid Intent 0-90 Days | MOF', spend:'$263', ctr:'3.4%', cpc:'$0.95', pur:2, roas:'0.61x', cpp:'$131', tag:'monitor'},
-    {ad:'Animation Soundbar Features MOF', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C2 | MOF | Warm Intent', spend:'$201', ctr:'2.1%', cpc:'$2.39', pur:0, roas:'0.00x', cpp:'\u2014', tag:'underperform'},
-    {ad:'Soundbar Catalog - BOF \u2014 PAUSED', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C1 | BOF | High Intent', spend:'$48', ctr:'1.4%', cpc:'$1.86', pur:0, roas:'0.00x', cpp:'\u2014', tag:'underperform'}
+    {ad:'Leeron Boom - BOF', camp:'CAMPAIGN 5 | BOF', aset:'Ad Set 1 | High Intent 0-30 Days | BOF \u2014 \u21912 $150/day (+$25 Apr 16)', spend:'$2,397', ctr:'3.6%', cpc:'$1.54', pur:73, roas:'1.64x', cpp:'$33', tag:'scale'},
+    {ad:'Animation Testimonial Mashup', camp:'CAMPAIGN 2', aset:'Ad Set 4 - Animation Testimonial \u2014 \u21912 $150/day (+20% Apr 16)', spend:'$1,717', ctr:'4.1%', cpc:'$0.81', pur:52, roas:'1.63x', cpp:'$33', tag:'scale'},
+    // ─── STABLE ─────────────────────────────────────────────────────────────
+    {ad:'Winning Video - MOF', camp:'CAMPAIGN 4 | MOF', aset:'Ad Set 2 | Mid Intent 0-90 Days | MOF', spend:'$2,541', ctr:'2.9%', cpc:'$0.73', pur:67, roas:'1.42x', cpp:'$38', tag:'stable'},
+    {ad:'Winning Video', camp:'CAMPAIGN 3', aset:'Ad Set 1 - Wining Ads Compilations \u2014 \u21912 $480/day (+20% Apr 16)', spend:'$2,977', ctr:'4.6%', cpc:'$0.42', pur:82, roas:'1.45x', cpp:'$36', tag:'stable'},
+    {ad:'Animation Soundbar Install BOF', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C1 | BOF | High Intent', spend:'$153', ctr:'1.4%', cpc:'$2.66', pur:4, roas:'1.36x', cpp:'$38', tag:'stable'},
+    {ad:'Influencer Comp w/Leeron', camp:'CAMPAIGN 1', aset:'VIDEO 2 - Influencer Comp \u2014 \u21912 $120/day (+20% Apr 16)', spend:'$1,376', ctr:'2.1%', cpc:'$1.48', pur:33, roas:'1.28x', cpp:'$42', tag:'stable'},
+    // ─── MONITOR ────────────────────────────────────────────────────────────
+    {ad:'Arthur Install', camp:'CAMPAIGN 2', aset:'Ad Set 3 - Arthur Install \u2014 \u21912 $240/day (+20% Apr 16)', spend:'$2,766', ctr:'1.6%', cpc:'$1.62', pur:61, roas:'1.19x', cpp:'$45', tag:'monitor'},
+    {ad:'Soundbar Catalog BOF', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C1 | BOF | High Intent', spend:'$88', ctr:'1.4%', cpc:'$1.86', pur:2, roas:'1.18x', cpp:'$44', tag:'monitor'},
+    {ad:'Leeron Soundbar Voice BOF', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C1 | BOF | High Intent', spend:'$174', ctr:'2.0%', cpc:'$2.00', pur:4, roas:'1.11x', cpp:'$44', tag:'monitor'},
+    {ad:'Rebecca Janis \u2191 trending', camp:'CAMPAIGN 3', aset:'Ad Set 2 - Influencer Ads', spend:'$3,231', ctr:'3.4%', cpc:'$0.68', pur:67, roas:'1.12x', cpp:'$48', tag:'monitor'},
+    {ad:'Influencer Compilation', camp:'CAMPAIGN 1', aset:'VIDEO 1 - Influencer Compilation', spend:'$2,627', ctr:'1.7%', cpc:'$2.28', pur:53, roas:'1.08x', cpp:'$50', tag:'monitor'},
+    {ad:'Leeron BOOM Video', camp:'CAMPAIGN 3', aset:'Ad Set 1 - Wining Ads Compilations', spend:'$2,000', ctr:'3.6%', cpc:'$1.00', pur:39, roas:'1.08x', cpp:'$51', tag:'monitor'},
+    {ad:'Where Has This Been \u2191 trending', camp:'CAMPAIGN 3', aset:'Ad Set 2 - Influencer Ads', spend:'$294', ctr:'2.1%', cpc:'$1.39', pur:5, roas:'1.00x', cpp:'$59', tag:'monitor'},
+    {ad:'Cam 1', camp:'CAMPAIGN 1', aset:'VIDEO 4 - Cam 1', spend:'$2,614', ctr:'3.6%', cpc:'$0.97', pur:49, roas:'1.00x', cpp:'$53', tag:'monitor'},
+    {ad:'Rebecca Janis BOF', camp:'CAMPAIGN 5 | BOF', aset:'Ad Set 1 | High Intent 0-30 Days | BOF', spend:'$380', ctr:'2.8%', cpc:'$1.50', pur:6, roas:'0.79x', cpp:'$63', tag:'monitor'},
+    {ad:'Animation Soundbar Install', camp:'CAMPAIGN A | Legacy', aset:'Campaign A | Prospecting Workhorse', spend:'$4,157', ctr:'2.1%', cpc:'$1.76', pur:59, roas:'0.76x', cpp:'$70', tag:'monitor'},
+    {ad:'Cam 2 - MOF', camp:'CAMPAIGN 4 | MOF', aset:'Ad Set 2 | Mid Intent 0-90 Days | MOF', spend:'$548', ctr:'3.4%', cpc:'$0.95', pur:5, roas:'0.49x', cpp:'$110', tag:'monitor'},
+    // ─── PAUSED ─────────────────────────────────────────────────────────────
+    {ad:'Leeron Pressure Test \u2014 PAUSED Apr 16', camp:'CAMPAIGN 2', aset:'Ad Set 4 - Leeron Pressure Test', spend:'$1,729', ctr:'2.7%', cpc:'$1.36', pur:28, roas:'0.86x', cpp:'$62', tag:'paused'},
+    {ad:'Alizabeth \u2014 PAUSED Apr 16', camp:'CAMPAIGN 3', aset:'Ad Set 2 - Influencer Ads', spend:'$1,231', ctr:'5.1%', cpc:'$1.59', pur:20, roas:'0.89x', cpp:'$62', tag:'paused'},
+    {ad:'Cam Cam \u2014 PAUSED Apr 16', camp:'CAMPAIGN 1', aset:'VIDEO 3 - Cam Cam', spend:'$1,382', ctr:'6.5%', cpc:'$0.78', pur:18, roas:'0.69x', cpp:'$77', tag:'paused'},
+    {ad:'Animation Soundbar Features MOF \u2014 PAUSED Apr 13', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C2 | MOF | Warm Intent', spend:'$279', ctr:'2.1%', cpc:'$2.39', pur:1, roas:'0.47x', cpp:'\u2014', tag:'paused'},
+    {ad:'Animation Music MOF \u2014 PAUSED', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C2 | MOF | Warm Intent', spend:'$132', ctr:'1.8%', cpc:'$2.10', pur:1, roas:'0.33x', cpp:'\u2014', tag:'paused'},
+    {ad:'Soundbar Catalog BOF \u2014 PAUSED Apr 13', camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C1 | BOF | High Intent', spend:'$48', ctr:'1.4%', cpc:'$1.86', pur:0, roas:'0.00x', cpp:'\u2014', tag:'paused'}
   ];
 
-  var tagColors = {scale:'var(--green)',stable:'var(--blue,#60a5fa)',monitor:'var(--gold)',underperform:'var(--red)'};
+  var tagColors = {scale:'var(--green)',stable:'var(--blue,#60a5fa)',monitor:'var(--gold)',underperform:'var(--red)',paused:'var(--muted)'};
   var roasColor = function(r) { var v = parseFloat(r); return v >= 1.5 ? 'var(--green)' : v >= 1.0 ? 'var(--gold)' : v > 0 ? 'var(--red)' : 'var(--muted)'; };
 
   metaAds.forEach(function(a) {
@@ -1557,6 +1590,164 @@ function renderStrategicRecs() {
 
 
 
+function renderAdSpend() {
+  var el = document.getElementById('adspendContent');
+  if (!el) return;
+  var html = '';
+
+  // ── HEADER ────────────────────────────────────────────────────────────────
+  html += '<div style="margin-bottom:20px;padding:14px 18px;background:rgba(216,18,124,0.07);border-radius:8px;border-left:3px solid var(--accent)">';
+  html += '<strong style="font-size:15px;color:var(--accent)">Current Daily Budget Settings \u2014 All Ad Platforms</strong>';
+  html += '<p style="margin:6px 0 0;color:var(--muted);font-size:13px">As of April 16, 2026 \u2014 1:21 PM EST. Reflects budgets as currently set in each platform. Campaign-level budgets listed directly. Ad set-level budgets listed under the campaign in smaller text.</p>';
+  html += '</div>';
+
+  // ═══ META ADS ════════════════════════════════════════════════════════════
+  html += '<div style="margin-bottom:32px">';
+  html += '<div class="section-subtitle" style="font-size:14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center">';
+  html += '<span>\ud83d\udfe6 Meta Ads</span>';
+  html += '<span style="font-size:13px;font-weight:400;color:var(--muted)">Ad set-level budgets (ABO)</span>';
+  html += '</div>';
+  html += '<table class="perf-table" style="width:100%"><thead><tr>';
+  html += '<th style="text-align:left">Campaign</th>';
+  html += '<th style="text-align:left;font-size:11px;color:var(--muted)">Ad Set</th>';
+  html += '<th style="text-align:right">Daily Budget</th>';
+  html += '</tr></thead><tbody>';
+
+  var metaBudgets = [
+    {camp:'CAMPAIGN 1', aset:'VIDEO 1 \u2014 Influencer Compilation', budget:'$200/day', note:''},
+    {camp:'CAMPAIGN 1', aset:'VIDEO 2 \u2014 Influencer Comp w/Leeron', budget:'$120/day', note:'\u21912 +20% Apr 16'},
+    {camp:'CAMPAIGN 1', aset:'VIDEO 4 \u2014 Cam 1', budget:'$200/day', note:''},
+    {camp:'CAMPAIGN 1', aset:'VIDEO 3 \u2014 Cam Cam', budget:'\u2014', note:'PAUSED Apr 16'},
+    {camp:'CAMPAIGN 2', aset:'Ad Set 1 \u2014 CTV ADS Reviews', budget:'$120/day', note:'\u21912 +20% Apr 16'},
+    {camp:'CAMPAIGN 2', aset:'Ad Set 3 \u2014 Arthur Install', budget:'$240/day', note:'\u21912 +20% Apr 16'},
+    {camp:'CAMPAIGN 2', aset:'Ad Set 4 \u2014 Animation Testimonial Mashup', budget:'$150/day', note:'\u21912 +20% Apr 16'},
+    {camp:'CAMPAIGN 2', aset:'Ad Set 4 \u2014 Leeron Pressure Test', budget:'\u2014', note:'PAUSED Apr 16'},
+    {camp:'CAMPAIGN 3', aset:'Ad Set 1 \u2014 Winning Ads Compilations', budget:'$480/day', note:'\u21912 +20% Apr 16'},
+    {camp:'CAMPAIGN 3', aset:'Ad Set 2 \u2014 Influencer Ads (Rebecca Janis + Where Has This Been)', budget:'$300/day', note:'Alizabeth paused within set Apr 16'},
+    {camp:'CAMPAIGN 4 | MOF', aset:'Ad Set 2 \u2014 Mid Intent 0\u201390 Days', budget:'$200/day', note:''},
+    {camp:'CAMPAIGN 5 | BOF', aset:'Ad Set 1 \u2014 High Intent 0\u201330 Days', budget:'~$150/day', note:'+$25 Apr 16'},
+    {camp:'TOF Test', aset:'PRODUCT PAGE \u2014 TOF LOOKALIKE (Bruna LookAlike)', budget:'$200/day', note:''},
+    {camp:'CAMPAIGN A | Legacy', aset:'Campaign A | Prospecting Workhorse (Animation Soundbar Install)', budget:'$200/day', note:'Reduced when V2 launched Apr 14'},
+    {camp:'CAMPAIGN A V2', aset:'Soundbar ASMR', budget:'$50/day', note:'Learning Phase \u2014 launched Apr 14'},
+    {camp:'CAMPAIGN A V2', aset:'Leeron Soundbar Voice', budget:'$50/day', note:'Learning Phase \u2014 launched Apr 14'},
+    {camp:'CAMPAIGN A V2', aset:'Animation Soundbar Features', budget:'$50/day', note:'Learning Phase \u2014 launched Apr 14'},
+    {camp:'CAMPAIGN A V2', aset:'Leeron Install Music', budget:'$50/day', note:'Learning Phase \u2014 launched Apr 14'},
+    {camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C1 | BOF | High Intent', budget:'$50/day', note:'Multiple BOF ads running within set'},
+    {camp:'CAMPAIGN B | Soundbar', aset:'Ad Set C2 | MOF | Warm Intent (Animation English Voice MOF)', budget:'$50/day', note:'Soundbar Features MOF paused Apr 13'}
+  ];
+
+  var metaTotal = 0;
+  var metaStaticAmounts = [200,120,200,0,120,240,150,0,480,300,200,150,200,200,50,50,50,50,50,50];
+  metaStaticAmounts.forEach(function(v){metaTotal+=v;});
+
+  metaBudgets.forEach(function(r) {
+    var isPaused = r.budget === '\u2014';
+    var rowStyle = isPaused ? 'opacity:0.45' : '';
+    html += '<tr style="' + rowStyle + '">';
+    html += '<td style="text-align:left;font-weight:600;font-size:13px;color:var(--accent)">' + r.camp + '</td>';
+    html += '<td style="text-align:left;font-size:12px;color:var(--muted)">';
+    html += r.aset;
+    if (r.note) html += '<br><span style="font-size:11px;color:' + (isPaused ? 'var(--red)' : 'var(--green)') + ';font-weight:600">' + r.note + '</span>';
+    html += '</td>';
+    html += '<td style="text-align:right;font-weight:700;font-size:13px;color:' + (isPaused ? 'var(--muted)' : 'var(--text)') + '">' + r.budget + '</td>';
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  html += '<div style="margin-top:10px;padding:10px 14px;background:rgba(255,255,255,0.04);border-radius:6px;display:flex;justify-content:space-between;align-items:center">';
+  html += '<span style="font-weight:700;font-size:14px">Meta Ads Daily Budget Total</span>';
+  html += '<span style="font-weight:700;font-size:16px;color:var(--accent)">$' + metaTotal.toLocaleString() + '/day</span>';
+  html += '</div>';
+  html += '</div>';
+
+  // ═══ GOOGLE ADS ═══════════════════════════════════════════════════════════
+  html += '<div style="margin-bottom:32px">';
+  html += '<div class="section-subtitle" style="font-size:14px;margin-bottom:14px">\ud83d\udfe8 Google Ads</div>';
+  html += '<table class="perf-table" style="width:100%"><thead><tr>';
+  html += '<th style="text-align:left">Campaign</th>';
+  html += '<th style="text-align:left;font-size:11px;color:var(--muted)">Notes</th>';
+  html += '<th style="text-align:right">Daily Budget</th>';
+  html += '</tr></thead><tbody>';
+
+  var googleBudgets = [
+    {camp:'PMax Top 10 States', note:'Target ROAS 140% (lowered from 180% Apr 15). Add assets to close delivery gap.', budget:'$350/day'},
+    {camp:'PMax 40 States', note:'Raised $75 \u2192 $90 \u2192 $140/day Apr 14\u201315. Best CPA in Google at $37.', budget:'$140/day'},
+    {camp:'Brand | New', note:'Reduced $100 \u2192 $50/day Apr 15. Brand defense only. Exact match keywords.', budget:'$50/day'},
+    {camp:'Remarketing | HS Visitors | Non-Converters', note:'Launched Apr 15. Learning Phase active. Day 7 CTR check.', budget:'$50/day'}
+  ];
+  var googleTotal = 350+140+50+50;
+
+  googleBudgets.forEach(function(r) {
+    html += '<tr>';
+    html += '<td style="text-align:left;font-weight:600;font-size:13px;color:#4ade80">' + r.camp + '</td>';
+    html += '<td style="text-align:left;font-size:12px;color:var(--muted)">' + r.note + '</td>';
+    html += '<td style="text-align:right;font-weight:700;font-size:13px">' + r.budget + '</td>';
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  html += '<div style="margin-top:10px;padding:10px 14px;background:rgba(255,255,255,0.04);border-radius:6px;display:flex;justify-content:space-between;align-items:center">';
+  html += '<span style="font-weight:700;font-size:14px">Google Ads Daily Budget Total</span>';
+  html += '<span style="font-weight:700;font-size:16px;color:#4ade80">$' + googleTotal.toLocaleString() + '/day</span>';
+  html += '</div>';
+  html += '</div>';
+
+  // ═══ TIKTOK ADS ═══════════════════════════════════════════════════════════
+  html += '<div style="margin-bottom:32px">';
+  html += '<div class="section-subtitle" style="font-size:14px;margin-bottom:14px">\ud83d\udfe5 TikTok Ads</div>';
+  html += '<table class="perf-table" style="width:100%"><thead><tr>';
+  html += '<th style="text-align:left">Campaign</th>';
+  html += '<th style="text-align:left;font-size:11px;color:var(--muted)">Notes</th>';
+  html += '<th style="text-align:right">Daily Budget</th>';
+  html += '</tr></thead><tbody>';
+  html += '<tr><td style="font-weight:600;font-size:13px;color:#f472b6">Product GMV Max</td><td style="font-size:12px;color:var(--muted)">TikTok Shop native. Runs $28\u2013$84/day depending on day. Pull ROAS directly from TikTok Ads Manager.</td><td style="text-align:right;font-weight:700;font-size:13px">~$50/day</td></tr>';
+  html += '</tbody></table>';
+  html += '<div style="margin-top:10px;padding:10px 14px;background:rgba(255,255,255,0.04);border-radius:6px;display:flex;justify-content:space-between;align-items:center">';
+  html += '<span style="font-weight:700;font-size:14px">TikTok Daily Budget Total</span>';
+  html += '<span style="font-weight:700;font-size:16px;color:#f472b6">~$50/day</span>';
+  html += '</div>';
+  html += '</div>';
+
+  // ═══ VIBE CTV ═════════════════════════════════════════════════════════════
+  html += '<div style="margin-bottom:32px">';
+  html += '<div class="section-subtitle" style="font-size:14px;margin-bottom:14px">\ud83d\udfe3 Vibe CTV</div>';
+  html += '<table class="perf-table" style="width:100%"><thead><tr>';
+  html += '<th style="text-align:left">Campaign</th>';
+  html += '<th style="text-align:left;font-size:11px;color:var(--muted)">Notes</th>';
+  html += '<th style="text-align:right">Daily Budget</th>';
+  html += '</tr></thead><tbody>';
+  html += '<tr><td style="font-weight:600;font-size:13px;color:#a78bfa">TOF \u2014 HangSmart Traffic Campaign</td><td style="font-size:12px;color:var(--muted)">Top-of-funnel awareness. Running stable at 17K\u201321K impressions/day. CPM $13\u2013$18.</td><td style="text-align:right;font-weight:700;font-size:13px">~$250/day</td></tr>';
+  html += '<tr><td style="font-weight:600;font-size:13px;color:#a78bfa">Retargeting Campaign</td><td style="font-size:12px;color:var(--muted)">Warm audience. CPM ~$21. Do not scale without verifying audience size can support frequency.</td><td style="text-align:right;font-weight:700;font-size:13px">~$100/day</td></tr>';
+  html += '</tbody></table>';
+  var vibeTotal = 350;
+  html += '<div style="margin-top:10px;padding:10px 14px;background:rgba(255,255,255,0.04);border-radius:6px;display:flex;justify-content:space-between;align-items:center">';
+  html += '<span style="font-weight:700;font-size:14px">Vibe CTV Daily Budget Total</span>';
+  html += '<span style="font-weight:700;font-size:16px;color:#a78bfa">~$350/day</span>';
+  html += '</div>';
+  html += '</div>';
+
+  // ═══ GRAND TOTAL ══════════════════════════════════════════════════════════
+  html += '<hr style="border:none;border-top:2px solid var(--border);margin:24px 0;opacity:0.5">';
+  var grandTotal = metaTotal + googleTotal + 50 + 350;
+  html += '<div style="padding:16px 20px;background:rgba(216,18,124,0.10);border-radius:10px;border:1px solid rgba(216,18,124,0.3);display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">';
+  html += '<div>';
+  html += '<div style="font-size:13px;color:var(--muted);margin-bottom:4px">All Platforms Combined</div>';
+  html += '<div style="font-size:18px;font-weight:700">Total Daily Budget Set</div>';
+  html += '</div>';
+  html += '<div style="font-size:28px;font-weight:700;color:var(--accent)">$' + grandTotal.toLocaleString() + '/day</div>';
+  html += '</div>';
+
+  // ═══ CEO NOTE ═════════════════════════════════════════════════════════════
+  html += '<div style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:10px;border-left:4px solid var(--gold)">';
+  html += '<div style="font-weight:700;font-size:14px;color:var(--gold);margin-bottom:10px">\u26a0\ufe0f Important: What These Numbers Actually Mean</div>';
+  html += '<p style="font-size:13px;line-height:1.7;color:var(--text);margin-bottom:10px">The numbers above show the <strong>maximum daily budget we have authorized each platform to spend</strong>. They are not a guarantee of what will actually be spent each day. Think of it like setting a spending limit on a credit card \u2014 just because the limit exists doesn\'t mean the card gets charged that exact amount every single day.</p>';
+  html += '<p style="font-size:13px;line-height:1.7;color:var(--text);margin-bottom:10px"><strong>Why platforms don\'t always spend their full budget:</strong> Ad platforms like Google, TikTok, and Vibe CTV can only serve ads when real people are actively searching or browsing. On days when consumer search volume is low \u2014 a slow Monday morning, a holiday, or a period of low consumer intent \u2014 there simply aren\'t enough qualified people to show ads to, so the platform spends less. Google PMax, for example, may be authorized for $350/day but only find $220 worth of qualifying traffic on a given day. That is the platform doing its job correctly, not a malfunction.</p>';
+  html += '<p style="font-size:13px;line-height:1.7;color:var(--text);margin-bottom:10px"><strong>Meta Ads operate differently</strong> from Google. Meta is a social feed \u2014 it can always find someone to show an ad to. Meta campaigns will generally spend close to their set budget each day. Google, TikTok, and Vibe CTV are demand-dependent: they follow search behavior and viewing patterns, not social scroll behavior.</p>';
+  html += '<p style="font-size:13px;line-height:1.7;color:var(--text);margin-bottom:10px"><strong>What causes slower sales days:</strong> When Google or TikTok underspends, it is a direct signal that consumer intent is lower that day. Fewer people searching "TV mount" = fewer ad impressions = fewer clicks = fewer purchases. This is not a failure of the campaigns. It is a reflection of organic consumer behavior. University of Michigan Consumer Sentiment is currently at a historic low (47.6 in April 2026), which is suppressing purchase intent across all e-commerce. HangSmart\'s conversion rate is still holding strong, which means when people do show up, they are buying.</p>';
+  html += '<p style="font-size:13px;line-height:1.7;color:var(--muted)">Bottom line: If a sales day looks slower than expected, the first check is whether the ad platforms hit their daily budget cap. If they didn\'t spend their full budget, the cause is low market demand that day \u2014 not a problem with the ads themselves.</p>';
+  html += '</div>';
+
+  el.innerHTML = html;
+}
+
 function renderAll() {
   updateDateSubtitle();
   renderOverview();
@@ -1570,6 +1761,7 @@ function renderAll() {
   renderSuggestions();
   renderFluctuationReport();
   renderStrategicRecs();
+  renderAdSpend();
 }
 
 
