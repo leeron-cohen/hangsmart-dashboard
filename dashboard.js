@@ -1382,6 +1382,20 @@ function renderSuggestions() {
   html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 PMax Top 10 States Asset Group Updated (Apr 16)</h4>';
   html += '<p>Video and image assets reviewed and updated. All assets are rated Excellent across both video and image categories. Target ROAS was already lowered to 140% on Apr 15. Delivery gap should close within 5\u20137 days of the ROAS change.</p></div>';
 
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 PMax Top 10 States Budget Raised $415 \u2192 $450/Day (Apr 22)</h4>';
+  html += '<p>Top 10 States hit 10 conversions on Apr 21 \u2014 best single-day performance of the month. Budget raised from ~$415 to <strong>$450/day</strong> to give the algorithm room to continue scaling. Monitoring ROAS and conversion volume over the next 7 days before any further increase.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Remarketing Campaign Overhauled (Apr 22)</h4>';
+  html += '<p>Campaign had spent $393 with 0 conversions. Root cause analysis identified 4 issues, all fixed:</p>';
+  html += '<ul style="margin:8px 0 0 16px;line-height:1.8">';
+  html += '<li><strong>Bid strategy:</strong> Maximize Conversions (blind learning, $9\u201314 CPC) \u2192 switched to <strong>Clicks with $5 max CPC</strong>. CPCs will drop to $3\u20135, 2\u00d7 more reach for same budget.</li>';
+  html += '<li><strong>Conversion goal:</strong> Account-default (included phone calls \u2014 nobody calls) \u2192 set to <strong>Purchase only</strong>. Google now optimizes for the correct signal.</li>';
+  html += '<li><strong>Final URL:</strong> Homepage \u2192 <strong>hangsmart.com/collections/hangsmarttv</strong>. Warm audience lands on the collection page showing both the single unit and bundle, increasing AOV potential.</li>';
+  html += '<li><strong>Branded keywords paused:</strong> <code>hangsmart</code> and <code>hang smart tv mount</code> paused inside the remarketing campaign \u2014 PMax Brand already captures this traffic at lower cost.</li>';
+  html += '<li><strong>Ad headlines:</strong> 3 empty slots filled: \u201cNo Stud TV Mount\u201d, \u201cFree Shipping On All Orders\u201d, \u201cMounts In 15 Minutes \u2014 Guaranteed\u201d. Ad strength improving from Average.</li>';
+  html += '</ul>';
+  html += '<p style="margin-top:8px"><strong>Next check: Apr 29.</strong> Pull keyword report \u2014 evaluate which terms are converting under the new $5 CPC cap. If \u201cno stud tv mount\u201d quality score has improved, increase its max CPC to $6 to prioritize it. Target: 3\u20135 conversions in first 7 days post-fix.</p></div>';
+
   html += '</div>'; // end google panel
 
   // ════════════════════════════════════════════════════════
