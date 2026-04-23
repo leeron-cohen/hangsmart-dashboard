@@ -1771,9 +1771,12 @@ function renderAdSpend() {
       { name:'Ad Set 3 \u2014 PAUSED', amt:0, note:'\u23f8 PAUSED Apr 22 \u2014 0.78x ROAS, $434 waste stopped' },
       { name:'Ad Set 4 \u2014 PAUSED', amt:0, note:'\u23f8 PAUSED Apr 22 \u2014 0.22x ROAS, $439 waste stopped' }
     ]},
+    { name:'TOF \u2014 Straight to Product Page', id:'tof', adsets:[
+      { name:'PRODUCT PAGE \u2014 TOF LOOKALIKE \u2014 ALL \u2014 Dynamic', amt:350, note:'\u2191 raised to $350/day Apr 22' }
+    ]},
     { name:'Campaign B | Soundbar', id:'cb', adsets:[
       { name:'Ad Set C1 | BOF | High Intent', amt:30, note:'' },
-      { name:'Ad Set C2 | MOF | Warm Intent \u2014 Animation English Voice MOF', amt:5, note:'' }
+      { name:'Ad Set C2 | MOF | Warm Intent \u2014 Animation English Voice MOF', amt:45, note:'' }
     ]}
   ];
 
