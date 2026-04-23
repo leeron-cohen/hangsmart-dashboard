@@ -1730,7 +1730,7 @@ function renderAdSpend() {
   // ── HEADER ────────────────────────────────────────────────────────────────
   html += '<div style="margin-bottom:20px;padding:14px 18px;background:rgba(216,18,124,0.07);border-radius:8px;border-left:3px solid var(--accent)">';
   html += '<strong style="font-size:15px;color:var(--accent)">Current Daily Budget Settings \u2014 All Ad Platforms</strong>';
-  html += '<p style="margin:6px 0 0;color:var(--muted);font-size:13px">As of April 16, 2026. Active campaigns only \u2014 paused ads excluded. Click any Meta campaign row to expand its ad sets.</p>';
+  html += '<p style="margin:6px 0 0;color:var(--muted);font-size:13px">As of April 23, 2026. Active campaigns only \u2014 paused ads excluded. Click any Meta campaign row to expand its ad sets.</p>';
   html += '</div>';
 
   // ═══ META ADS (collapsible) ═══════════════════════════════════════════════
@@ -1743,9 +1743,9 @@ function renderAdSpend() {
   // Campaign data — active ad sets only
   var metaCamps = [
     { name:'Campaign 1', id:'c1', adsets:[
-      { name:'VIDEO 1 \u2014 Influencer Compilation', amt:200, note:'' },
+      { name:'VIDEO 1 \u2014 Influencer Compilation', amt:190, note:'' },
       { name:'VIDEO 2 \u2014 Influencer Comp w/Leeron', amt:120, note:'\u2191 +20% Apr 16' },
-      { name:'VIDEO 4 \u2014 Cam 1', amt:200, note:'' }
+      { name:'VIDEO 4 \u2014 Cam 1', amt:190, note:'' }
     ]},
     { name:'Campaign 2', id:'c2', adsets:[
       { name:'Ad Set 1 \u2014 CTV ADS Reviews', amt:145, note:'\u2191 $120\u2192$145/day Apr 22 (3.76x ROAS)' },
@@ -1757,17 +1757,13 @@ function renderAdSpend() {
       { name:'Ad Set 2 \u2014 Influencer Ads (Rebecca Janis + Where Has This Been)', amt:300, note:'Alizabeth paused within set' }
     ]},
     { name:'Campaign 4 | MOF', id:'c4', adsets:[
-      { name:'Ad Set 2 \u2014 Mid Intent 0\u201390 Days', amt:200, note:'' }
+      { name:'Ad Set 2 \u2014 Mid Intent 0\u201390 Days', amt:225, note:'' }
     ]},
     { name:'Campaign 5 | BOF', id:'c5', adsets:[
-      { name:'Ad Set 1 \u2014 High Intent 0\u201330 Days', amt:150, note:'+$25 Apr 16', approx:true }
-    ]},
-    { name:'TOF Test', id:'tof', adsets:[
-      { name:'TOF Straight to Product Page TEST', amt:350, note:'\u2191 $300\u2192$350/day Apr 22 (3.49x ROAS \u2014 highest in account)' },
-      { name:'PRODUCT PAGE \u2014 TOF LOOKALIKE (Bruna LookAlike)', amt:200, note:'' }
+      { name:'Ad Set 1 \u2014 High Intent 0\u201330 Days', amt:225, note:'' }
     ]},
     { name:'Campaign A | Legacy', id:'ca', adsets:[
-      { name:'Prospecting Workhorse \u2014 Animation Soundbar Install', amt:200, note:'Reduced when V2 launched Apr 14' }
+      { name:'Prospecting Workhorse \u2014 Animation Soundbar Install', amt:120, note:'Reduced when V2 launched Apr 14' }
     ]},
     { name:'Campaign A V2', id:'cav2', adsets:[
       { name:'Ad Set 2 \u2014 Top V2 Performer', amt:50, note:'2.13x ROAS \u2014 keep running' },
@@ -1776,8 +1772,8 @@ function renderAdSpend() {
       { name:'Ad Set 4 \u2014 PAUSED', amt:0, note:'\u23f8 PAUSED Apr 22 \u2014 0.22x ROAS, $439 waste stopped' }
     ]},
     { name:'Campaign B | Soundbar', id:'cb', adsets:[
-      { name:'Ad Set C1 | BOF | High Intent', amt:50, note:'Multiple BOF ads running' },
-      { name:'Ad Set C2 | MOF | Warm Intent \u2014 Animation English Voice MOF', amt:50, note:'' }
+      { name:'Ad Set C1 | BOF | High Intent', amt:30, note:'' },
+      { name:'Ad Set C2 | MOF | Warm Intent \u2014 Animation English Voice MOF', amt:5, note:'' }
     ]}
   ];
 
