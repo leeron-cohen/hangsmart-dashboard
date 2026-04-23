@@ -346,7 +346,7 @@ function renderOverview() {
     var convPV = convF.reduce(function(s,r){return s+(r.pv||0);},0);
     var pixelROAS = convSpend > 0 ? convPV / convSpend : 0;
     var roasPts = pixelROAS >= 2.0 ? 20 : pixelROAS >= 1.5 ? 16 : pixelROAS >= 1.2 ? 12 : pixelROAS >= 1.0 ? 8 : pixelROAS >= 0.7 ? 4 : 0;
-    var roasAction = pixelROAS >= 2.0 ? null : pixelROAS >= 1.5 ? 'Scale top ROAS ad sets — shift budget toward:<br>&bull; CTV Reviews &mdash; Campaign 2, Ad Set 1 - CTV ADS Reviews (2.39x)<br>&bull; Winning Video &mdash; Campaign 3, Ad Set 1 - Winning Ads Compilations (2.00x)' : 'Scale your two highest-ROAS campaigns:<br>&bull; CTV ADS Reviews &mdash; Campaign 2, Ad Set 1 (3.76x ROAS &middot; $1,531 spent &middot; increase budget by 20%)<br>&bull; TOF Straight to Product Page TEST &mdash; 3.49x ROAS (no longer a test &mdash; scale budget 20%)<br><br>Cut remaining waste:<br>&bull; Campaign A V2, Ad Set 4 &mdash; 0.22x ROAS (pause now)<br>&bull; Campaign A V2, Ad Set 3 &mdash; 0.78x ROAS (pause now)';
+    var roasAction = pixelROAS >= 2.0 ? null : pixelROAS >= 1.5 ? 'Scale top ROAS ad sets — shift budget toward:<br>&bull; CTV Reviews &mdash; Campaign 2, Ad Set 1 - CTV ADS Reviews (2.39x)<br>&bull; Winning Video &mdash; Campaign 3, Ad Set 1 - Winning Ads Compilations (2.00x)' : 'Scale your two highest-ROAS ad sets (both raised Apr 22):<br>&bull; CTV ADS Reviews &mdash; Campaign 2, Ad Set 1 (3.76x ROAS &middot; raised to $145/day &#10003;)<br>&bull; TOF Straight to Product Page TEST &mdash; 3.49x ROAS &middot; raised to $350/day &#10003; (no longer a test)<br><br>Waste resolved (Apr 22):<br>&bull; Campaign A V2, Ad Set 4 &mdash; 0.22x ROAS &mdash; PAUSED &#10003;<br>&bull; Campaign A V2, Ad Set 3 &mdash; 0.78x ROAS &mdash; PAUSED &#10003;<br><br>Monitor Apr 29:<br>&bull; Campaign A V2, Ad Set 1 &mdash; 1.00x ROAS (borderline &mdash; reassess in 7 days)<br>&bull; Campaign A Legacy &mdash; 1.23x ROAS (trending up from 0.76x &mdash; blended ~3.1x)';
     components.push({name:'Meta Pixel ROAS', pts:roasPts, max:20, val:pixelROAS.toFixed(2)+'x', action:roasAction});
     totalScore += roasPts;
 
@@ -355,14 +355,14 @@ function renderOverview() {
     var dClicks = metaDailyF.reduce(function(s,r){return s+(r.clicks||0);},0);
     var metaCTR = dImpr > 0 ? dClicks / dImpr * 100 : 0;
     var ctrPts = metaCTR >= 3.5 ? 15 : metaCTR >= 2.5 ? 12 : metaCTR >= 2.0 ? 9 : metaCTR >= 1.5 ? 6 : 0;
-    var ctrAction = metaCTR >= 3.5 ? null : 'Scale high-CTR performers:<br>&bull; Winning Ads Compilations &mdash; Campaign 3, Ad Set 1 (2.71x ROAS 14d &middot; volume leader)<br>&bull; TOF Straight to Product Page TEST &mdash; 3.49x ROAS (strong CTR + highest ROAS in account)<br><br>Pause low CTR (still active):<br>&bull; Campaign A V2, Ad Set 4 &mdash; 0.88% CTR &middot; 0.22x ROAS (pause now)<br>&bull; Soundbar MOF &mdash; C B, Ad Set C2 &mdash; 1.18% CTR &middot; 1.08x ROAS (monitor, marginal)<br><br>Already resolved:<br>&bull; Cam Cam &mdash; PAUSED Apr 16 &#10003;';
+    var ctrAction = metaCTR >= 3.5 ? null : 'Scale high-CTR performers:<br>&bull; Winning Ads Compilations &mdash; Campaign 3, Ad Set 1 (2.71x ROAS 14d &middot; volume leader)<br>&bull; TOF Straight to Product Page TEST &mdash; 3.49x ROAS (strong CTR + raised to $350/day &#10003;)<br><br>Monitor (marginal CTR):<br>&bull; Soundbar MOF &mdash; C B, Ad Set C2 &mdash; 1.18% CTR &middot; 1.08x ROAS (monitor this week)<br><br>Already resolved:<br>&bull; Campaign A V2, Ad Set 4 &mdash; PAUSED Apr 22 &#10003; (0.22x ROAS)<br>&bull; Cam Cam &mdash; PAUSED Apr 16 &#10003;';
     components.push({name:'Meta CTR', pts:ctrPts, max:15, val:metaCTR.toFixed(2)+'%', action:ctrAction});
     totalScore += ctrPts;
 
     // ─ 3. Meta CPC (10 pts) ─────────────────────────────────────────────────────
     var metaCPC = dClicks > 0 ? convSpend / dClicks : 99;
     var cpcPts = metaCPC <= 0.75 ? 10 : metaCPC <= 1.00 ? 8 : metaCPC <= 1.25 ? 6 : metaCPC <= 1.75 ? 4 : 0;
-    var cpcAction = metaCPC <= 0.75 ? null : 'Scale (low CPC + strong ROAS):<br>&bull; CTV ADS Reviews &mdash; Campaign 2, Ad Set 1 (3.76x ROAS &middot; most efficient dollar in account)<br>&bull; Winning Ads Compilations &mdash; Campaign 3, Ad Set 1 (2.71x ROAS &middot; volume + efficiency)<br>&bull; Arthur Install &mdash; Campaign 2, Ad Set 3 (2.73x ROAS &middot; consistent performer)<br><br>Pause (sub-1x ROAS, still active):<br>&bull; Campaign A V2, Ad Set 4 &mdash; 0.22x ROAS (cut immediately)<br>&bull; Campaign A V2, Ad Set 3 &mdash; 0.78x ROAS (cut now)<br><br>Already resolved:<br>&bull; Cam Cam &mdash; PAUSED Apr 16 &#10003;<br>&bull; Leeron Pressure Test &mdash; PAUSED Apr 16 &#10003;';
+    var cpcAction = metaCPC <= 0.75 ? null : 'Scale (low CPC + strong ROAS &mdash; all raised Apr 22):<br>&bull; CTV ADS Reviews &mdash; Campaign 2, Ad Set 1 (3.76x ROAS &middot; raised to $145/day &#10003;)<br>&bull; Arthur Install &mdash; Campaign 2, Ad Set 3 (2.73x ROAS &middot; raised to $265/day &#10003;)<br>&bull; Winning Ads Compilations &mdash; Campaign 3, Ad Set 1 (2.71x ROAS &middot; volume + efficiency)<br><br>Goal: push Meta CPC below $1.00 (currently $1.05) &mdash; scaling efficient ad sets naturally lowers blended CPC.<br><br>Already resolved:<br>&bull; Campaign A V2, Ad Set 4 &mdash; PAUSED Apr 22 &#10003; (0.22x ROAS)<br>&bull; Campaign A V2, Ad Set 3 &mdash; PAUSED Apr 22 &#10003; (0.78x ROAS)<br>&bull; Cam Cam &mdash; PAUSED Apr 16 &#10003;<br>&bull; Leeron Pressure Test &mdash; PAUSED Apr 16 &#10003;';
     components.push({name:'Meta CPC', pts:cpcPts, max:10, val:'$'+metaCPC.toFixed(2), action:cpcAction});
     totalScore += cpcPts;
 
@@ -374,7 +374,7 @@ function renderOverview() {
     }).reduce(function(s,c){return s+(c.spend||0);},0);
     var wastePct = totalMetaSpend > 0 ? soundbarSpend / totalMetaSpend * 100 : 0;
     var wastePts = wastePct < 5 ? 20 : wastePct < 15 ? 14 : wastePct < 25 ? 8 : wastePct < 35 ? 4 : 0;
-    var wasteAction = wastePct < 5 ? null : wastePct < 15 ? 'Cut confirmed waste in Campaign A V2:<br>&bull; Ad Set 4 &mdash; 0.22x ROAS &middot; $439/14d &middot; pause immediately<br>&bull; Ad Set 3 &mdash; 0.78x ROAS &middot; $434/14d &middot; pause now<br>&bull; Ad Set 2 &mdash; 2.13x ROAS &middot; keep running (only V2 winner)<br><br>Campaign A Legacy has improved:<br>&bull; Now 1.23x pixel ROAS (was 0.76x) &middot; blended ~3.1x &middot; hold and reassess Apr 29<br><br>Campaign B Soundbar BOF remains profitable (2.35x) &mdash; keep running.<br>Campaign B Soundbar MOF is marginal (1.08x) &mdash; monitor this week.' : 'Pause immediately &mdash; soundbar spend is concentrated in losses:<br>&bull; Campaign A | Legacy &mdash; 0.76x (14d), 0.61x (7d), $4,157/14d<br>&bull; Campaign B | Soundbar MOF &mdash; Animation Soundbar Features MOF (0.47x), Animation Music MOF (0.33x)<br><br>Exception: Campaign B | Soundbar BOF is generating positive ROAS &mdash; do not pause.';
+    var wasteAction = wastePct < 5 ? null : wastePct < 15 ? 'Campaign A V2 waste resolved (Apr 22):<br>&bull; Ad Set 4 &mdash; PAUSED &#10003; (was 0.22x ROAS, $439 waste stopped)<br>&bull; Ad Set 3 &mdash; PAUSED &#10003; (was 0.78x ROAS, $434 waste stopped)<br>&bull; Ad Set 2 &mdash; 2.13x ROAS &middot; keep running (only V2 winner)<br>&bull; Ad Set 1 &mdash; 1.00x ROAS &middot; monitor &mdash; reassess Apr 29<br><br>Campaign A Legacy &mdash; hold and reassess Apr 29:<br>&bull; Now 1.23x pixel ROAS (was 0.76x) &middot; blended ~3.1x &middot; Amazon soundbar units may explain gap<br><br>Campaign B Soundbar BOF remains profitable (2.35x) &mdash; keep running.<br>Campaign B Soundbar MOF is marginal (1.08x) &mdash; monitor this week.' : 'Pause immediately &mdash; soundbar spend is concentrated in losses:<br>&bull; Campaign A | Legacy &mdash; 0.76x (14d), 0.61x (7d), $4,157/14d<br>&bull; Campaign B | Soundbar MOF &mdash; Animation Soundbar Features MOF (0.47x), Animation Music MOF (0.33x)<br><br>Exception: Campaign B | Soundbar BOF is generating positive ROAS &mdash; do not pause.';
     components.push({name:'Waste Score (Soundbar Spend %)', pts:wastePts, max:20, val:wastePct.toFixed(1)+'% of Meta spend', action:wasteAction});
     totalScore += wastePts;
 
@@ -398,18 +398,18 @@ function renderOverview() {
       {spend:433,   roas:2.13}, // Campaign A V2, Ad Set 2 (only winner in V2)
       {spend:2821,  roas:1.23}, // Campaign A Legacy — improved from 0.76x, monitor
       {spend:629,   roas:1.08}, // Soundbar MOF — C B, Ad Set C2 (marginal)
-      {spend:439,   roas:1.00}, // Campaign A V2, Ad Set 1 (borderline — monitor)
-      {spend:434,   roas:0.78}, // Campaign A V2, Ad Set 3 ⚠️ PAUSE — sub-1x, $434 waste
-      {spend:439,   roas:0.22}, // Campaign A V2, Ad Set 4 ⚠️ PAUSE — nearly zero return, $439 wasted
+      {spend:439,   roas:1.00}, // Campaign A V2, Ad Set 1 (borderline — monitor Apr 29)
       // ── PAUSED (pre-pause spend in 14d window, now resolved) ───────────────────────────────────────────────
-      {spend:737,   roas:1.46}, // Cam Cam — PAUSED Apr 16 ✅ (delayed attribution lifted ROAS)
-      {spend:911,   roas:1.41}  // Leeron Pressure Test — PAUSED Apr 16 ✅
+      {spend:737,   roas:1.46}, // Cam Cam — PAUSED Apr 16 ✅
+      {spend:911,   roas:1.41}, // Leeron Pressure Test — PAUSED Apr 16 ✅
+      {spend:434,   roas:0.78}, // Campaign A V2, Ad Set 3 — PAUSED Apr 22 ✅ ($434 waste stopped)
+      {spend:439,   roas:0.22}  // Campaign A V2, Ad Set 4 — PAUSED Apr 22 ✅ ($439 waste stopped)
     ];
     var totalSnapSpend = allAdsSnap.reduce(function(s,a){return s+a.spend;},0);
     var topSpend = allAdsSnap.filter(function(a){return a.roas>=1.3;}).reduce(function(s,a){return s+a.spend;},0);
     var concPct = totalSnapSpend > 0 ? topSpend / totalSnapSpend * 100 : 0;
     var concPts = concPct >= 70 ? 15 : concPct >= 55 ? 12 : concPct >= 40 ? 8 : 0;
-    var concAction = concPct >= 70 ? null : 'Pause immediately (sub-1x ROAS, confirmed waste):<br>&bull; Campaign A V2, Ad Set 4 &mdash; 0.22x ROAS &middot; $439 spent &middot; only 2 purchases in 14 days<br>&bull; Campaign A V2, Ad Set 3 &mdash; 0.78x ROAS &middot; $434 spent<br><br>Monitor (borderline):<br>&bull; Campaign A V2, Ad Set 1 &mdash; 1.00x exactly &middot; $439 spent &middot; give 7 more days before cutting<br>&bull; Campaign A Legacy &mdash; improved to 1.23x (was 0.76x) &middot; blended ~3.1x &middot; hold and reassess Apr 29<br><br>Scale top performers:<br>&bull; CTV ADS Reviews &mdash; Campaign 2, Ad Set 1 (3.76x ROAS &middot; best ad set in account &middot; only $1,531 spent)<br>&bull; TOF Straight to Product Page TEST &mdash; 3.49x ROAS &middot; $4,057 spent &middot; no longer a test, scale it<br>&bull; Arthur Install &mdash; Campaign 2, Ad Set 3 (2.73x &middot; strong and consistent)<br><br>Already completed:<br>&bull; Cam Cam &mdash; PAUSED Apr 16 &#10003;<br>&bull; Leeron Pressure Test &mdash; PAUSED Apr 16 &#10003;<br>&bull; Alizabeth &mdash; PAUSED Apr 16 &#10003;<br>&bull; Animation Soundbar Features MOF &mdash; PAUSED &#10003;';
+    var concAction = concPct >= 70 ? null : 'Monitor (borderline &mdash; reassess Apr 29):<br>&bull; Campaign A V2, Ad Set 1 &mdash; 1.00x exactly &middot; $439 spent &middot; 7 more days before decision<br>&bull; Campaign A Legacy &mdash; 1.23x (was 0.76x) &middot; blended ~3.1x &middot; trending right direction<br><br>Scale top performers (all raised Apr 22 &#10003;):<br>&bull; CTV ADS Reviews &mdash; Campaign 2, Ad Set 1 (3.76x ROAS &middot; raised to $145/day)<br>&bull; TOF Straight to Product Page TEST &mdash; 3.49x ROAS &middot; raised to $350/day<br>&bull; Arthur Install &mdash; Campaign 2, Ad Set 3 (2.73x &middot; raised to $265/day)<br><br>Completed pauses:<br>&bull; Campaign A V2, Ad Set 4 &mdash; PAUSED Apr 22 &#10003; (0.22x, $439 waste stopped)<br>&bull; Campaign A V2, Ad Set 3 &mdash; PAUSED Apr 22 &#10003; (0.78x, $434 waste stopped)<br>&bull; Cam Cam &mdash; PAUSED Apr 16 &#10003;<br>&bull; Leeron Pressure Test &mdash; PAUSED Apr 16 &#10003;<br>&bull; Alizabeth &mdash; PAUSED Apr 16 &#10003;<br>&bull; Animation Soundbar Features MOF &mdash; PAUSED &#10003;';
     components.push({name:'Top Performer Concentration', pts:concPts, max:15, val:concPct.toFixed(0)+'% of spend in ≥1.3x ROAS ads', action:concAction});
     totalScore += concPts;
 
@@ -418,7 +418,7 @@ function renderOverview() {
     // Did NOT cut 40 States — instead increased budget $75 → $90/day (correct call).
     // Top 10 States underdelivering ($233/day actual vs $350 budget) — audience/creative issue to resolve.
     var googlePts = 8;
-    var googleAction = 'Campaign A V2 has 2 ad sets below 1x ROAS — pause Ad Set 4 (0.22x) and Ad Set 3 (0.78x) to stop soundbar spend waste. Remarketing campaign was overhauled Apr 22 (bid strategy, conversion goal, landing URL fixed) — check first conversion by Apr 29.';
+    var googleAction = 'Campaign A V2 waste resolved Apr 22: Ad Set 4 (0.22x) PAUSED \u2705 and Ad Set 3 (0.78x) PAUSED \u2705. Monitor Ad Set 1 (1.00x) \u2014 reassess Apr 29. Remarketing campaign overhauled Apr 22 (Clicks bidding, Purchase-only goal, collection page URL) \u2014 check first conversions Apr 29. PMax Top 10 States at $450/day and delivering fully.';
     components.push({name:'Google Ads Health', pts:googlePts, max:10, val:'Top 10 delivery gap ✅ resolved | $450/day budget | 10 conv Apr 21', action:googleAction});
     totalScore += googlePts;
 
@@ -1285,8 +1285,8 @@ function renderSuggestions() {
   html += '</ul>';
   html += '<p style="color:var(--muted);font-size:12px"><strong>Next check: Apr 21\u201323</strong> \u2014 pull Windsor on all 6 recipients. If any ROAS dropped &gt;0.3x from baseline after increase, pull back that ad set immediately. If holding or improving, eligible for another 20% step on Apr 28+.</p></div>';
 
-  html += '<div class="anomaly-box info"><h4>8. ONGOING \u2014 HangSmart CTV Reviews + Arthur Install: Scaled, Monitor Closely</h4>';
-  html += '<p>Both received budget increases Apr 16. CTV Reviews now $120/day (was $100). Arthur Install now $240/day (was $200). CTV Reviews is at 2.09x ROAS 14-day \u2014 the most efficient Meta campaign. Arthur Install at 1.19x 14-day. <strong>Apr 21\u201323 check:</strong> verify ROAS held after budget increase. If CTV Reviews stays above 1.8x, another 20% increase is eligible.</p></div>';
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 8. COMPLETE \u2014 CTV Reviews + Arthur Install Scaled Again (Apr 22)</h4>';
+  html += '<p>Apr 16 raise held with strong ROAS \u2014 both eligible for another step. <strong>CTV Reviews: $120 \u2192 $145/day</strong> (3.76x ROAS 14-day \u2014 best ad set in account). <strong>Arthur Install: $240 \u2192 $265/day</strong> (2.73x ROAS 14-day \u2014 consistent performer). Both increases funded by Campaign A V2 Ad Set 3+4 pauses ($100/day freed). Increases are below 20% threshold \u2014 Meta learning phase intact. <strong>Next check: Apr 29.</strong></p></div>';
 
   // ── META CHANGES LOG ──────────────────────────────────────────────────────
   html += '<hr style="border:none;border-top:1px solid var(--border);margin:32px 0;opacity:0.4">';
@@ -1321,6 +1321,27 @@ function renderSuggestions() {
 
   html += '<div class="anomaly-box info"><h4>\u23f3 PENDING \u2014 Animation English Voice MOF Natural Budget Increase</h4>';
   html += '<p>Monitoring whether spend increases naturally after Soundbar Features MOF pause. Check next Windsor pull. If not increased, manually raise Ad Set C2 daily budget by 20%.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Campaign A V2 Ad Set 4 Paused (Apr 22)</h4>';
+  html += '<p>Ad Set 4 &mdash; <strong>0.22x ROAS, $439 spent over 14 days with only 2 purchases</strong>. Worst performer in the account. Paused immediately. $50/day budget freed and redistributed into profitable ad sets (see budget redistribution below).</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Campaign A V2 Ad Set 3 Paused (Apr 22)</h4>';
+  html += '<p>Ad Set 3 &mdash; <strong>0.78x ROAS, $434 spent over 14 days</strong>. Sub-1x with no recovery trend. Paused. $50/day budget freed and redistributed. Two V2 pauses combined freed <strong>$100/day total</strong>.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 CTV ADS Reviews Raised $120 \u2192 $145/Day (Apr 22)</h4>';
+  html += '<p>Campaign 2, Ad Set 1 &mdash; <strong>3.76x ROAS, best performing ad set in the account</strong>. Budget raised from $120 to $145/day (+$25). Funded by V2 pause savings. Increase is below 20% threshold \u2014 Meta learning phase intact. <strong>Next check: Apr 29</strong> &mdash; if ROAS holds above 3.0x, eligible for another 20% step.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 TOF Straight to Product Page TEST Raised $300 \u2192 $350/Day (Apr 22)</h4>';
+  html += '<p><strong>3.49x ROAS &mdash; highest ROAS in the entire account</strong>. Budget raised from $300 to $350/day (+$50). This is no longer a test. Funded by V2 pause savings. <strong>Next check: Apr 29</strong> &mdash; if ROAS holds, this is eligible for continued scaling at 20% increments.</p></div>';
+
+  html += '<div class="anomaly-box success"><h4 style="color:var(--green)">\u2705 COMPLETE \u2014 Arthur Install Raised $240 \u2192 $265/Day (Apr 22)</h4>';
+  html += '<p>Campaign 2, Ad Set 3 &mdash; <strong>2.73x ROAS, consistent performer</strong>. Budget raised from $240 to $265/day (+$25). Funded by V2 pause savings. Budget redistribution from this round was exactly budget-neutral: $100 freed (V2 Ad Sets 3+4) \u2192 $100 added (CTV +$25, TOF TEST +$50, Arthur +$25). Total Meta budget unchanged. <strong>Next check: Apr 29.</strong></p></div>';
+
+  html += '<div class="anomaly-box warning"><h4>\u23f3 MONITOR \u2014 Campaign A V2, Ad Set 1 (Reassess Apr 29)</h4>';
+  html += '<p><strong>1.00x ROAS exactly</strong> &mdash; borderline. Breaking even on pixel, but blended ROAS with Amazon/Walmart attribution could make this profitable. Give it 7 more days before cutting. <strong>Check Apr 29:</strong> if still at or below 1.0x, pause. If improved to 1.2x+, hold for another cycle.</p></div>';
+
+  html += '<div class="anomaly-box warning"><h4>\u23f3 MONITOR \u2014 Campaign A Legacy (Reassess Apr 29)</h4>';
+  html += '<p><strong>1.23x pixel ROAS</strong> (improved from 0.76x two weeks ago). Blended estimate ~3.1x when Amazon soundbar attribution is included. Trending in the right direction. <strong>Check Apr 29:</strong> pull Amazon soundbar unit velocity alongside pixel ROAS. If soundbar Amazon units are holding, keep running. If declining, reassess budget.</p></div>';
 
   html += '</div>'; // end meta panel
 
@@ -1727,8 +1748,8 @@ function renderAdSpend() {
       { name:'VIDEO 4 \u2014 Cam 1', amt:200, note:'' }
     ]},
     { name:'Campaign 2', id:'c2', adsets:[
-      { name:'Ad Set 1 \u2014 CTV ADS Reviews', amt:120, note:'\u2191 +20% Apr 16' },
-      { name:'Ad Set 3 \u2014 Arthur Install', amt:240, note:'\u2191 +20% Apr 16' },
+      { name:'Ad Set 1 \u2014 CTV ADS Reviews', amt:145, note:'\u2191 $120\u2192$145/day Apr 22 (3.76x ROAS)' },
+      { name:'Ad Set 3 \u2014 Arthur Install', amt:265, note:'\u2191 $240\u2192$265/day Apr 22 (2.73x ROAS)' },
       { name:'Ad Set 4 \u2014 Animation Testimonial Mashup', amt:150, note:'\u2191 +20% Apr 16' }
     ]},
     { name:'Campaign 3', id:'c3', adsets:[
@@ -1742,16 +1763,17 @@ function renderAdSpend() {
       { name:'Ad Set 1 \u2014 High Intent 0\u201330 Days', amt:150, note:'+$25 Apr 16', approx:true }
     ]},
     { name:'TOF Test', id:'tof', adsets:[
+      { name:'TOF Straight to Product Page TEST', amt:350, note:'\u2191 $300\u2192$350/day Apr 22 (3.49x ROAS \u2014 highest in account)' },
       { name:'PRODUCT PAGE \u2014 TOF LOOKALIKE (Bruna LookAlike)', amt:200, note:'' }
     ]},
     { name:'Campaign A | Legacy', id:'ca', adsets:[
       { name:'Prospecting Workhorse \u2014 Animation Soundbar Install', amt:200, note:'Reduced when V2 launched Apr 14' }
     ]},
     { name:'Campaign A V2', id:'cav2', adsets:[
-      { name:'Soundbar ASMR', amt:50, note:'Learning Phase \u2014 launched Apr 14' },
-      { name:'Leeron Soundbar Voice', amt:50, note:'Learning Phase \u2014 launched Apr 14' },
-      { name:'Animation Soundbar Features', amt:50, note:'Learning Phase \u2014 launched Apr 14' },
-      { name:'Leeron Install Music', amt:50, note:'Learning Phase \u2014 launched Apr 14' }
+      { name:'Ad Set 2 \u2014 Top V2 Performer', amt:50, note:'2.13x ROAS \u2014 keep running' },
+      { name:'Ad Set 1 \u2014 Monitor', amt:50, note:'1.00x ROAS \u2014 monitor, reassess Apr 29' },
+      { name:'Ad Set 3 \u2014 PAUSED', amt:0, note:'\u23f8 PAUSED Apr 22 \u2014 0.78x ROAS, $434 waste stopped' },
+      { name:'Ad Set 4 \u2014 PAUSED', amt:0, note:'\u23f8 PAUSED Apr 22 \u2014 0.22x ROAS, $439 waste stopped' }
     ]},
     { name:'Campaign B | Soundbar', id:'cb', adsets:[
       { name:'Ad Set C1 | BOF | High Intent', amt:50, note:'Multiple BOF ads running' },
