@@ -1816,12 +1816,12 @@ function renderAdSpend() {
   html += '</tr></thead><tbody>';
 
   var googleBudgets = [
-    {camp:'PMax Top 10 States', note:'Target ROAS 140% (lowered from 180% Apr 15). Add assets to close delivery gap.', budget:'$350/day'},
+    {camp:'PMax Top 10 States', note:'Raised to $450/day Apr 22 after 10 conversions on Apr 21 (best day of month). Target ROAS 140%.', budget:'$450/day'},
     {camp:'PMax 40 States', note:'Raised $75 \u2192 $90 \u2192 $140/day Apr 14\u201315. Best CPA in Google at $37.', budget:'$140/day'},
     {camp:'Brand | New', note:'Reduced $100 \u2192 $50/day Apr 15. Brand defense only. Exact match keywords.', budget:'$50/day'},
-    {camp:'Remarketing | HS Visitors | Non-Converters', note:'Launched Apr 15. Learning Phase active. Day 7 CTR check.', budget:'$50/day'}
+    {camp:'Remarketing | HS Visitors | Non-Converters', note:'Overhauled Apr 22: Clicks bidding ($5 max CPC), Purchase-only goal, collection page URL.', budget:'$50/day'}
   ];
-  var googleTotal = 350+140+50+50;
+  var googleTotal = 450+140+50+50;
 
   googleBudgets.forEach(function(r) {
     html += '<tr>';
@@ -1886,7 +1886,7 @@ function renderAdSpend() {
   html += '<div style="padding:18px 20px;background:rgba(255,255,255,0.04);border-radius:10px;border-left:4px solid var(--gold)">';
   html += '<div style="font-weight:700;font-size:14px;color:var(--gold);margin-bottom:10px">\u26a0\ufe0f Important: What These Numbers Actually Mean</div>';
   html += '<p style="font-size:13px;line-height:1.7;color:var(--text);margin-bottom:10px">The numbers above show the <strong>maximum daily budget we have authorized each platform to spend</strong>. They are not a guarantee of what will actually be spent each day. Think of it like setting a spending limit on a credit card \u2014 just because the limit exists doesn\'t mean the card gets charged that exact amount every single day.</p>';
-  html += '<p style="font-size:13px;line-height:1.7;color:var(--text);margin-bottom:10px"><strong>Why platforms don\'t always spend their full budget:</strong> Ad platforms like Google, TikTok, and Vibe CTV can only serve ads when real people are actively searching or browsing. On days when consumer search volume is low \u2014 a slow Monday morning, a holiday, or a period of low consumer intent \u2014 there simply aren\'t enough qualified people to show ads to, so the platform spends less. Google PMax, for example, may be authorized for $350/day but only find $220 worth of qualifying traffic on a given day. That is the platform doing its job correctly, not a malfunction.</p>';
+  html += '<p style="font-size:13px;line-height:1.7;color:var(--text);margin-bottom:10px"><strong>Why platforms don\'t always spend their full budget:</strong> Ad platforms like Google, TikTok, and Vibe CTV can only serve ads when real people are actively searching or browsing. On days when consumer search volume is low \u2014 a slow Monday morning, a holiday, or a period of low consumer intent \u2014 there simply aren\'t enough qualified people to show ads to, so the platform spends less. Google PMax, for example, may be authorized for $450/day but only find $320 worth of qualifying traffic on a given day. That is the platform doing its job correctly, not a malfunction.</p>';
   html += '<p style="font-size:13px;line-height:1.7;color:var(--text);margin-bottom:10px"><strong>Meta Ads operate differently</strong> from Google. Meta is a social feed \u2014 it can always find someone to show an ad to. Meta campaigns will generally spend close to their set budget each day. Google, TikTok, and Vibe CTV are demand-dependent: they follow search behavior and viewing patterns, not social scroll behavior.</p>';
   html += '<p style="font-size:13px;line-height:1.7;color:var(--text);margin-bottom:10px"><strong>What causes slower sales days:</strong> When Google or TikTok underspends, it is a direct signal that consumer intent is lower that day. Fewer people searching "TV mount" = fewer ad impressions = fewer clicks = fewer purchases. This is not a failure of the campaigns. It is a reflection of organic consumer behavior. University of Michigan Consumer Sentiment is currently at a historic low (47.6 in April 2026), which is suppressing purchase intent across all e-commerce. HangSmart\'s conversion rate is still holding strong, which means when people do show up, they are buying.</p>';
   html += '<p style="font-size:13px;line-height:1.7;color:var(--muted)">Bottom line: If a sales day looks slower than expected, the first check is whether the ad platforms hit their daily budget cap. If they didn\'t spend their full budget, the cause is low market demand that day \u2014 not a problem with the ads themselves.</p>';
