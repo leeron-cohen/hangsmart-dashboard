@@ -1071,23 +1071,25 @@ function renderVibe() {
 
 function renderIPScan() {
   var html = '';
-  html += '<div class="summary-box"><strong>IP Scan — April 13, 2026:</strong> Deep scan completed across Amazon, Walmart, Temu, AliExpress, Alibaba, and the broader web. Brand health is strong. All authorized distribution channels confirmed active. No unauthorized HangSmart\u00ae trademark use detected on any platform. Known copycats VIVO MOUNT-NS100 and monTEK remain active competitors — design patent review recommended. No Temu/AliExpress/Alibaba infringement found.</div>';
+  html += '<div class="summary-box"><strong>IP Scan — May 27, 2026 (Updated):</strong> Full scan completed across Google-indexed web, Amazon, Walmart, Temu, AliExpress, Alibaba, and direct brand sites. No unauthorized HangSmart® trademark use found on any Google-indexed website. No cloned domains detected. All authorized resellers confirmed active. Foreign marketplace risk remains LOW. VIVO MOUNT-NS100 and monTEK confirmed still actively selling — VIVO product page now explicitly shows interlocking bracket design matching HangSmart® patented system. Both are Priority enforcement targets. Takedown letters ready to issue.</div>';
 
-  html += '<div class="section-subtitle">Known Copycats — Requiring Patent Review</div>';
-
-  html += '<div class="anomaly-box" style="border-left-color:var(--red)">';
-  html += '<h4>\u26a0\ufe0f VIVO MOUNT-NS100 — Still Actively Sold (Amazon, Walmart, Newegg)</h4>';
-  html += '<p><strong>Platforms:</strong> Amazon (<a href="https://www.amazon.com/VIVO-1000x600mm-Studless-Mounting-MOUNT-NS100/dp/B0GLRYFB4W" target="_blank">B0GLRYFB4W</a>), Amazon Australia, VIVO official site, Walmart, Newegg</p>';
-  html += '<p><strong>Concern:</strong> 1.7" profile, drywall/picture-hang installation, supports 32–100" TVs, 165lbs capacity — nearly identical specifications to HangSmart. Design closely resembles D887255S. Possible utility patent overlap with US 12,460,669 B2.</p>';
-  html += '<p><strong>Recommended Action:</strong> Conduct formal design patent comparison by an IP attorney. If infringement confirmed, file Amazon IP Complaint via Brand Registry + cease-and-desist to VIVO. Contact: Legal@hangsmart.com</p></div>';
+  html += '<div class="section-subtitle">Active Infringers — Enforcement Required</div>';
 
   html += '<div class="anomaly-box" style="border-left-color:var(--red)">';
-  html += '<h4>\u26a0\ufe0f monTEK No-Stud TV Mount — Still Actively Sold (Amazon, Walmart)</h4>';
-  html += '<p><strong>Platforms:</strong> Amazon (<a href="https://www.amazon.com/monTEK-Studless-Concrete-1000x600mm-Renter-Friendly/dp/B0G1466GLF" target="_blank">B0G1466GLF</a>), Walmart (<a href="https://www.walmart.com/ip/MONTEK-Full-Motion-TV-Wall-Mount-Bracket-for-43-90-TVs-VESA-600x400mm/16236155955" target="_blank">16236155955</a>), monTEK official site</p>';
-  html += '<p><strong>Concern:</strong> 0.9" ultra-slim profile, 32–100" TVs, 220lbs drywall capacity. Design and patent claims closely mirror HangSmart\u00ae patented system. Multiple ASINs identified.</p>';
-  html += '<p><strong>Recommended Action:</strong> Same as VIVO — IP attorney review of D887255S vs. monTEK design. If confirmed, file Amazon Brand Registry IP complaint + direct takedown. Contact: Legal@hangsmart.com</p></div>';
+  html += '<h4>🚨 PRIORITY 1 — VIVO MOUNT-NS100 — Interlocking Design Confirmed on Product Page</h4>';
+  html += '<p><strong>Platforms:</strong> Amazon (<a href="https://www.amazon.com/VIVO-1000x600mm-Studless-Mounting-MOUNT-NS100/dp/B0GLRYFB4W" target="_blank">B0GLRYFB4W</a>), VIVO Direct Site (<a href="https://vivo-us.com/products/mount-ns100" target="_blank">vivo-us.com</a>), Walmart, Newegg</p>';
+  html += '<p><strong>Price:</strong> $39.99 | <strong>TV Range:</strong> 32”–100” | <strong>Capacity:</strong> 165 lbs | <strong>Profile:</strong> 1.7” from wall</p>';
+  html += '<p><strong>New Finding (May 27, 2026):</strong> VIVO’s own product page at vivo-us.com now explicitly shows and describes an <strong>interlocking two-bracket design</strong> using drywall nails — product images include a diagram labeled “interlocking design of the zero stud mount.” This is a direct visual match to HangSmart®’s patented interlocking bracket system covered under Utility Patent US 12,460,669 B2 and Design Patent D887255S. Actively selling on both Amazon and their own direct site.</p>';
+  html += '<p><strong>Recommended Action:</strong> Issue cease-and-desist to VIVO directly AND file Amazon Brand Registry IP infringement complaint. Contact: Legal@hangsmart.com | JTLE Investments LLC | 300 Oakwood Ln. Hollywood, FL 33020</p></div>';
 
-  html += '<div class="section-subtitle" style="margin-top:24px">Authorized Resellers — Confirmed Active</div>';
+  html += '<div class="anomaly-box" style="border-left-color:var(--red)">';
+  html += '<h4>🚨 PRIORITY 2 — monTEK No-Stud TV Mount — Still Actively Sold</h4>';
+  html += '<p><strong>Platforms:</strong> Amazon (<a href="https://www.amazon.com/monTEK-Studless-Concrete-1000x600mm-Renter-Friendly/dp/B0G1466GLF" target="_blank">B0G1466GLF</a>), Walmart (<a href="https://www.walmart.com/ip/MONTEK-Full-Motion-TV-Wall-Mount-Bracket-for-43-90-TVs-VESA-600x400mm/16236155955" target="_blank">16236155955</a>), montek-us.com</p>';
+  html += '<p><strong>TV Range:</strong> 32”–100” | <strong>Capacity:</strong> 220 lbs | <strong>Profile:</strong> 0.9” ultra slim | <strong>Method:</strong> No-stud, no-drill drywall nail installation</p>';
+  html += '<p><strong>Concern:</strong> No-stud drywall nail installation on 32–100” TVs mirrors HangSmart® patented system. Claims 220 lbs capacity, directly competing on core HangSmart differentiators. Confirmed active as of May 27, 2026.</p>';
+  html += '<p><strong>Recommended Action:</strong> File Amazon Brand Registry IP infringement complaint + cease-and-desist to monTEK. Contact: Legal@hangsmart.com | JTLE Investments LLC</p></div>';
+
+    html += '<div class="section-subtitle" style="margin-top:24px">Authorized Resellers — Confirmed Active</div>';
   html += '<div class="anomaly-box success"><h4>\u2705 All Major Authorized Channels Verified</h4>';
   html += '<p><strong>Amazon</strong> — HangSmartTV official store active, multiple SKUs (HSTV100, SM1002, SM1004, HSTV100-02PACK, BND-1000, SM1003, HSTV100MT). Store: <a href="https://www.amazon.com/stores/HangSmartTV/page/8274AD00-FD18-4A29-8974-521E395BADD6" target="_blank">HangSmartTV Store</a></p>';
   html += '<p><strong>Walmart</strong> — Authorized retail partner. Primary listing: <a href="https://www.walmart.com/ip/HangSmart-NO-STUD-TV-Mount-Holds-up-to-150LBS-and-up-to-100-TV/10859552507" target="_blank">Item #10859552507</a></p>';
