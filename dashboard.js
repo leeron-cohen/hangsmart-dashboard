@@ -1024,8 +1024,9 @@ function renderOverview() {
   var dates = getAllDates(dFrom, dTo);
   var numDays = dates.length;
 
-  var totalAdSpend = 0, totalShopifyOrders = 0, totalAmazonOrders = 0, totalWalmartUnits = 0;
-  var totalAmazonSales = 0, totalWalmartSales = 0, totalShopifySales = 0;
+  var totalAdSpend = 0, totalMetaSpend = 0, totalGoogleSpend = 0, totalVibeSpend = 0;
+  var totalShopifyOrders = 0, totalAmazonOrders = 0, totalAmazonSessions = 0;
+  var totalAmazonSales = 0, totalShopifySales = 0;
   var totalGA4Sessions = 0, totalGA4Transactions = 0;
 
   dates.forEach(function(d) {
@@ -1035,17 +1036,23 @@ function renderOverview() {
     var shop = SHOPIFY_DATA.find(function(x){return x.date===d;});
     var ga = GA4_DATA.find(function(x){return x.date===d;});
     var amz = getAmazon(d);
-    var wmt = getWalmart(d);
-
-    if(meta) totalAdSpend += meta.spend;
-    gAds.forEach(function(g){totalAdSpend += g.spend;});
-    vibe.forEach(function(v){totalAdSpend += v.spend;});
+    if(meta) { totalMetaSpend += meta.spend; totalAdSpend += meta.spend; }
+    gAds.forEach(function(g){ totalGoogleSpend += g.spend; totalAdSpend += g.spend; });
+    vibe.forEach(function(v){ totalVibeSpend += v.spend; totalAdSpend += v.spend; });
     if(shop) { totalShopifyOrders += shop.orders; totalShopifySales += shop.revenue; }
     totalAmazonOrders += amz.orders;
     totalAmazonSales += (amz.units * 18.50);
-    totalWalmartUnits += wmt.total_units;
-    totalWalmartSales += (wmt.total_units * 19);
+    totalAmazonSessions += (amz.sessions || 0);
     if(ga) { totalGA4Sessions += ga.sessions; totalGA4Transactions += ga.transactions; }
+  });
+
+  // Walmart: aggregate weekly records within selected date range
+  var totalWalmartUnits = 0, totalWalmartSales = 0;
+  WALMART_DATA.forEach(function(w) {
+    if (w.date >= dFrom && w.date <= dTo) {
+      totalWalmartUnits += w.total_units;
+      totalWalmartSales += (w.total_units * 19);
+    }
   });
 
   var totalAmazonUnits = AMAZON_DATA.filter(function(a) { return a.date >= dFrom && a.date <= dTo; }).reduce(function(s, a) { return s + a.units; }, 0);
@@ -1056,18 +1063,23 @@ function renderOverview() {
   var cvr = totalGA4Sessions > 0 ? ((totalGA4Transactions / totalGA4Sessions) * 100).toFixed(2) + '%' : 'N/A';
   var costPerTx = totalEstUnits > 0 ? (totalAdSpend / totalEstUnits).toFixed(2) : 'N/A';
 
-  // ── YTD HARDCODED BLENDED SUMMARY (CEO VIEW) ──────────────────────────
-  var YTD_AMAZON_REV    = 760017;
-  var YTD_AMAZON_UNITS  = 41082;
-  var YTD_WALMART_REV   = 267026;
-  var YTD_WALMART_UNITS = 14054;
-  var YTD_SHOPIFY_REV   = 864961;   // Jan 1–Jul 10 total sales per Shopify dashboard
-  var YTD_SHOPIFY_ORDERS= 9750;   // Jan 1–Jul 10 per Shopify dashboard
-  var YTD_GRAND_TOTAL   = YTD_AMAZON_REV + YTD_WALMART_REV + YTD_SHOPIFY_REV;
-  var YTD_AD_SPEND_GAP  = 333774;    // Apr 17 – Jul 10
-  var YTD_REPORTED_ROAS = (YTD_SHOPIFY_REV / YTD_AD_SPEND_GAP).toFixed(2);
-  var YTD_BLENDED_ROAS  = '~3.0x';
-  var DAILY_AD_SPEND    = 3991;
+  // ── DYNAMIC CEO BANNER (responds to date filter) ─────────────────────────
+  var shopifyAOV = totalShopifyOrders > 0 ? (totalShopifySales / totalShopifyOrders) : 0;
+  var walmartWkly = (function(){
+    var wRecs = WALMART_DATA.filter(function(w){return w.date>=dFrom&&w.date<=dTo;});
+    return wRecs.length > 0 ? Math.round(totalWalmartUnits / wRecs.length) : 0;
+  })();
+  var dailySpend = numDays > 0 ? Math.round(totalAdSpend / numDays) : 0;
+
+  // Top 5 Shopify revenue days in selected range
+  var topDays = filterByDate(SHOPIFY_DATA, dFrom, dTo)
+    .slice().sort(function(a,b){return b.revenue - a.revenue;}).slice(0,5);
+  var topDaysHtml = topDays.map(function(d){
+    return fmtDate(d.date) + ' <span style="color:var(--gold)">' + fmt(d.revenue) + '</span>';
+  }).join(' &bull; ');
+
+  // Date range label
+  var rangeLabel = fmtDate(dFrom) + ' – ' + fmtDate(dTo);
 
   var html = '';
 
@@ -1075,35 +1087,37 @@ function renderOverview() {
   html += '<div style="grid-column:1/-1;padding:24px 28px;background:linear-gradient(135deg,rgba(212,175,55,0.12) 0%,rgba(212,175,55,0.04) 100%);border-radius:12px;border:1px solid rgba(212,175,55,0.35);margin-bottom:4px">';
   html += '<div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:16px">';
   html += '<div>';
-  html += '<div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);font-weight:700;margin-bottom:6px">YTD Revenue — All Channels (Jan 1 – Jul 10, 2026)</div>';
-  html += '<div style="font-size:48px;font-weight:800;color:var(--gold);letter-spacing:-1px;line-height:1">' + fmt(YTD_GRAND_TOTAL) + '</div>';
-  html += '<div style="font-size:13px;color:var(--muted);margin-top:6px">Blended ROAS: <strong style="color:var(--gold)">' + YTD_BLENDED_ROAS + '</strong> &nbsp;|&nbsp; Daily ad spend: <strong style="color:var(--text)">~$3,991/day</strong> &nbsp;|&nbsp; Amazon sessions: <strong style="color:var(--text)">233,712 YTD</strong></div>';
+  html += '<div style="font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);font-weight:700;margin-bottom:6px">Blended Revenue — All Channels (' + rangeLabel + ')</div>';
+  html += '<div style="font-size:48px;font-weight:800;color:var(--gold);letter-spacing:-1px;line-height:1">' + fmt(totalRevenue) + '</div>';
+  html += '<div style="font-size:13px;color:var(--muted);margin-top:6px">Blended ROAS: <strong style="color:var(--gold)">' + blendedROAS + 'x</strong> &nbsp;|&nbsp; Daily spend: <strong style="color:var(--text)">~' + fmt(dailySpend) + '/day</strong> &nbsp;|&nbsp; Amazon sessions: <strong style="color:var(--text)">' + fmtN(Math.round(totalAmazonSessions)) + '</strong></div>';
   html += '</div>';
   html += '<div style="display:flex;gap:12px;flex-wrap:wrap">';
   // Amazon pill
   html += '<div style="text-align:center;padding:16px 20px;background:rgba(255,153,0,0.1);border-radius:10px;border:1px solid rgba(255,153,0,0.3);min-width:140px">';
   html += '<div style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#ff9900;font-weight:700;margin-bottom:6px">Amazon</div>';
-  html += '<div style="font-size:22px;font-weight:800;color:var(--text)">' + fmt(YTD_AMAZON_REV) + '</div>';
-  html += '<div style="font-size:12px;color:var(--muted);margin-top:4px">' + fmtN(YTD_AMAZON_UNITS) + ' units &bull; 99.7% Buy Box</div>';
+  html += '<div style="font-size:22px;font-weight:800;color:var(--text)">' + fmt(totalAmazonSales) + '</div>';
+  html += '<div style="font-size:12px;color:var(--muted);margin-top:4px">' + fmtN(Math.round(totalAmazonUnits)) + ' units &bull; 99.7% Buy Box</div>';
   html += '</div>';
   // Walmart pill
   html += '<div style="text-align:center;padding:16px 20px;background:rgba(0,113,206,0.1);border-radius:10px;border:1px solid rgba(0,113,206,0.3);min-width:140px">';
   html += '<div style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#0071ce;font-weight:700;margin-bottom:6px">Walmart</div>';
-  html += '<div style="font-size:22px;font-weight:800;color:var(--text)">' + fmt(YTD_WALMART_REV) + '</div>';
-  html += '<div style="font-size:12px;color:var(--muted);margin-top:4px">' + fmtN(YTD_WALMART_UNITS) + ' TV units &bull; 638/wk avg</div>';
+  html += '<div style="font-size:22px;font-weight:800;color:var(--text)">' + fmt(totalWalmartSales) + '</div>';
+  html += '<div style="font-size:12px;color:var(--muted);margin-top:4px">' + fmtN(totalWalmartUnits) + ' units &bull; ' + fmtN(walmartWkly) + '/wk avg</div>';
   html += '</div>';
   // Shopify pill
   html += '<div style="text-align:center;padding:16px 20px;background:rgba(149,191,71,0.1);border-radius:10px;border:1px solid rgba(149,191,71,0.3);min-width:140px">';
   html += '<div style="font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:#95bf47;font-weight:700;margin-bottom:6px">Shopify</div>';
-  html += '<div style="font-size:22px;font-weight:800;color:var(--text)">' + fmt(YTD_SHOPIFY_REV) + '</div>';
-  html += '<div style="font-size:12px;color:var(--muted);margin-top:4px">' + fmtN(YTD_SHOPIFY_ORDERS) + ' orders &bull; $81.82 AOV</div>';
+  html += '<div style="font-size:22px;font-weight:800;color:var(--text)">' + fmt(totalShopifySales) + '</div>';
+  html += '<div style="font-size:12px;color:var(--muted);margin-top:4px">' + fmtN(totalShopifyOrders) + ' orders &bull; ' + fmt(shopifyAOV) + ' AOV</div>';
   html += '</div>';
   html += '</div>'; // end pills
   html += '</div>'; // end flex row
-  // Top revenue days
+  // Top revenue days (dynamic) + spend breakdown (dynamic)
   html += '<div style="margin-top:16px;padding-top:14px;border-top:1px solid rgba(212,175,55,0.2);display:flex;gap:24px;flex-wrap:wrap">';
-  html += '<span style="font-size:12px;color:var(--muted)"><strong style="color:var(--text)">Top Revenue Days:</strong> Jul 3 <span style="color:var(--gold)">$7,507</span> &bull; Jul 5 <span style="color:var(--gold)">$6,465</span> &bull; Jul 4 <span style="color:var(--gold)">$5,907</span> &bull; Jun 19 <span style="color:var(--gold)">~$5,400</span> &bull; May 29 <span style="color:var(--gold)">~$5,100</span></span>';
-  html += '<span style="font-size:12px;color:var(--muted)"><strong style="color:var(--text)">Ad Spend (Apr–Jul):</strong> Meta $238,683 &bull; Google $78,991 &bull; Vibe $16,100 &bull; <strong style="color:var(--text)">Total $333,774</strong></span>';
+  if (topDaysHtml) {
+    html += '<span style="font-size:12px;color:var(--muted)"><strong style="color:var(--text)">Top Revenue Days:</strong> ' + topDaysHtml + '</span>';
+  }
+  html += '<span style="font-size:12px;color:var(--muted)"><strong style="color:var(--text)">Ad Spend:</strong> Meta ' + fmt(totalMetaSpend) + ' &bull; Google ' + fmt(totalGoogleSpend) + ' &bull; Vibe ' + fmt(totalVibeSpend) + ' &bull; <strong style="color:var(--text)">Total ' + fmt(totalAdSpend) + '</strong></span>';
   html += '</div>';
   html += '</div>'; // end CEO banner
 
